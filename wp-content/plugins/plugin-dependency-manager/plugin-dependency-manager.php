@@ -28,14 +28,12 @@ function register_plugin_dependencies() {
 
     // Register dependencies.
     add_filter( 'plugin_dependency_requirements', function( $dependencies ) {
-        $dependencies[] = array(
-            'slug'    => 'contact-form-7',
-            'version' => '5.8',
-        );
+        // $dependencies[] = array(
+        //     'slug'    => 'contact-form-7',
+        // );
 
         $dependencies[] = array(
             'slug'    => 'woocommerce',
-            'version' => '8.0',
         );
 
         $dependencies[] = array(
@@ -44,10 +42,6 @@ function register_plugin_dependencies() {
 
         $dependencies[] = array(
             'slug'    => 'query-monitor',
-        );
-
-        $dependencies[] = array(
-            'slug'    => 'advanced-custom-fields-pro',
         );
 
         return $dependencies;
