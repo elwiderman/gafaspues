@@ -1,0 +1,47 @@
+{
+  "name": "gafaspues-theme",
+  "version": "1.0.0",
+  "description": "Parcel bundler for the gafaspues theme",
+  "main": "index.js",
+  "author": "Ajasra Das (das.ajasra@gmail.com)",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean:output": "rimraf .parcel-cache dist",
+    "watch": "yarn run clean:output && parcel watch",
+    "build": "yarn run clean:output && parcel build --no-source-maps"
+  },
+  "source": [
+    "src/js/app.js",
+    "src/scss/app.scss"
+  ],
+  "keywords": [],
+  "devDependencies": {
+    "@parcel/runtime-browser-hmr": "^2.12.0",
+    "@parcel/transformer-sass": "^2.12.0",
+    "parcel": "^2.12.0",
+    "parcel-namer-rewrite": "^2.10.3-rc.2",
+    "parcel-reporter-bundle-manifest": "^1.0.0",
+    "parcel-resolver-ignore": "^2.2.0",
+    "rimraf": "^5.0.5",
+    "sass": "^1.69.7"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "targets": {
+    "main": false,
+    "default": {
+      "distDir": "./dist"
+    }
+  },
+  "parcel-namer-rewrite": {
+    "hashing": "always",
+    "disable": false,
+    "rules": {
+      "scss/(.*).css": "css/$1{.hash}.min.css",
+      "(.*).js": "$1{.hash}.min.js"
+    }
+  },
+  "parcelIgnore": [
+    "assets/fonts/*"
+  ]
+}
