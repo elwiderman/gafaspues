@@ -5,7 +5,7 @@
  * Version: 1.0.0
  * Author: Widerman
  * License: GPL2+
- * Requires Plugins: contact-form-7, woocommerce, regenerate-thumbnails, advanced-custom-fields-pro, query-monitor
+ * Requires Plugins: contact-form-7, woocommerce, regenerate-thumbnails, advanced-custom-fields-pro, query-monitor, safe-svg
  */
 
 // Exit if accessed directly.
