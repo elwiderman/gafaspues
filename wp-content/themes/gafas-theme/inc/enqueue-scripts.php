@@ -12,6 +12,7 @@ function adhq_framework_scripts() {
     global $wp_styles; // Call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
 
     // Register main stylesheet
+    wp_enqueue_style('common-css', $path . adhq_get_hashed_assets('scss/common.scss'), array(), '', 'all');
     wp_enqueue_style('site-css', $path . adhq_get_hashed_assets('scss/app.scss'), array(), '', 'all');
 }
 
