@@ -1,0 +1,66 @@
+/*
+** All variables
+*/
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400&display=swap');
+
+// Font family
+$primary-font: 'Montserrat', sans-serif;
+$secondary-font: 'Poppins', sans-serif;
+
+// Font weights
+$thin: 100;
+$light: 300;
+$regular: 400;
+$medium: 500;
+$semi-bold: 600;
+$bold: 700;
+$black-bold: 800;
+$black: 900;
+
+// Font stretch
+$extra-condensed: 62.5%;
+$condensed: 75%;
+$semi-condensed: 87.5%;
+$normal: 100%;
+$semi-expanded: 112.5%;
+$expanded: 125%;
+
+
+/* Colors */
+$primary-color:             #b09e80;
+$secondary-color:           #e9e9e9;
+$tertiary-color:            #192537;
+$border-color:              #bb9181;
+$blue:						#3300ff;
+$grey:						#979797;
+$input-error:               #f44336;
+$input-success:             #26b735;
+$primary-bg:                #ffffff;
+$secondary-bg:              #f4f4f4;
+$primary-font-color:        #192537;
+$secondary-font-color:      #ffffff;
+
+
+/* Breakpoints */
+$breakpoints: ('x-small': (min-width: 480px),
+    'small': (min-width: 576px),
+    'medium': (min-width: 768px),
+    'large': (min-width: 992px),
+    'x-large': (min-width: 1200px),
+    's-desk': (min-width: 1360px),
+    'xx-large': (min-width: 1400px),
+    'xxx-large': (min-width: 1550px),
+    'ultra-large': (min-width: 1921px),
+) !default;
+
+$breakpoints_mob: ('x-small': (max-width: 479px),
+    'small': (max-width: 575px),
+    'medium': (max-width: 767px),
+    'large': (max-width: 991px),
+    'x-large': (max-width: 1199px),
+    's-desk': (max-width: 1359px),
+    'xx-large': (max-width: 1399px),
+    'xxx-large': (max-width: 1549px),
+) !default;

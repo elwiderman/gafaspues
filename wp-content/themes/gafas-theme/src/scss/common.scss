@@ -1,0 +1,17 @@
+/* 
+    common styles for all pages
+*/
+
+@import 'npm:bootstrap/dist/css/bootstrap.min.css';
+
+
+/* BASE - base styles, variables, mixins etc */
+@import 'base/variables';
+@import 'base/fonticon_variables';
+@import 'base/mixins';
+@import 'base/base';
+
+// common modules
+@import 'modules/fonticons';
+@import 'modules/header';
+@import 'modules/footer';
