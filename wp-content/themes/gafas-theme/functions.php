@@ -10,3 +10,6 @@ require_once(get_template_directory().'/inc/theme-functions.php');
 
 // Register custom menus and menu walkers
 require_once(get_template_directory().'/inc/menu.php');
+
+// cf7 functions
+require_once(get_template_directory().'/inc/cf7-functions.php');

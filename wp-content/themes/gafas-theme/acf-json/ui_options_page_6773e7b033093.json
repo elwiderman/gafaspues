@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_6773e7b033093",
+    "title": "Theme Footer",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Theme Footer",
+    "menu_slug": "theme-footer",
+    "parent_slug": "theme-general-settings",
+    "advanced_configuration": 1,
+    "icon_url": "",
+    "menu_title": "",
+    "position": "",
+    "redirect": false,
+    "description": "",
+    "menu_icon": [],
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 1,
+    "modified": 1735649235
+}

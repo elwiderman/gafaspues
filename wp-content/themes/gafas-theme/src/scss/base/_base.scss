@@ -9,7 +9,7 @@ html {
 body {
     width: 100%;
     height: 100%;
-    @include font($primary-font, $medium);
+    @include font($primary-font, $regular);
     color: $primary-font-color;
     background-color: $primary-bg;
     line-height: 1.2;
