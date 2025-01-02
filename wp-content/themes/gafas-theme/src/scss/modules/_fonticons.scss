@@ -312,3 +312,9 @@
         color: #25d366;
     }
 }
+
+.icon-tiktok {
+    &:before {
+        content: $icon-tiktok;
+    }
+}

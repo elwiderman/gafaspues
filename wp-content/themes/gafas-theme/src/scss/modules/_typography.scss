@@ -1,0 +1,244 @@
+/* Styles for Typography and helpers */
+
+// typography
+h1, h2, h3, h4, h5, h6 {
+    @include font($primary-font, $medium);
+    margin-bottom: 0;
+}
+h1, .h1 {
+    font-size: 50px;
+    line-height: 1.22;
+    @include respond-to-mob('x-large') {
+        font-size: 36px;
+        line-height: 1.22;
+    }
+    @include respond-to-mob('medium') {
+        font-size: 32px;
+    }
+}
+h2, .h2 {
+    font-size: 42px;
+    line-height: 1.2;
+    @include respond-to-mob('x-large') {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+}
+h3, .h3 {
+    font-size: 36px;
+    line-height: 1.22;
+    @include respond-to-mob('x-large') {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+}
+h4, .h4 {
+    font-size: 32px;
+    line-height: 1.22;
+    @include respond-to-mob('x-large') {
+        font-size: 24px;
+        line-height: 1.21;
+    }
+}
+h5, .h5 {
+    font-size: 24px;
+    line-height: 1.23;
+    @include respond-to-mob('x-large') {
+        font-size: 20px;
+        line-height: 1.2;
+    }
+}
+h6, .h6 {
+    font-size: 20px;
+    line-height: 1.2;
+    @include respond-to-mob('x-large') {
+        font-size: 16px;
+        line-height: 1.1875;
+    }
+}
+p {
+    @include font($secondary-font, $regular);
+    font-size: 15px;
+    line-height: 1.4;
+    margin-bottom: calc(15px * 1.4);
+    @include respond-to-mob('s-desk') {
+        font-size: 14px;
+        line-height: 1.43;
+        margin-bottom: calc(14px * 1.43);
+    }
+}
+.alt-p {
+    @extend p;
+    font-size: 13px;
+    line-height: 1.385;
+    @include respond-to-mob('s-desk') {
+        font-size: 12px;
+        line-height: 1.4167;
+    }
+}
+
+.text-italics {
+    font-style: italic;
+}
+.text-bold {
+    font-weight: $bold;
+}
+
+.color-gold {
+    color: $primary-color;
+}
+.color-white {
+    color: $primary-bg;
+}
+.color-dark {
+    color: $primary-font-color;
+}
+
+
+// helpers
+.no-gutter > [class*='col-'] {
+    padding-right: 0;
+    padding-left: 0;
+}
+.text-uppercase {
+    text-transform: uppercase;
+}
+.relative {
+    position: relative;
+}
+.vertical-center {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    @include transform-translateY(-50%);
+}
+.underline {
+    width: 10.310rem;
+    margin: 40px auto;
+    @include add-border(1px, $primary-bg, 'top');
+}
+.separator {
+    width: 100%;
+    height: 1px;
+    background: #e1e1e1;
+    &.padded {
+        margin: 75px 0;
+    }
+}
+.emoji-ellipsis {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    @include flex-display(row, center, center);
+    @include add-border(12px, $grey, all);
+    @include font($primary-font, $bold);
+}
+.content-block {
+    &.padding-lg {
+        padding: 8.25rem 0;
+    }
+    &.padding-md {
+        padding: 90px 0;
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.bg-transparent {
+    background: transparent;
+}
+
+.half-opacity {
+    opacity: 0.5;
+}
+
+a {
+    &.see-all {
+        @include font($primary-font, $black);
+        font-size: 16px;
+        color: $primary-color;
+        text-transform: uppercase;
+        position: relative;
+        margin-right: 35px;
+        .icon-arrow-right {
+            font-size: 18px;
+            color: $primary-color;
+            position: absolute;
+            right: -35px;
+            top: 0;
+            animation-delay: 0.3s;
+        }
+        &:hover {
+            color: $primary-color;
+            i.icon-arrow-right {
+                animation: animate-arrow-right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            }
+        }
+    }
+}
+@keyframes animate-arrow-right {
+    0% {
+        transform: translate(0, 0) scale(1, 1);
+        transform: translate3d(0, 0, 0) scale(1, 1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(10px, 0) scale(1.3, 1);
+        transform: translate3d(10px, 0, 0) scale(1.3, 1);
+        opacity: 0;
+    }
+    51% {
+        transform: translate(-10px, 0) scale(1.3, 1);
+        transform: translate3d(-10px, 0, 0) scale(1.3, 1);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0, 0) scale(1, 1);
+        transform: translate3d(0, 0, 0) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+// pagination
+.page-navigation {
+    @include flex-display(row, center, center);
+    .pagination {
+        @include flex-display(row, center, center);
+        margin-top: 24px;
+        gap: 20px;
+        li {
+            &.current {
+                a {
+                    font-weight: $bold;
+                    pointer-events: none;
+                }
+            }
+            a {
+                @extend p;
+                color: $primary-font-color;
+                margin-bottom: 0;
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+}
+
+
+.yith-wcbk-form-section.yith-wcbk-form-section-dates.calendar-day-range-picker + .yith-wcbk-form-section.yith-wcbk-form-section-dates.calendar-day-range-picker .yith-wcbk-datepicker--static {
+    right: unset;
+}
+
+.yith-wcbk-datepicker.ui-datepicker .ui-datepicker-buttonpane .ui-datepicker-close,
+.yith-wcbk-date-picker--inline .ui-datepicker .ui-datepicker-buttonpane .ui-datepicker-close {
+    color: $primary-color;
+    font-weight: $bold;
+}
+.yith-wcbk-datepicker.ui-datepicker .ui-datepicker-buttonpane .ui-datepicker-close:hover,
+.yith-wcbk-date-picker--inline .ui-datepicker .ui-datepicker-buttonpane .ui-datepicker-close:hover  {
+    color: $primary-font-color;
+    text-decoration: unset;
+}

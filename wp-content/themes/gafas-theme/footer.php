@@ -1,10 +1,11 @@
 <?php
 /* this is common footer partial */
+$bg         = get_field('footer_background_img', 'option');
 ?>
 
     </div>
 
-    <footer class="footer">
+    <footer class="footer" style="background-image: url(<?php echo $bg['url']; ?>);">
         <?php get_template_part('parts/footer/footer', 'framework'); ?>
     </footer>
 

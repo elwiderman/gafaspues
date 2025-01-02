@@ -1,0 +1,97 @@
+.footer {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 60px 0;
+    &__separator {
+        &--hr {
+            color: $primary-bg;
+        }
+    }
+    &__bottom {
+        &--copy {
+            color: $primary-bg;
+        }
+    }
+    &__title {
+        @extend h5;
+        color: $primary-bg;
+        margin-bottom: 15px;
+    }
+    &__link {
+        @include flex-display(column, flex-start, flex-start);
+        gap: 15px;
+        li {
+            font-size: 0;
+            a {
+                @extend p;
+                font-size: 14px;
+                color: $primary-bg;
+                margin-bottom: 0;
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+    .newsletter {
+        &__title {
+            @extend h5;
+            color: $primary-bg;
+            margin-bottom: 15px;
+        }
+        &__desc {
+            color: $primary-bg;
+        }
+        &__form {
+            form {
+                display: flex;
+                flex-direction: column;
+                &.submitting {
+                    .form-submit {
+                        .btn-outline {
+                            background: $primary-bg;
+                            color: $primary-font-color;
+                            pointer-events: none;
+                        }
+                    }
+                }
+                .wpcf7-response-output {
+                    @extend p;
+                    color: $primary-bg;
+                    text-align: center;
+                    margin: 15px 0;
+                }
+            }
+            .form-group {
+                margin-bottom: 10px;
+                .wpcf7-form-control-wrap {
+                    .form-control {
+                        @extend p;
+                        color: $primary-bg;
+                        height: 45px;
+                        background: transparent;
+                        @include add-border(1px, $primary-bg, 'all');
+                        border-radius: 0;
+                        margin-bottom: 0;
+                        &::placeholder {
+                            color: $primary-bg;
+                        }
+                    }
+                    .wpcf7-not-valid-tip {
+                        display: none;
+                    }
+                }
+            }
+            .form-submit {
+                @include flex-display(row, flex-start, center);
+                .wpcf7-spinner {
+                    background: $primary-bg;
+                    &:before {
+                        background: $primary-font-color;
+                    }
+                }
+            }
+        }
+    }
+}
