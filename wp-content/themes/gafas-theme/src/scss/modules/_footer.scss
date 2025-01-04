@@ -4,6 +4,7 @@
     background-repeat: no-repeat;
     padding: 60px 0;
     &__separator {
+        padding: 50px 0 20px;
         &--hr {
             color: $primary-bg;
         }
@@ -11,6 +12,7 @@
     &__bottom {
         &--copy {
             color: $primary-bg;
+            opacity: 0.7;
         }
     }
     &__title {
@@ -28,8 +30,10 @@
                 font-size: 14px;
                 color: $primary-bg;
                 margin-bottom: 0;
+                opacity: 0.7;
                 &:hover {
                     color: $primary-color;
+                    opacity: 1;
                 }
             }
         }
@@ -42,6 +46,7 @@
         }
         &__desc {
             color: $primary-bg;
+            opacity: 0.7;
         }
         &__form {
             form {
