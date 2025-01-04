@@ -2,8 +2,8 @@
     &.single-home {
         .section-block {
             &.section-hero {
+                margin-bottom: 20px;
                 .home-hero-slider {
-                    margin-bottom: 50px;
                     .slick-slide {
                         .slide {
                             position: relative;
@@ -88,6 +88,14 @@
                             }
                         }
                     }
+                }
+            }
+
+            &.section-search {
+                margin-bottom: 20px;
+                .dgwt-wcas-search-input {
+                    font-family: $secondary-font;
+                    // border-radius: 0;
                 }
             }
         }

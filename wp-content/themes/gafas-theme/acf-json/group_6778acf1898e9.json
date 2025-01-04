@@ -21,27 +21,6 @@
             "selected": 0
         },
         {
-            "key": "field_6778ad1f88644",
-            "label": "Is Hero Visible?",
-            "name": "show_hero_bool",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 1,
-            "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
             "key": "field_6778ad4088645",
             "label": "Hero Slider",
             "name": "hero_slider_repeater",
@@ -223,6 +202,48 @@
                     "parent_repeater": "field_6778ad4088645"
                 }
             ]
+        },
+        {
+            "key": "field_67795c5f8a0e7",
+            "label": "Show Search Box?",
+            "name": "show_search_box_bool",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_67795c7d8a0e8",
+            "label": "Search Shortcode",
+            "name": "search_shortcode_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "60",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "[fibosearch]",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -243,5 +264,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1735964137
+    "modified": 1736006863
 }

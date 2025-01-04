@@ -38,3 +38,21 @@ if (have_rows('hero_slider_repeater')) : ?>
 </section>
 <?php
 endif;
+
+// the search box
+if (get_field('show_search_box_bool')) :
+    $form = get_field('search_shortcode_text');
+    ?>
+    <section class="section-block section-search">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-xl-6">
+                    <div class="search-wrap">
+                        <?php echo do_shortcode($form); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php
+endif;
