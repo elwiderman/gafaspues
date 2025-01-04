@@ -1,0 +1,177 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: $primary-bg;
+    @include add-border(1px, $primary-color, bottom);
+    z-index: 10;
+    @include transition(0.3s);
+    &__nav {
+        @extend .container;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        flex-wrap: nowrap;
+        max-height: 100px;
+        margin: 0 auto;
+        // padding: 0;
+        @include flex-display(row, space-between, center);
+        &--toggler {
+            @include respond-to('medium') {
+                display: none;
+            }
+        }
+        &--brand {
+            display: inline-flex;
+            cursor: pointer;
+            .logo {
+                width: 200px;
+            }
+        }
+        &--collapse {
+            .main-menu {
+                &__list {
+                    @include flex-display(row, flex-start, center);
+                    gap: 30px;
+                    li {
+                        .nav-link {
+                            display: flex;
+                            align-items: flex-end;
+                            font-size: 16px;
+                            color: $primary-font-color;
+                            text-transform: uppercase;
+                            position: relative;
+                            padding: 5px 0;
+                            &:before {
+                                content: '';
+                                display: block;
+                                position: absolute;
+                                bottom: 0;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                width: 0;
+                                height: 2px;
+                                background: $primary-color;
+                                @include transition(0.3s);
+                            }
+                            &:hover {
+                                color: $primary-color;
+                                &:before {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                        &.dropdown {
+                            & > .dropdown-toggle {
+                                &:after {
+                                    content: $icon-plus;
+                                    font-family: $icomoon-font-family;
+                                    font-size: 15px;
+                                    border: none;
+                                    vertical-align: unset;
+                                    margin-left: 2px;
+                                    @include transition(0.2s);
+                                }
+                                &.show {
+                                    &:after {
+                                        content: $icon-minus;
+                                    }
+                                    & ~ .dropdown-menu {
+                                        &.show {
+                                            @include flex-display(column, flex-start, flex-start);
+                                        }
+                                    }
+                                }
+                                & ~ .dropdown-menu {
+                                    gap: 10px;
+                                    border-radius: 0;
+                                    padding: 20px 0;
+                                    .dropdown-item {
+                                        font-size: 16px;
+                                        &:hover {
+                                            background: transparent;
+                                            color: $primary-color
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &--right {
+            @include flex-display(row, flex-end, center);
+            gap: 24px;
+            .navbar-wishlist {
+                li {
+                    a {
+                        color: $primary-font-color;
+                        .woosw-menu-item-inner {
+                            font-size: 0;
+                            display: block;
+                            height: 16px;
+                            &:before {
+                                content: $icon-heart;
+                                font-family: $icomoon-font-family;
+                                font-size: 15px;
+                                line-height: 1;
+                            }
+                        }
+                    }
+                }
+            }
+            .navbar-account {
+                a {
+                    font-size: 0;
+                    color: $primary-font-color;
+                    &:before {
+                        content: $icon-user;
+                        font-family: $icomoon-font-family;
+                        font-size: 15px;
+                        line-height: 1;
+                    }
+                }
+            }
+            .navbar-cart {
+                // display: block;
+                a {
+                    color: $primary-font-color;
+                    font-weight: $regular;
+                    .woofc-menu-item-inner {
+                        display: block;
+                        height: 16px;
+                        i {
+                            font-family: unset !important;
+                            &:before {
+                                content: $icon-shopping-bag;
+                                font-family: $icomoon-font-family;
+                                font-size: 15px;
+                                line-height: 1;
+                            }
+                        }
+                    }
+                }
+                li {
+                    // font-size: 0;
+                }
+            }
+        }
+    }
+}
+
+body {
+    &.admin-bar {
+        .header {
+            top: 32px;
+            @include respond-to-mob('medium') {
+                top: 46px;
+            }
+        }
+    }
+}

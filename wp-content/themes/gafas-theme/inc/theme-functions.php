@@ -24,7 +24,7 @@ function gafas_remove_post_formats() {
 /* custom backend footer */
 add_filter('admin_footer_text', 'gafas_custom_admin_footer');
 function gafas_custom_admin_footer() {
-    _e('<span id="footer-thankyou">Developed by <a href="https://www.linkedin.com/in/ajasra/" target="_blank">El Widerman</a></span>', 'adhq');
+    _e('<span id="footer-thankyou">Developed by <a href="https://www.linkedin.com/in/ajasra/" target="_blank">El Widerman</a></span>', 'gafas');
 }
 
 

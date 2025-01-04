@@ -5,8 +5,10 @@ require_once('bs4navwalker.php');
 // Register menus
 register_nav_menus(
     array(
-        'main-nav'          => __('Main Menu', 'adhq'),
-        'footer-links'      => __('Footer Menu', 'adhq')
+        'main-nav'          => __('Main Menu', 'gafas'),
+        'footer-links'      => __('Footer Menu', 'gafas'),
+        'nav-cart'          => __('Nav Location for Cart', 'gafas'),
+        'nav-wishlist'      => __('Nav Location for Wishlist', 'gafas'),
     )
 );
 
@@ -14,7 +16,7 @@ function main_menu() {
     wp_nav_menu(
         array(
             'container'     => false,
-            'menu_class'    => 'header__main--menu',
+            'menu_class'    => 'main-menu__list',
             'items_wrap'    => '<ul id="%1$s" class="%2$s">%3$s</ul>',
             'theme_location' => 'main-nav',
             'depth'         => 5,
@@ -44,4 +46,32 @@ function footer_credits() {
         'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',
         'theme_location'    => 'footer-links'
     ));
+}
+
+function nav_cart() {
+    wp_nav_menu(
+        array(
+            'container'     => false,
+            'menu_class'    => 'navbar-cart',
+            'items_wrap'    => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+            'theme_location'=> 'nav-cart',
+            'depth'         => 1,
+            'fallback_cb'   => 'bs4navwalker::fallback',
+            'walker'        => new bs4navwalker()
+        )
+    );
+}
+
+function nav_wishlist() {
+    wp_nav_menu(
+        array(
+            'container'     => false,
+            'menu_class'    => 'navbar-wishlist',
+            'items_wrap'    => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+            'theme_location'=> 'nav-wishlist',
+            'depth'         => 1,
+            'fallback_cb'   => 'bs4navwalker::fallback',
+            'walker'        => new bs4navwalker()
+        )
+    );
 }
