@@ -11,8 +11,10 @@ export default class Home {
 
     init() {
         this.heroSlider();
+        this.prodCatSlider();
     }
 
+    // the home hero slider
     heroSlider() {
         let slider = $('#homeHero');
 
@@ -94,6 +96,49 @@ export default class Home {
                 yPercent: 100,
                 stagger: 0.1
             }, '+=0.2');
+        });
+    }
+
+    // the slider for the prod cats
+    prodCatSlider() {
+        let slider = $('#prodCatsSlider');
+
+        slider.slick({
+            dots: false,
+            arrows: true,
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            rows: 0,
+            speed: 800,
+            fade: false,
+            cssEase: 'ease',
+            lazyLoad: 'ondemand',
+            pauseOnHover: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            appendArrows: $('#prodCatsSliderNav'),
+            prevArrow: '<button class="slick-prev slick-arrow"><i class="icon-chevron-left"></i></button>',
+            nextArrow: '<button class="slick-next slick-arrow"><i class="icon-chevron-right"></i></button>',
+            // responsive: [{
+            //     breakpoint: 1024,
+            //     settings: {
+            //         slidesToShow: 3,
+            //         slidesToScroll: 1
+            //     }
+            // }, {
+            //     breakpoint: 768,
+            //     settings: {
+            //         slidesToShow: 2,
+            //         slidesToScroll: 1
+            //     }
+            // }, {
+            //     breakpoint: 480,
+            //     settings: {
+            //         slidesToShow: 1,
+            //         slidesToScroll: 1
+            //     }
+            // }]
         });
     }
 }

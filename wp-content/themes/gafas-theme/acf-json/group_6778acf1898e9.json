@@ -205,7 +205,7 @@
         },
         {
             "key": "field_67795c5f8a0e7",
-            "label": "Show Search Box?",
+            "label": "¿Mostrar cuadro de búsqueda?",
             "name": "show_search_box_bool",
             "aria-label": "",
             "type": "true_false",
@@ -226,13 +226,21 @@
         },
         {
             "key": "field_67795c7d8a0e8",
-            "label": "Search Shortcode",
+            "label": "Buscar Shortcode",
             "name": "search_shortcode_text",
             "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_67795c5f8a0e7",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "60",
                 "class": "",
@@ -244,6 +252,79 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_677962e5e4bd7",
+            "label": "Categorías de productos",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6779631de4bd8",
+            "label": "¿Mostrar las categorías de productos?",
+            "name": "show_prod_cat_bool",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui_on_text": "Si",
+            "ui_off_text": "No",
+            "ui": 1
+        },
+        {
+            "key": "field_67796350e4bd9",
+            "label": "Seleccione categorías de productos visibles",
+            "name": "prod_cats_tax",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6779631de4bd8",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "product_cat",
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "field_type": "checkbox",
+            "allow_in_bindings": 0,
+            "bidirectional": 0,
+            "multiple": 0,
+            "allow_null": 0,
+            "bidirectional_target": []
         }
     ],
     "location": [
@@ -264,5 +345,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1736006863
+    "modified": 1736009042
 }
