@@ -14,6 +14,9 @@ require_once(get_template_directory().'/inc/menu.php');
 // Custom image sizes for the theme
 require_once(get_template_directory().'/inc/image.php');
 
+// Adds the sidebar widget areas
+require_once(get_template_directory().'/inc/sidebar.php');
+
 // cf7 functions
 require_once(get_template_directory().'/inc/cf7-functions.php');
 
