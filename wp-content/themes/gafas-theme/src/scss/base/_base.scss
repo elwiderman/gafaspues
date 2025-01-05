@@ -110,7 +110,7 @@ ul {
 }
 
 .main-content-wrap {
-    padding-top: 100px;
+    padding-top: 80px;
     overflow-x: hidden;
     @include respond-to-mob('medium') {
         padding-top: 80px;
@@ -165,7 +165,22 @@ ul {
     to {-webkit-transform: rotate(360deg);}
 }
 
-.wpml-ls-statics-footer,
-.otgs-development-site-front-end {
-    display: none;
+
+
+.container {
+    padding: 0 12px;
+    @include respond-to('s-desk') {
+        max-width: 100%;
+        padding: 0 45px;
+    }
+    @include respond-to('xxx-large') {
+        max-width: 1440px;
+        padding: 0 45px;
+    }
+    .row {
+        margin: 0 -12px;
+        & > .col, & > [class*="col-"] {
+            padding: 0 12px;
+        }
+    }
 }

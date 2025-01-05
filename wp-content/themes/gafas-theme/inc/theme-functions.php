@@ -61,9 +61,6 @@ function gafas_login_logo() {
             margin-bottom: 0px;
             pointer-events: none;
         }
-        body.login-action-login.login {
-            background-color: #192537;
-        } 
     </style>
 <?php }
 add_action( 'login_enqueue_scripts', 'gafas_login_logo' );

@@ -3,7 +3,6 @@
 */
 
 import $ from 'jquery';
-import 'slick-carousel';
 import 'bootstrap';
 import select2 from 'select2';
 //Hook up select2 to jQuery

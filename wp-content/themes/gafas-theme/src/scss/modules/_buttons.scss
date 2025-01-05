@@ -24,3 +24,14 @@
         background: $primary-bg;
     }
 }
+
+.btn-outline-dark {
+    @extend .btn;
+    color: $primary-font-color;
+    background: transparent;
+    border-color: $primary-font-color;
+    &:hover, &:active {
+        color: $primary-bg;
+        background: $primary-color;
+    }
+}

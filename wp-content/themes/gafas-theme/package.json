@@ -13,8 +13,9 @@
   },
   "source": [
     "src/js/app.js",
+    "src/js/home.js",
     "src/scss/common.scss",
-    "src/scss/app.scss"
+    "src/scss/home.scss"
   ],
   "keywords": [],
   "devDependencies": {
