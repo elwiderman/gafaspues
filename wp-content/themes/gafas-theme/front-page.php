@@ -9,6 +9,7 @@ get_header();
     <?php
     get_template_part('parts/pages/home/hero');
     get_template_part('parts/pages/home/prod-cats');
+    get_template_part('parts/pages/home/trends');
     ?>
 </div>
 

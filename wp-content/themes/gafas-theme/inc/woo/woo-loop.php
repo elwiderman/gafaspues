@@ -113,6 +113,7 @@ function gafas_custom_loop_rating() {
     } else {
         // the rating will be zero but still will show the blank stars
         $rating = 0;
+        $count  = 0;
         // from the core functions
         /* translators: %s: rating */
 		$label = sprintf( __( 'Rated %s out of 5', 'woocommerce' ), $rating );

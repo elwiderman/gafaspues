@@ -4,6 +4,19 @@
 h1, h2, h3, h4, h5, h6 {
     @include font($primary-font, $medium);
     margin-bottom: 0;
+    &.styled {
+        position: relative;
+        &:before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            bottom: 0;
+            width: 100px;
+            height: 0.8em;
+            background: rgba($primary-color, 0.2);
+            z-index: -1;
+        }
+    }
 }
 h1, .h1 {
     font-size: 50px;
