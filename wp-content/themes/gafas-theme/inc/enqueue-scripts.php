@@ -13,6 +13,16 @@ function gafas_framework_scripts() {
         wp_enqueue_style('home-css', $path . gafas_get_hashed_assets('scss/home.scss'), array(), '', 'all');
     }
 
+    if (is_product()) {
+        wp_enqueue_script('woo-formula-scripts', $path . gafas_get_hashed_assets('js/wooFormula.js'), '', '', false);
+        wp_enqueue_style('prod-single-css', $path . gafas_get_hashed_assets('scss/single-product.scss'), array(), '', 'all');
+
+        wp_localize_script('woo-formula-scripts', 'WPURLS', array(
+            'ajaxurl'       => admin_url('admin-ajax.php'),
+            'cart_nonce'    => wp_create_nonce('update_cart_nonce'),
+        ));
+    }
+
 
     // the stylesheets
     global $wp_styles; // Call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way

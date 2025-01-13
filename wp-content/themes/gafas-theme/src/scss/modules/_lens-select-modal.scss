@@ -1,0 +1,315 @@
+#lensSelectionModal {
+    .modal-header {
+        padding-left: 30px;
+    }
+    .modal-body {
+        padding-left: 30px;
+        padding-right: 30px;
+        .form-area {
+            &.form-lens-formula {
+                .container {
+                    padding: 0;
+                }
+                .form-title {
+                    font-size: 17px;
+                    margin-bottom: 10px;
+                }
+                .lens-type-wrap {
+                    @include flex-display(row, flex-start, flex-start);
+                    gap: 15px;
+                    &__name {
+                        text-align: center;
+                        img {
+                            width: 100px;
+                            margin-bottom: 5px;
+                        }
+                        figcaption {
+                            // font-size: 17px;
+                            font-weight: $bold;
+                            @include lines-visible(17px, 1.1, 2);
+                        }
+                    }
+                    .form-check {
+                        flex: 1 0;
+                        position: relative;
+                        height: 100%;
+                        cursor: pointer;
+                        .form-check-label {
+                            display: block;
+                            padding: 8px 5px 3px;
+                            cursor: pointer;
+                            @include transition(0.2s);
+                            &:before, &:after {
+                                position: absolute;
+                                top: 5px;
+                                left: 0;
+                                // transform: translateY(-50%);
+                                font-family: $icomoon-font-family;
+                                font-size: 20px;
+                                font-weight: $regular;
+                                line-height: 1;
+                                opacity: 0;
+                                @include transition(0.2s);
+                                // @include respond-to-mob('medium') {
+                                //     top: 6px;
+                                //     transform: unset;
+                                // }
+                            }
+                            &:before {
+                                content: '\e90c';
+                            }
+                            &:after {
+                                content: '\e924';
+                                opacity: 1;
+                            }
+                            &::selection {
+                                background: transparent;
+                                color: inherit;
+                            }
+                            &::-moz-selection {
+                                background: transparent;
+                                color: inherit;
+                            }
+                            &.no-click {
+                                pointer-events: none;
+                                cursor: pointer;
+                            }
+                        }
+                        input[type="radio"] {
+                            opacity: 0;
+                            visibility: hidden;
+                            &:checked + .form-check-label {
+                                background: rgba($primary-color, 0.4);
+                                &:before {
+                                    color: $primary-color;
+                                    opacity: 1;
+                                }
+                                &:after {
+                                    opacity: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+                .formula-input {
+                    .row {
+                        margin: 0 -4px;
+                        & > .col, & > .col-auto {
+                            padding: 0 4px;
+                        }
+                    }
+                    &__title {
+                        @include font($secondary-font, $medium);
+                        font-size: 15px;
+                    }
+                }
+                .available-lens {
+                    @include flex-display(column, flex-start, flex-start);
+                    gap: 20px;
+                    max-height: 300px;
+                    overflow-y: auto;
+                    .lens {
+                        width: 100%;
+                        &__select {
+                            width: 100%;
+                            padding: 8px 10px;
+                            @include transition(0.3s);
+                            cursor: pointer;
+                            &--title {
+                                @include font($secondary-font, $bold);
+                                font-size: 20px;
+                            }
+                            &--price {
+                                @include font($secondary-font, $medium);
+                                font-size: 17px;
+                                color: $primary-font-color;
+                                @include flex-display(row, flex-start, flex-end);
+                                @include respond-to-mob('medium') {
+                                    font-size: 15px;
+                                }
+                                del {
+                                    font-size: 15px;
+                                    font-weight: $regular;
+                                    opacity: 0.5;
+                                    order: 1;
+                                    margin-left: 10px;
+                                    text-decoration: none;
+                                    @include respond-to-mob('medium') {
+                                        font-size: 12px;
+                                    }
+                                    .amount {
+                                        position: relative;
+                                        &:before {
+                                            content: '';
+                                            position: absolute;
+                                            top: 52%;
+                                            left: 0;
+                                            transform: translateY(-50%);
+                                            width: 100%;
+                                            height: 2px;
+                                            background: $primary-font-color;
+                                            @include respond-to-mob('medium') {
+                                                height: 1px;
+                                            }
+                                        }
+                                        bdi {
+                                            opacity: 0.7;
+                                        }
+                                    }
+                                }
+                                ins {
+                                    font-weight: inherit;
+                                    text-decoration: none;
+                                }
+                                .woocommerce-Price-currencySymbol {
+                                    // font-size: 70%;
+                                }
+                                .woocommerce-price-suffix {
+                                    flex: 0 0 100%;
+                                    max-width: 100%;
+                                    font-size: 40%;
+                                    font-weight: $medium;
+                                    order: 3;
+                                }
+                                .woocommerce-price-suffix-second {
+                                    display: none;
+                                }
+                            }
+                            &:hover {
+                                background: rgba($primary-color, 0.4);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.form-lens-addcart {
+                padding-left: 30px;
+                .selected-title {
+                    margin-bottom: 20px;
+                }
+                .selected-wrap {
+                    &__row {
+                        @include flex-display(row, space-between, flex-start);
+                        gap: 5px 10px;
+                        &.total {
+                            margin-bottom: 30px;
+                            .selected-wrap__label {
+                                flex: 1 0;
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                    &__label {
+                        flex: none;
+                        width: 100%;  
+                        font-weight: $bold;
+                    }
+                    &__prod, &__price {
+                        flex: 1 0;
+                    }
+                    &__prod {
+                        figure {
+                            img {
+                                max-width: 80px;
+                            }
+                            figcaption {
+                                margin-top: 10px;
+                            }
+                        }
+                    }
+                    &__price {
+                        @include font($secondary-font, $medium);
+                        font-size: 19px;
+                        color: $primary-font-color;
+                        text-align: right;
+                        @include flex-display(row, flex-end, flex-end);
+                        @include respond-to-mob('medium') {
+                            font-size: 15px;
+                        }
+                        del {
+                            font-size: 15px;
+                            font-weight: $regular;
+                            opacity: 0.5;
+                            order: 1;
+                            margin-left: 10px;
+                            text-decoration: none;
+                            @include respond-to-mob('medium') {
+                                font-size: 12px;
+                            }
+                            .amount {
+                                position: relative;
+                                &:before {
+                                    content: '';
+                                    position: absolute;
+                                    top: 52%;
+                                    left: 0;
+                                    transform: translateY(-50%);
+                                    width: 100%;
+                                    height: 2px;
+                                    background: $primary-font-color;
+                                    @include respond-to-mob('medium') {
+                                        height: 1px;
+                                    }
+                                }
+                                bdi {
+                                    opacity: 0.7;
+                                }
+                            }
+                        }
+                        ins {
+                            font-weight: inherit;
+                            text-decoration: none;
+                        }
+                        .woocommerce-Price-currencySymbol {
+                            // font-size: 70%;
+                        }
+                        .woocommerce-price-suffix {
+                            flex: 0 0 100%;
+                            max-width: 100%;
+                            font-size: 40%;
+                            font-weight: $medium;
+                            order: 3;
+                        }
+                        .woocommerce-price-suffix-second {
+                            display: none;
+                        }
+                    }
+                }
+                .btn-outline-dark {
+                    position: relative;
+                    &.loading {
+                        pointer-events: none;
+                        &:before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: $primary-color;
+                            z-index: 1;
+                        }
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            top: calc(50% - 15px);
+                            left: calc(50% - 15px);
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 100%;
+                            border: 2px solid;
+                            border-top-color: rgba($secondary-color, 0.80);
+                            border-bottom-color: rgba($primary-bg, 1);
+                            border-left-color: rgba($secondary-color, 0.80);
+                            border-right-color: rgba($primary-bg, 1);
+                            -webkit-animation: loader 0.8s linear infinite;
+                            animation: loader 1.0s linear infinite;
+                            z-index: 2;
+                        }
+                    }
+                }
+            }
+        }
+    }    
+}
