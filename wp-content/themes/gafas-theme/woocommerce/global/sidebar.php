@@ -18,7 +18,18 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+?>
 
-get_sidebar( 'shop' );
-
+<div class="col-12 col-md-3">
+	<div id="sidebar">
+		<aside>
+			<?php
+			 //dynamic_sidebar('shop');
+			// echo do_shortcode('[wpf-filters id=1]');
+			echo do_shortcode('[wcapf_form]');
+			?>
+		</aside>
+	</div>
+</div>
+<?php
 /* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */

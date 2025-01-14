@@ -20,5 +20,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="product-wrap">
-	<div class="product-wrap__loading"></div>
 	<div class="products row product-grid" id="productGrid">

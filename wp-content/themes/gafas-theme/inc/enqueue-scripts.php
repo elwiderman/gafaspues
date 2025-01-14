@@ -27,6 +27,10 @@ function gafas_framework_scripts() {
         wp_enqueue_style('cart-checkout-css', $path . gafas_get_hashed_assets('scss/cart-checkout.scss'), array(), '', 'all');
     }
 
+    if (is_shop() || is_tax('product_cat')) {
+        wp_enqueue_style('shop-css', $path . gafas_get_hashed_assets('scss/shop.scss'), array(), '', 'all');
+    }
+
 
     // the stylesheets
     global $wp_styles; // Call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way

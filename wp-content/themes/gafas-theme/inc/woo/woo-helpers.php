@@ -132,7 +132,7 @@ add_filter( 'woocommerce_is_attribute_in_product_name', '__return_false' );
 
 
 
-add_action('init', 'register_lente_product_type');
+// add_action('init', 'register_lente_product_type');
 function register_lente_product_type() {
     // class WC_Product_Lente extends WC_Product_Variable {
     //     public function __construct($product) {
@@ -148,13 +148,13 @@ function register_lente_product_type() {
     }
 }
 
-add_filter('product_type_selector', 'add_lente_product_type');
+// add_filter('product_type_selector', 'add_lente_product_type');
 function add_lente_product_type($types) {
     $types['lente'] = __('Lente', 'woocommerce');
     return $types;
 }
 
-add_filter('woocommerce_product_class', 'set_lente_product_class', 10, 2);
+// add_filter('woocommerce_product_class', 'set_lente_product_class', 10, 2);
 function set_lente_product_class($classname, $product_type) {
     if ($product_type === 'lente') {
         return 'WC_Product_Lente';
@@ -162,7 +162,7 @@ function set_lente_product_class($classname, $product_type) {
     return $classname;
 }
 
-add_filter('woocommerce_product_data_tabs', 'enable_variation_tab_for_custom_variable');
+// add_filter('woocommerce_product_data_tabs', 'enable_variation_tab_for_custom_variable');
 function enable_variation_tab_for_custom_variable($tabs) {
     // if (isset($tabs['variations'])) {
     //     $tabs['variations']['class'][] = 'show_if_variable show_if_lente';
@@ -171,13 +171,13 @@ function enable_variation_tab_for_custom_variable($tabs) {
     //     $tabs['inventory']['class'][] = 'show_if_variable show_if_lente';
     // }
 
-    array_push($tabs['attribute']['class'], 'show_if_variable show_if_lente');
+    array_push($tabs['attribute']['class'], 'show_if_variable show_if_lente show_if_single');
     array_push($tabs['variations']['class'], 'show_if_lente');
     array_push($tabs['inventory']['class'], 'show_if_lente');
     return $tabs;
 }
 
-add_action( 'admin_footer', 'producttype_custom_js' );
+// add_action( 'admin_footer', 'producttype_custom_js' );
 function producttype_custom_js() {
     if ( 'product' != get_post_type() ) :
         return;
@@ -213,7 +213,7 @@ function enqueue_lente_variation_scripts() {
 }
 
 
-add_action('woocommerce_lente_add_to_cart',  'lente_add_to_cart');
+// add_action('woocommerce_lente_add_to_cart',  'lente_add_to_cart');
 function lente_add_to_cart() {
     // wc_get_template('single-product/add-to-cart/lente.php', [], '', get_stylesheet_directory() . '/woocommerce/');
     // wc_get_template
