@@ -17,7 +17,8 @@
     "src/js/wooFormula.js",
     "src/scss/common.scss",
     "src/scss/home.scss",
-    "src/scss/single-product.scss"
+    "src/scss/single-product.scss",
+    "src/scss/cart-checkout.scss"
   ],
   "keywords": [],
   "devDependencies": {
