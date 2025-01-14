@@ -42,6 +42,21 @@ function generateSelectOptions($min, $max, $step, $decimal_places) {
 add_filter( 'woocommerce_product_variation_title_include_attributes', '__return_false' );
 add_filter( 'woocommerce_is_attribute_in_product_name', '__return_false' );
 
+
+
+//  add_filter('woocommerce_hidden_order_itemmeta', function($meta) {
+//     // $meta[] = 'op_item_details';
+//     echo '<pre>';
+//     var_dump($meta);
+//     echo '</pre>';
+
+//     return $meta;
+//  },101,1);
+
+
+
+
+
 // register custom product type Lentes - this is similar to variable product
 
 // #1 Add New Product Type to Select Dropdown

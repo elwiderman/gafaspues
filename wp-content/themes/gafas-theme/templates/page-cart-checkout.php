@@ -5,7 +5,7 @@
 get_header();
 ?>
 
-<div class="single-page single-cart-checkout <?php echo is_cart() ? 'cart' : 'checkout';?> <?php echo $_GET['custom']? 'cart-custom' : '' ;?>">
+<div class="single-page single-cart-checkout <?php echo is_cart() ? 'cart' : 'checkout';?> <?php echo isset($_GET['custom']) ? 'cart-custom' : '' ;?>">
     <section class="section-block section-content">
         <div class="container">
             <div class="row">

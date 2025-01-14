@@ -35,3 +35,19 @@
         background: $primary-color;
     }
 }
+
+.btn-dark {
+    @extend .btn;
+    color: $primary-bg;
+    background: $primary-color;
+    border-color: $primary-color;
+    &:hover, &:active {
+        color: $primary-color;
+        background: $primary-bg;
+    }
+}
+
+.btn-xl {
+    height: 55px;
+    font-size: 20px;
+}
