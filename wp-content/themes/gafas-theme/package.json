@@ -18,7 +18,8 @@
     "src/scss/common.scss",
     "src/scss/home.scss",
     "src/scss/single-product.scss",
-    "src/scss/cart-checkout.scss"
+    "src/scss/cart-checkout.scss",
+    "src/scss/shop.scss"
   ],
   "keywords": [],
   "devDependencies": {

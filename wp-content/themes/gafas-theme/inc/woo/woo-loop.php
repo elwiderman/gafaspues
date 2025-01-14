@@ -13,20 +13,14 @@
  * 0 = Very Weak / Anything
  */
 add_filter( 'woocommerce_min_password_strength', 'gafas_change_password_strength' );
-
 function gafas_change_password_strength( $strength ) {
     return 3;
 }
 
-// post per page for shop
-add_filter('loop_shop_per_page', 'gafas_redefine_products_per_page', 9999);
-function gafas_redefine_products_per_page($per_page) {
-    $per_page = 12;
-    return $per_page;
-}
+
 
 // shop no posts found wrap
-add_action('woocommerce_after_shop_loop', 'gafas_no_posts_found', 9);
+// add_action('woocommerce_after_shop_loop', 'gafas_no_posts_found', 9);
 function gafas_no_posts_found() {
     echo "<div class='no-products-found'></div>";
 }

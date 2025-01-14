@@ -1,0 +1,161 @@
+.archive-page {
+    &.archive-gafasstore {
+        margin-bottom: 70px;
+        .content-area {
+            .wcapf-active-filters-before-shop-loop {
+                .wcapf-active-filters {
+                    .wcapf-filter {
+                        margin-bottom: 15px;
+                        .wcapf-active-filter-items {
+                            @include flex-display(row, flex-start, center);
+                            gap: 10px;
+                            .wcapf-active-filter-item {
+                                display: inline-flex;
+                                justify-content: flex-start;
+                                align-items: center;
+                                gap: 5px;
+                                background: $primary-color;
+                                font-size: 13px;
+                                color: $primary-bg;
+                                border-radius: 0;
+                                margin: 0;
+                                @include transition(0.3s);
+                                &:hover {
+                                    background: $primary-bg;
+                                    color: $primary-color;
+                                    border-color: $primary-color;
+                                }
+                            }
+                            .wcapf-reset-filters-btn-wrapper {
+                                margin: 0;
+                                .wcapf-reset-filters-btn {
+                                    background: $primary-bg;
+                                    font-weight: $bold;
+                                    @include transition(0.3s);
+                                    &:hover {
+                                        color: $primary-font-color
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .shop-before-loop {
+                @include flex-display(row, space-between, center);
+                gap: 0 15px;
+                margin-bottom: 15px;
+                .woocommerce-notices-wrapper {
+                    flex: none;
+                    width: 100%;
+                }
+                .woocommerce-result-count, .woocommerce-ordering {
+                    flex: 1 0;
+                    @extend p;
+                    margin: 0;
+                }
+                .woocommerce-ordering {
+                    text-align: right;
+                    .wcapf-chosen-container {
+                        .chosen-single {
+                            border: none;
+                        }
+                        .chosen-drop {
+                            border-top-width: var(--wcapf-chosen-border-size);
+                            .chosen-results {
+                                li.active-result {
+                                    font-size: 0.8em;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .woocommerce-pagination {
+                margin-top: 40px;
+                .page-numbers {
+                    @include flex-display(row, center, center);
+                    border: none;
+                    gap: 8px;
+                    li {
+                        float: unset;
+                        border: none;
+                        .page-numbers {
+                            display: inline-flex;
+                            width: 32px;
+                            height: 32px;
+                            @include add-border(1px, $primary-font-color, 'all');
+                            padding: 0;
+                            &:hover {
+                                background: $primary-color;
+                                color: $primary-bg;
+                            }
+                            &.current, &.dots {
+                                pointer-events: none;
+                                border-color: rgba($primary-font-color, 0.4);
+                            }
+                            &.current {
+                                background: rgba($primary-color, 0.4);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .product-wrap {
+                .product-grid {
+                    gap: 40px 0;
+                }
+            }
+        }
+
+        .section-products-header {
+            .woocommerce-products-header {
+                position: relative;
+                height: 200px;
+                z-index: 0;
+                margin-bottom: 25px;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 8px;
+                    background: $primary-color;
+                    background-color: #4158D0;
+                    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+                    z-index: 1;
+                }
+                &__banner {
+                    @include full-absolute(-1);
+                    background-position: center right;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+                &__title {
+                    @extend .h3, .styled;
+                }
+                .container {
+                    height: 100%;
+                    padding-bottom: 30px;
+                    .row {
+                        height: 100%;
+                        align-items: flex-end;
+                    }
+                }
+            }
+        }
+
+        #sidebar {
+            .wcapf-form {
+                .wcapf-filter {
+                    .wcapf-filter-title {
+                        @extend .styled;
+                        line-height: 1;
+                    }
+                }
+            }
+        }
+    }
+}

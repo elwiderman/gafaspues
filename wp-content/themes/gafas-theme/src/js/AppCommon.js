@@ -22,6 +22,7 @@ export default class AppCommon {
         this.pageLoading();
         this.goTop();
         this.selectDropdown();
+        // this.shopSortingDropdown();
     }
 
     // page loading anim
@@ -106,6 +107,15 @@ export default class AppCommon {
                 dropdownParent: dropdownParent,
                 minimumResultsForSearch: -1
             });
+        });
+    }
+
+    shopSortingDropdown() {
+        let wrap = $('.woocommerce-ordering');
+        wrap.find('select').select2({
+            width: '100%',
+            dropdownParent: wrap.find('.woocommerce-ordering__wrap'),
+            minimumResultsForSearch: -1
         });
     }
 }

@@ -31,12 +31,13 @@
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
             "return_format": "array",
             "library": "all",
+            "default_value": "",
             "min_width": "",
             "min_height": "",
             "min_size": "",
@@ -57,12 +58,40 @@
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
             "return_format": "array",
             "library": "all",
+            "default_value": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 1,
+            "preview_size": "woocommerce_gallery_thumbnail"
+        },
+        {
+            "key": "field_67869b73093ac",
+            "label": "Placeholder Banner",
+            "name": "placeholder_banner_img",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "default_value": 245,
             "min_width": "",
             "min_height": "",
             "min_size": "",
@@ -89,6 +118,7 @@
             },
             "return_format": "array",
             "library": "all",
+            "default_value": "",
             "min_width": "",
             "min_height": "",
             "min_size": "",
@@ -97,7 +127,7 @@
             "max_size": "",
             "mime_types": "",
             "allow_in_bindings": 1,
-            "preview_size": "thumbnail"
+            "preview_size": "woocommerce_gallery_thumbnail"
         },
         {
             "key": "field_66151415c7f07",
@@ -115,6 +145,7 @@
             },
             "return_format": "array",
             "library": "all",
+            "default_value": "",
             "min_width": "",
             "min_height": "",
             "min_size": "",
@@ -123,7 +154,7 @@
             "max_size": "",
             "mime_types": "",
             "allow_in_bindings": 1,
-            "preview_size": "thumbnail"
+            "preview_size": "woocommerce_gallery_thumbnail"
         },
         {
             "key": "field_6615147ec7f08",
@@ -469,5 +500,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1735656327
+    "modified": 1736875078
 }

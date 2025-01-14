@@ -6,6 +6,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0;
     &.styled {
         position: relative;
+        z-index: 0;
         &:before {
             content: '';
             position: absolute;
@@ -13,8 +14,11 @@ h1, h2, h3, h4, h5, h6 {
             bottom: 0;
             width: 100px;
             height: 0.8em;
-            background: rgba($primary-color, 0.2);
-            z-index: 0;
+            // background: rgba($primary-color, 0.2);
+            background-color: #4158D0;
+            background-image: linear-gradient(245deg, #4158D0 0%, #C850C0 71%);
+            opacity: 0.4;
+            z-index: -1;
         }
     }
 }
