@@ -23,5 +23,8 @@ require_once(get_template_directory().'/inc/sidebar.php');
 // cf7 functions
 require_once(get_template_directory().'/inc/cf7-functions.php');
 
-// cf7 functions
+// woo functions
 require_once(get_template_directory().'/inc/woo-functions.php');
+
+// Cpt
+require_once(get_template_directory().'/inc/cpt.php');
