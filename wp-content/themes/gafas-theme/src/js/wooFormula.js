@@ -26,7 +26,7 @@ export default class WooFormula {
 
     selectFrameOption() {
         let cartForm = $('form.cart'),
-            addCartBtn = cartForm.find('button[type="submit"].single_add_to_cart_button'),
+            addCartBtn = cartForm.find('button[type="submit"].single_add_to_cart_button.btn-frame'),
             quantity = addCartBtn.siblings('.quantity');
         
         addCartBtn.hide();

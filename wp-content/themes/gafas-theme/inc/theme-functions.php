@@ -15,9 +15,12 @@ function gafas_add_excerpts_to_pages() {
 /* post format */
 add_action('after_setup_theme', 'gafas_remove_post_formats', 100);
 function gafas_remove_post_formats() {
-   remove_theme_support('post-formats');
-   add_theme_support('post-thumbnails');
-   add_theme_support('woocommerce');
+    remove_theme_support('post-formats');
+    add_theme_support('post-thumbnails');
+    add_theme_support('woocommerce');
+    add_theme_support('wc-product-gallery-zoom');
+    add_theme_support('wc-product-gallery-lightbox');
+    add_theme_support('wc-product-gallery-slider');
 }
 
 
