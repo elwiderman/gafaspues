@@ -158,6 +158,9 @@
             border: none;
             outline: 0 !important;
             z-index: 1;
+            .woosw-btn-text {
+                display: none;
+            }
         }
 
         &:hover {

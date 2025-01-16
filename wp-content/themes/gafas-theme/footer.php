@@ -13,7 +13,7 @@ $bg         = get_field('footer_background_img', 'option');
     // add the sharethis script
     $sharethis	= get_field('sharethis_key', 'option');
 
-    if (!empty($sharethis) && is_singular(['post'])) : ?>
+    if (!empty($sharethis) && is_singular(['product'])) : ?>
         <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=<?php echo $sharethis;?>&source=platform" async="async"></script>
     <?php endif; ?>
 

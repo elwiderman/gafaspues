@@ -27,7 +27,7 @@ function gafas_framework_scripts() {
         wp_enqueue_style('cart-checkout-css', $path . gafas_get_hashed_assets('scss/cart-checkout.scss'), array(), '', 'all');
     }
 
-    if (is_shop() || is_tax('product_cat')) {
+    if (is_shop() || is_tax(['product_cat', 'product_brand'])) {
         wp_enqueue_style('shop-css', $path . gafas_get_hashed_assets('scss/shop.scss'), array(), '', 'all');
     }
 

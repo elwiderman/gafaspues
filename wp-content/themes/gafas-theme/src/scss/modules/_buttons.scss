@@ -39,8 +39,15 @@
 .btn-dark {
     @extend .btn;
     color: $primary-bg;
-    background: $primary-color;
+    background: transparent;
     border-color: $primary-color;
+    position: relative;
+    &:after {
+        content: '';
+        @include full-absolute(-1);
+        background-color: #4158D0;
+        background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 57%);
+    }
     &:hover, &:active {
         color: $primary-color;
         background: $primary-bg;

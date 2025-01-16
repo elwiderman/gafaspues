@@ -6,7 +6,7 @@
     height: 80px;
     background: $primary-bg;
     @include add-border(1px, $primary-color, bottom);
-    z-index: 10;
+    z-index: 100;
     @include transition(0.3s);
     &__nav {
         @extend .container;
@@ -96,6 +96,10 @@
                                         &:hover {
                                             background: transparent;
                                             color: $primary-color
+                                        }
+                                        &.active {
+                                            background: $primary-color;
+                                            color: $primary-bg;
                                         }
                                     }
                                 }

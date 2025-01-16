@@ -45,12 +45,12 @@ function gafas_update_price_with_variation_price() {
 
 
 // 1. Show plus minus buttons
-add_action( 'woocommerce_after_quantity_input_field', 'gafas_display_quantity_plus' );
+// add_action( 'woocommerce_after_quantity_input_field', 'gafas_display_quantity_plus' );
 function gafas_display_quantity_plus() {
     echo '<button type="button" class="plus quantity__btn"><i class="icon-plus"></i></button>';
 }
   
-add_action( 'woocommerce_before_quantity_input_field', 'gafas_display_quantity_minus' );
+// add_action( 'woocommerce_before_quantity_input_field', 'gafas_display_quantity_minus' );
 function gafas_display_quantity_minus() {
     echo '<button type="button" class="minus quantity__btn"><i class="icon-minus"></i></button>';
 }
@@ -58,7 +58,7 @@ function gafas_display_quantity_minus() {
 // -------------
 // 2. Trigger update quantity script
   
-add_action( 'wp_footer', 'gafas_add_cart_quantity_plus_minus' );  
+// add_action( 'wp_footer', 'gafas_add_cart_quantity_plus_minus' );  
 function gafas_add_cart_quantity_plus_minus() {
  
    if (!is_product() && !is_cart()) return;
@@ -94,37 +94,29 @@ function gafas_add_cart_quantity_plus_minus() {
 
 
 // setting max and min quantity input
-add_filter( 'woocommerce_quantity_input_max', 'gafas_woo_quantity_input_max', 10, 2 );
+// add_filter( 'woocommerce_quantity_input_max', 'gafas_woo_quantity_input_max', 10, 2 );
 function gafas_woo_quantity_input_max($max, $product) {
     // allow purchase of only one frame at a time for the rest allow normal
     // $max = gafas_is_prod_in_monturas($product->get_id()) ? 1 : 10;
     $max = 10;
     return $max;
 }
-add_filter( 'woocommerce_quantity_input_min', 'gafas_woo_quantity_input_min', 10, 2 );
+// add_filter( 'woocommerce_quantity_input_min', 'gafas_woo_quantity_input_min', 10, 2 );
 function gafas_woo_quantity_input_min($min, $product) {
     $min = 1;
     return $min;
 }
 
 
-// move the short desc after the add to cart
+// move the star rating after the title and before the short desc
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
+add_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 6);
+
+// move the short desc after the star rating and before the price
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20);
-add_action('woocommerce_single_product_summary', 'gafas_template_single_excerpt', 32);
-function gafas_template_single_excerpt() {
-    wc_get_template_part('single-product/short-description');
-}
+add_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 9);
 
 
-// add wishlist button after the add to cart button
-// add_action('woocommerce_single_product_summary', 'gafas_add_wishlist_after_add_to_cart_shop_sinlge', 31);
-function gafas_add_wishlist_after_add_to_cart_shop_sinlge() {
-    global $product;
-
-    echo '<div class="wishlist">';
-	echo do_shortcode('[yith_wcwl_add_to_wishlist]');
-    echo '</div>';
-}
 
 // remove the product tabs from default location
 // remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs');
@@ -138,43 +130,24 @@ function gafas_custom_product_accordions() {
     wc_get_template('single-product/tabs/tabs.php');
 }
 
-// add custom product tab for the product spec
-// add_filter('woocommerce_product_tabs', 'gafas_add_custom_product_tabs');
+// unset the additional information from the tabs to be shown after the share buttons 
+add_filter('woocommerce_product_tabs', 'gafas_add_custom_product_tabs');
 function gafas_add_custom_product_tabs($tabs) {
-    global $product;
-
-    $pid = $product->get_id();
+    unset($tabs['additional_information']);
 
     // rename product description
-    $tabs['description']['title']       = __('Product Description', 'shady');
+    $tabs['description']['title']       = __('Sobre el producto', 'gafas');
     $tabs['description']['priority']    = 20;
-
-    // set review tab priority to 40
-    $tabs['reviews']['priority']        = 40;
-
-    // specs tab
-    if (get_field('show_product_spec_bool', $pid)) :
-        $title  = get_field('product_spec_title_text', $pid);
-        // Add a custom tab
-        $tabs['additional_information'] = array(
-            'title'     => $title,
-            'priority'  => 10,
-            'callback'  => 'gafas_woo_product_spec_table_tab'
-        );
-    endif;
-    // shipping tab
-    if (get_field('show_shipping_tab_bool', $pid)) :
-        $title  = get_field('product_shipping_tab_title_text', $pid);
-        // Add a custom tab
-        $tabs['shipping'] = array(
-            'title'     => $title,
-            'priority'  => 30,
-            'callback'  => 'gafas_woo_product_shipping_tab'
-        );
-    endif;
 
     return $tabs;
 }
+
+// render the product spects after the share icons 
+add_action('woocommerce_single_product_summary', 'gafas_render_custom_attributes', 51);
+function gafas_render_custom_attributes() {
+    wc_get_template('single-product/specs.php');
+}
+
 
 // render the product specs table 
 function gafas_woo_product_spec_table_tab() {
@@ -212,98 +185,24 @@ function gafas_display_review_gravatar($comment) {
 }
 
 
-// render the size chart here
-// add_action('woocommerce_before_add_to_cart_quantity', 'gafas_size_chart_before_quantity');
-function gafas_size_chart_before_quantity() {
-    global $product;
-    $size_chart_pid = get_field('select_size_chart_post', $product->get_id());
-    $fabric_pid     = get_field('select_fabric_guide_post', $product->get_id());
-
-    // get the size chart images
-    if ($size_chart_pid && get_field('show_size_chart_bool', $product->get_id())) :
-        $desk       = get_field('size_chart_for_desktops', $size_chart_pid);
-        $mob        = get_field('size_chart_for_mobiles', $size_chart_pid);
-        ?>
-        
-        <div class="sizechart-wrap">
-            <a href="#" class="sizechart-wrap__trigger-sizechart" data-bs-toggle="modal" data-bs-target="#sizeChartPop">
-                <?php _e('See Size-Chart', 'shady');?>
-            </a>
-    
-            <div class="modal fade" id="sizeChartPop" tabindex="-1" aria-labelledby="sizeChartPopLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <i class="icon-x"></i>
-                        </button>
-                        <div class="modal-body">
-                            <figure class="size-chart mb-0 d-none d-lg-block">
-                                <img src="<?php echo $desk['url'];?>" alt="<?php echo $desk['alt'];?>" class="img-fluid">
-                            </figure>
-                            <figure class="size-chart mb-0 d-lg-none">
-                                <img src="<?php echo $mob['url'];?>" alt="<?php echo $mob['alt'];?>" class="img-fluid">
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php
-    endif;
-
-    // get the fabric guide images
-    if ($fabric_pid && get_field('show_fabric_guide_bool', $product->get_id())) :
-        $desk       = get_field('size_chart_for_desktops', $fabric_pid);
-        $mob        = get_field('size_chart_for_mobiles', $fabric_pid);
-        ?>
-        
-        <div class="fabricguide-wrap">
-            <a href="#" class="fabricguide-wrap__trigger-fabricguide" data-bs-toggle="modal" data-bs-target="#fabricGuidePop">
-                <?php _e('See Fabric-Guide', 'shady');?>
-            </a>
-    
-            <div class="modal fade" id="fabricGuidePop" tabindex="-1" aria-labelledby="fabricGuidePopLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <i class="icon-x"></i>
-                        </button>
-                        <div class="modal-body">
-                            <figure class="size-chart mb-0 d-none d-lg-block">
-                                <img src="<?php echo $desk['url'];?>" alt="<?php echo $desk['alt'];?>" class="img-fluid">
-                            </figure>
-                            <figure class="size-chart mb-0 d-lg-none">
-                                <img src="<?php echo $mob['url'];?>" alt="<?php echo $mob['alt'];?>" class="img-fluid">
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php
-    endif;
+// show wishlist after add to cart
+add_action('woocommerce_single_product_summary', 'gafas_show_wishlisht_after_add_to_cart', 32);
+function gafas_show_wishlisht_after_add_to_cart() {
+    echo "<div class='woocommerce-product-details__wishlist'>";
+    echo do_shortcode('[woosw]');
+    echo "</div>";
 }
-
 // show shipping info after add to cart
-add_action('woocommerce_single_product_summary', 'gafas_show_shipping_strings_after_add_to_cart', 32);
+add_action('woocommerce_single_product_summary', 'gafas_show_shipping_strings_after_add_to_cart', 33);
 function gafas_show_shipping_strings_after_add_to_cart() {
     echo "<div class='woocommerce-product-details__shipping-info'>";
     echo do_shortcode('[wpced]');
     echo "</div>";
 }
 
-// add extra suffix to woo price in single product
-// add_filter('woocommerce_get_price_suffix', 'gafas_add_extra_price_suffix', 99, 4);
-function gafas_add_extra_price_suffix($html, $product, $price, $qty) {
-    if (is_product()) {
-        $price_suffix   = get_field('prod_price_second_suffix_text', 'option');
-        if ($price_suffix) {
-            $html       .= "<span class='woocommerce-price-suffix-second'>{$price_suffix}</span>";
-            return $html;
-        }
-    }
-    return;
-}
+
+
+
 
 
 /* the image section */
@@ -331,9 +230,12 @@ function gafas_remove_zoom_lightbox_theme_support() {
 // add the custom form for the selection of lenses in the product page
 add_action('woocommerce_before_add_to_cart_quantity', 'gafas_add_lens_selection_form');
 function gafas_add_lens_selection_form() {
-    global $product; ?>
+    global $product; 
+    // show only for frames product_cat
+    if (has_term('gafas-recetadas', 'product_cat', $product->get_id())) :
+    ?>
     <div class="lens-selection-form">
-        <h5 class="select-title"><?php _e('Selecciona tus opciones', 'gafas');?></h5>
+        <h6 class="select-title"><?php _e('Selecciona tus opciones', 'gafas');?></h6>
         
         <div class="form-conditional-radios">
             <div class="form-check">
@@ -351,6 +253,7 @@ function gafas_add_lens_selection_form() {
         </div>
     </div>
     <?php
+    endif;
 }
 
 // add the modal after the add to cart button
