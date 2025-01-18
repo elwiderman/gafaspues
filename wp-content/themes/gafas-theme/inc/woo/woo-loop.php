@@ -135,9 +135,29 @@ function gafas_add_to_cart_button_text_archives($button, $product) {
     return $button;
 }
 
-
 // remove add to cart from thumbs
 remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
+
+// add the seller name after the link ends 
+add_action('woocommerce_after_shop_loop_item', 'gafas_woo_loop_thumb_seller', 11);
+function gafas_woo_loop_thumb_seller() {
+    global $product;
+    $seller_id      = $product->get_post_data()->post_author;
+    $seller         = dokan()->vendor->get($seller_id);
+    $seller_name    = $seller->get_shop_name();
+    // create the seller url from the shop url
+    $store_url      = get_permalink(wc_get_page_id('shop'));
+    $seller_url     = add_query_arg([
+        'marca' => $seller_id
+    ], $store_url);
+    $string         = __('Marca:', 'gafas');
+
+    echo "
+    <div class='product__brand'>
+        <span>{$string}</span>&nbsp;
+        <a href='{$seller_url}' target='_blank'>{$seller_name}</a>
+    </div>";
+}
 
 // add the wishlist and the quick view buttons
 // add_action('woocommerce_after_shop_loop_item', 'gafas_woo_loop_thumb_wishlist_quickview', 6);
