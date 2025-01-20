@@ -36,6 +36,7 @@ a {
     @include transition(0.3s);
     &:hover, &:focus {
         outline: 0;
+        color: $primary-font-color;
     }
 }
 ul,ol {

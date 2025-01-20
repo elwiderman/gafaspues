@@ -162,6 +162,16 @@
                 display: none;
             }
         }
+        &__brand {
+            display: block;
+            text-align: center;
+            span, a {
+                font-size: 13px;
+            }
+            a {
+                font-weight: $medium;
+            }
+        }
 
         &:hover {
             .product {

@@ -216,8 +216,15 @@
                                     }
                                     &__value {
                                         font-size: 16px;
+                                        font-weight: $regular;
                                         color: $primary-color;
                                         opacity: 0.7;
+                                    }
+                                    a {
+                                        opacity: 1;
+                                        &:hover {
+                                            color: $primary-font-color
+                                        }
                                     }
                                 }
                             }
