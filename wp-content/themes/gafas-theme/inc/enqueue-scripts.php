@@ -31,6 +31,10 @@ function gafas_framework_scripts() {
         wp_enqueue_style('shop-css', $path . gafas_get_hashed_assets('scss/shop.scss'), array(), '', 'all');
     }
 
+    if (is_account_page()) {
+        wp_enqueue_style('myaccount-css', $path . gafas_get_hashed_assets('scss/woo-account.scss'), array(), '', 'all');
+    }
+
 
     // the stylesheets
     global $wp_styles; // Call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
