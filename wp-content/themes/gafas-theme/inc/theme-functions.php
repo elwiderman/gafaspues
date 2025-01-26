@@ -157,7 +157,7 @@ function gafas_return_oembed_url_type($video) {
     add custom color palette to the block editor and front end 
     ref: https://www.wpdiaries.com/gutenberg-color-palette/    
 */
-add_action('after_setup_theme', 'gafas_add_custom_theme_color_palette');
+// add_action('after_setup_theme', 'gafas_add_custom_theme_color_palette');
 function gafas_add_custom_theme_color_palette() {
     // try to get the current theme default color palette
     $default_color_palette  = current((array)get_theme_support('editor-color-palette'));
@@ -194,8 +194,8 @@ function gafas_add_custom_theme_color_palette() {
     endif;
 }
 // add the css to admin_head and wp_head the corresponding styles
-add_action('wp_head', 'gafas_custom_color_palette_css');
-add_action('admin_head', 'gafas_custom_color_palette_css');
+// add_action('wp_head', 'gafas_custom_color_palette_css');
+// add_action('admin_head', 'gafas_custom_color_palette_css');
 function gafas_custom_color_palette_css() {
     // if the repeater has info add the relevant css
     if (have_rows('theme_color_palette_repeater', 'option')) :
