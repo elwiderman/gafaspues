@@ -5,7 +5,7 @@ if (get_field('show_trends_bool')) : ?>
     <div class="container">
         <div class="row justify-content-center text-center">
             <div class="col-auto">
-                <h1 class="section-title h3"><?php echo get_field('trends_title_text');?></h1>
+                <h1 class="section-title h3 styled"><?php echo get_field('trends_title_text');?></h1>
             </div>
         </div>
 
@@ -28,9 +28,9 @@ if (get_field('show_trends_bool')) : ?>
         if (get_field('trends_cta_link')) :
             $link = get_field('trends_cta_link');
             echo "
-            <div class='row justify-content-center'>
+            <div class='row justify-content-center mt-4'>
                 <div class='col-auto'>
-                    <a href='{$link['url']}' class='btn-outline-dark' target='{$link['target']}'>{$link['title']}</a>
+                    <a href='{$link['url']}' class='btn-dark' target='{$link['target']}'>{$link['title']}</a>
                 </div> 
             </div>
             ";

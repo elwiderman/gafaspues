@@ -177,6 +177,219 @@
                     margin-top: 30px;
                 }
             }
+
+            &.section-women-men {
+                padding: 70px 0;
+                .women-men {
+                    width: 100%;
+                    &__perma {
+                        display: flex;
+                        &--img {
+                            width: 100%;
+                            height: 100%;
+                            position: relative;
+                            z-index: 0;
+                            overflow: hidden;
+                            img {
+                                width: 100%;
+                                object-fit: cover;
+                                object-position: center;
+                                @include transition(0.6s);
+                            }
+                            figcaption {
+                                position: absolute;
+                                left: 25px;
+                                bottom: 35px;
+                                font-size: 55px;
+                                @include font($primary-font, $regular);
+                                color: $primary-bg;
+                                line-height: 0.8;
+                                z-index: 1;
+                                padding: 0 20px;
+                                @include transition(0.6s);
+                                &.women {
+                                    left: unset;
+                                    right: 15px;
+                                }
+                                &:before {
+                                    content: '';
+                                    @include full-absolute(-1);
+                                    top: 5px;
+                                    width: 100%;
+                                    height: 110%;
+                                    background-color: #4158D0;
+                                    background-image: linear-gradient(223deg, #4158D0 0%, #C850C0 57%);
+                                }
+                            }
+                        }
+                        &:hover {
+                            .women-men__perma--img {
+                                img {
+                                    transform: scale(1.1);
+                                }
+                                figcaption {
+                                    opacity: 0.4;
+                                }
+                            }
+                        }
+                    }
+                }
+                .offers {
+                    @include flex-display(column, center, center);
+                    height: 100%;
+                    &__text {
+                        @include flex-display(column, center, center);
+                        text-transform: uppercase;
+                        .highlight {
+                            font-size: 50px;
+                            color: $primary-color;
+                        }
+                        .smaller {
+                            @include font($secondary-font, $regular);
+                            font-size: 20px;
+                            text-transform: capitalize;
+                        }
+                        .normal {
+                            @include font($secondary-font, $regular);
+                            font-size: 50px;
+                            text-transform: capitalize;
+                        }
+                    }
+                    &__cta {
+                        margin-top: 20px;
+                    }
+                }
+            }
+
+            &.section-featured {
+                padding: 70px 0;
+                .pre-title {
+                    @include font($secondary-font, $light);
+                    color: $primary-color;
+                    text-transform: uppercase;
+                    background: $primary-bg;
+                    padding: 0 20px;
+                    position: relative;
+                    z-index: 0;
+                    &:before {
+                        content: '';
+                        @include center-absolute(-2);
+                        height: 1px;
+                        width: 200%;
+                        background: $primary-font-color;
+                    }
+                    &:after {
+                        content: '';
+                        @include full-absolute(-1);
+                        height: 100%;
+                        width: 100%;
+                        background: $primary-bg;
+                    }
+                }
+                .nav-tabs {
+                    margin-bottom: 15px;
+                    border: none;
+                    .nav-item {
+                        .nav-link {
+                            @include font($primary-font, $regular);
+                            font-size: 40px;
+                            color: $primary-font-color;
+                            text-transform: capitalize;
+                            border: none !important;
+                            opacity: 0.5;
+                            &.active {
+                                color: $primary-color;
+                                opacity: 1;
+                            }
+                            &:hover {
+                                color: $primary-color;
+                            }
+                        }
+                    }
+                }
+                .tab-content {
+                    .product-slider {
+                        .slick-slide {
+                            &:not(:last-child) {
+                                margin-right: 24px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.section-faq {
+                padding: 70px 0;
+                .pre-title {
+                    @include font($secondary-font, $light);
+                    color: $primary-color;
+                    text-transform: uppercase;
+                    background: $primary-bg;
+                    padding: 0 20px;
+                    position: relative;
+                    z-index: 0;
+                    &:before {
+                        content: '';
+                        @include center-absolute(-2);
+                        height: 1px;
+                        width: 200%;
+                        background: $primary-font-color;
+                    }
+                    &:after {
+                        content: '';
+                        @include full-absolute(-1);
+                        height: 100%;
+                        width: 100%;
+                        background: $primary-bg;
+                    }
+                }
+                .section-desc {
+                    font-size: 13px;
+                }
+                .faq-block {
+                    gap: 50px;
+                    .faq {
+                        text-align: center;
+                        max-width: 150px;
+                        &__perma {
+                            display: flex;
+                            flex-direction: column;
+                            color: $primary-font-color;
+                            gap: 10px;
+                            &--title {
+                                @include font($secondary-font, $medium);
+                                font-size: 14px;
+                            }
+                            &:hover {
+                                color: $primary-color;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.section-brands {
+                .section-title {
+                    margin-bottom: 30px;
+                }
+                .brands-slider {
+                    .slick-slide {
+                        margin: 0 40px;
+                        .brand {
+                            &__perma {
+                                display: inline-flex;
+                                justify-content: center;
+                                align-items: center;
+                                height: 100px;
+                                img {
+                                    max-width: 300px;
+                                    max-height: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
