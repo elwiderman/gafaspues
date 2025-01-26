@@ -5,7 +5,7 @@
     @include font($secondary-font, $bold);
     font-size: 15px;
     height: 45px;
-    border-radius: 0;
+    border-radius: 4px;
     @include add-border(1px, transparent, 'all');
     box-shadow: none !important;
     outline: 0 !important;
