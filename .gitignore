@@ -203,3 +203,4 @@ wp-config.php
 .parcel-cache
 dist
 /wp-content/db.php
+ai1wm-backups
