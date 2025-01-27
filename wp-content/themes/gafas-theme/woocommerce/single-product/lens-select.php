@@ -42,6 +42,15 @@ global $product;
                                                     $lens_id        = $lens->term_id;
                                                     $thumb_id       = get_term_meta($lens_id, 'thumbnail_id', true);
                                                     $lens_thumb     = wp_get_attachment_image_url($thumb_id, 'full');
+                                                    $lens_desc      = $lens->description;
+                                                    $tooltip        = '';
+                                                    if ($lens_desc) :
+                                                        $tooltip        = "
+                                                        <button type='button' class='btn-info' data-bs-toggle='tooltip' data-bs-html='true' data-bs-title='{$lens_desc}'>
+                                                            <i class='icon-info'></i>
+                                                        </button>
+                                                        ";
+                                                    endif;
             
                                                     echo "
                                                     <div class='form-check'>
@@ -49,7 +58,9 @@ global $product;
                                                         <label class='form-check-label' for='lensType-{$lens_slug}'>
                                                             <figure class='lens-type-wrap__name mb-0'>
                                                                 <img src='{$lens_thumb}' alt='{$lens_name}' class='img-fluid'>
-                                                                <figcaption>{$lens_name}</figcaption>
+                                                                <figcaption>
+                                                                    {$lens_name}{$tooltip}
+                                                                </figcaption>
                                                             </figure>
                                                         </label>
                                                     </div>
