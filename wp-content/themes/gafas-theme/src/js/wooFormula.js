@@ -3,6 +3,7 @@
 import ready from 'domready';
 import $, { error } from 'jquery';
 import * as bootstrap from 'bootstrap';
+import '@popperjs/core';
 import select2 from 'select2';
 //Hook up select2 to jQuery
 select2($);
@@ -52,6 +53,10 @@ export default class WooFormula {
         $('#lensSelectionModal').on('shown.bs.modal', e => {
             form.find('.lens-type-wrap.type > .form-check:first-child input[name="lens_type"]').prop('checked', true);
             form.find('.lens-type-wrap.tint > .form-check:first-child input[name="lens_tint"]').prop('checked', true).trigger('change');
+            
+            $('#lensSelectionModal').find('[data-bs-toggle="tooltip"]').tooltip({
+                'container': '#lensSelectionModal'
+            }).show();
         });
     }
 

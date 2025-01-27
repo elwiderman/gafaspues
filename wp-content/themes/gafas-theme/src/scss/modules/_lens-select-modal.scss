@@ -24,9 +24,13 @@
                             margin-bottom: 5px;
                         }
                         figcaption {
-                            // font-size: 17px;
                             font-weight: $bold;
                             @include lines-visible(17px, 1.1, 2);
+                            .btn-info {
+                                color: $primary-color;
+                                border: none;
+                                background: transparent;
+                            }
                         }
                     }
                     .form-check {
@@ -312,4 +316,16 @@
             }
         }
     }    
+}
+
+.tooltip {
+    .tooltip-inner {
+        min-width: 300px;
+        background-color: #4158D0;
+        background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 57%);
+        font-size: 13px;
+        color: $primary-bg;
+        text-align: left;
+        opacity: 1;
+    }
 }
