@@ -6,6 +6,7 @@ let $ = jQuery.noConflict();
 
 const tabletThreshold           = 768;
 const desktopThreshold          = 1200;
+const tabletWidth               = 1024;
 
 export default class MainNav {
     constructor() {
@@ -31,6 +32,10 @@ export default class MainNav {
     
     // toggle the offcanvas 
     mobileOffcanvas() {
+        $('header.header .dropdown').each((i, elem) => {
+            $(elem).find('a.nav-link').after('<span class="dropdown-toggler"><i class="icon-plus"></i></span>');
+        });
+
         $('header.header').on('click', '.header__nav--toggler', e => {
             e.preventDefault();
             e.stopPropagation();
@@ -81,6 +86,31 @@ export default class MainNav {
             // Add event listener for .dropdown-toggle
             $('.header').find('.dropdown-toggle').on('mouseenter', e => {
                 $(e.currentTarget).addClass('show').siblings('.dropdown-menu').addClass('show');
+            });
+        } else {
+            // for mobiles dropdown toggles 
+            $('header.header .dropdown').on('click', 'span.dropdown-toggler', e => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // remove .this from all dropdowns
+                $('header.header .dropdown').removeClass('this');
+
+                let $this = $(e.currentTarget),
+                    dropdown = $this.closest('.dropdown');
+
+                dropdown.addClass('this');
+
+                if (dropdown.hasClass('show')) {
+                    $this.removeClass('show');
+                    dropdown.removeClass('show this').find('.dropdown-menu, .dropdown-toggle').removeClass('show');
+                } else {
+                    $this.addClass('show');
+                    dropdown.addClass('show this').find('.dropdown-menu, .dropdown-toggle').addClass('show');
+                }
+
+                // close the others
+                $('header.header .dropdown:not(.this)').removeClass('show this').find('.dropdown-menu').removeClass('show').siblings('.dropdown-toggler, .dropdown-toggle').removeClass('show');
             });
         }
     }

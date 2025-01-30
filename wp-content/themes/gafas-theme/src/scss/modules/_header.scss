@@ -8,6 +8,9 @@
     @include add-border(1px, $primary-color, bottom);
     z-index: 100;
     @include transition(0.3s);
+    @include respond-to-mob('medium') {
+        height: 70px;
+    }
     &__nav {
         @extend .container;
         position: relative;
@@ -22,8 +25,63 @@
         // padding: 0;
         @include flex-display(row, space-between, center);
         &--toggler {
+            display: inline-flex;
+            align-items: center;
+            background: transparent;
+            border: none;
+            padding: 0;
             @include respond-to('medium') {
                 display: none;
+            }
+            .lines {
+                width: 30px;
+                height: 24px;
+                position: relative;
+                & > span {
+                    display: block;
+                    position: absolute;
+                    width: 30px;
+                    height: 2px;
+                    background: $primary-color;
+                    border-radius: 5px;
+                    transform: rotate(0deg);
+                    @include transition(0.25s);
+                    &:nth-child(1) {
+                        top: 3px;
+                        transform: rotate(0deg);
+                    }
+                    &:nth-child(2) {
+                        top: 11px;
+                        left: 0;
+                        opacity: 1;
+                    }
+                    &:nth-child(3) {
+                        top: 19px;
+                        transform: rotate(0);
+                    }
+                }
+            }
+            &.open {
+                .lines {
+                    & > span {
+                        position: absolute;
+                        width: 30px;
+                        transform: rotate(0deg);
+                        border-radius: 5px;
+                        &:nth-child(1) {
+                            top: 11px;
+                            transform: rotate(135deg);
+                        }
+                        &:nth-child(2) {
+                            top: 11px;
+                            opacity: 0;
+                        }
+                        &:nth-child(3) {
+                            top: 11px;
+                            transform: rotate(-135deg);
+                        }
+                    }
+                }
             }
         }
         &--brand {
@@ -31,14 +89,33 @@
             cursor: pointer;
             .logo {
                 width: 200px;
+                @include respond-to-mob('medium') {
+                    width: 125px;
+                }
             }
         }
         &--collapse {
             .main-menu {
+                @include respond-to-mob('medium') {
+                    max-width: 340px;
+                    height: 100%;
+                    overflow-y: auto;
+                    margin: 0 auto;
+                    padding: 15px 12px;
+                }
                 &__list {
                     @include flex-display(row, flex-start, center);
                     gap: 30px;
+                    @include respond-to-mob('s-desk') {
+                        @include flex-display(column, flex-start, flex-start);
+                        gap: 15px;
+                        height: 100%;
+                    }
                     li {
+                        @include respond-to-mob('s-desk') {
+                            width: 100%;
+                            @include flex-display(row, space-between, center);
+                        }
                         .nav-link {
                             display: flex;
                             align-items: flex-end;
@@ -76,6 +153,9 @@
                                     vertical-align: unset;
                                     margin-left: 2px;
                                     @include transition(0.2s);
+                                    @include respond-to-mob('s-desk') {
+                                        display: none;
+                                    }
                                 }
                                 &.show {
                                     &:after {
@@ -84,6 +164,9 @@
                                     & ~ .dropdown-menu {
                                         &.show {
                                             @include flex-display(column, flex-start, flex-start);
+                                            @include respond-to-mob('s-desk') {
+                                                max-height: 100%;
+                                            }
                                         }
                                     }
                                 }
@@ -91,6 +174,16 @@
                                     gap: 10px;
                                     border-radius: 0;
                                     padding: 20px 0;
+                                    @include respond-to-mob('s-desk') {
+                                        @include flex-display(column, flex-start, flex-start);
+                                        position: relative;
+                                        flex: none;
+                                        width: 100%;
+                                        max-height: 0;
+                                        border: none;
+                                        padding: 5px 0;
+                                        overflow: hidden;
+                                    }
                                     .dropdown-item {
                                         font-size: 16px;
                                         &:hover {
@@ -108,10 +201,28 @@
                     }
                 }
             }
+            @include respond-to-mob('s-desk') {
+                position: fixed;
+                top: 70px;
+                right: 0;
+                transform: translateX(100%);
+                width: 100vw;
+                height: calc(100dvh - 70px);
+                background: $primary-bg;
+                @include transition(0.3s);
+                z-index: 1;
+                &.open {
+                    transform: translateX(0);
+                }
+            }
         }
         &--right {
             @include flex-display(row, flex-end, center);
             gap: 24px;
+            @include respond-to-mob('medium') {
+                gap: 15px;
+                padding-left: 30px;
+            }
             .navbar-wishlist {
                 li {
                     a {
@@ -143,7 +254,6 @@
                 }
             }
             .navbar-cart {
-                // display: block;
                 a {
                     color: $primary-font-color;
                     font-weight: $regular;
@@ -160,9 +270,11 @@
                             }
                         }
                     }
-                }
-                li {
-                    // font-size: 0;
+                    .woofc-menu-item-inner-subtotal {
+                        @include respond-to-mob('medium') {
+                            display: none;
+                        }
+                    }
                 }
             }
         }
