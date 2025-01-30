@@ -27,7 +27,7 @@ if (get_field('show_faq_bool')) :
                     $label  = get_sub_field('faq_title_text');
                     $link   = get_sub_field('faq_link');
 
-                    echo "<div class='col-12 col-md-auto'>
+                    echo "<div class='col-6 col-md-auto'>
                         <div class='faq'>
                             <a href='{$link['url']}' target='{$link['target']}' class='faq__perma'>
                                 <img src='{$icon['url']}' alt='{$icon['alt']}' class='faq__perma--icon'>
