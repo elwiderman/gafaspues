@@ -23,6 +23,10 @@ export default class AppCommon {
         this.goTop();
         this.selectDropdown();
         // this.shopSortingDropdown();
+
+        if ($('#sidebarFilterToggle').length) {
+            this.sidebarToggle();
+        }
     }
 
     // page loading anim
@@ -116,6 +120,49 @@ export default class AppCommon {
             width: '100%',
             dropdownParent: wrap.find('.woocommerce-ordering__wrap'),
             minimumResultsForSearch: -1
+        });
+    }
+
+    sidebarToggle() {
+        let filters;
+        // remove filter off canvas open if more than mobile 
+        // $(window).on('load resize', e => {
+        //     // detach the filters 
+        //     if ($('#sideBar').length) {
+        //         filters = $('#sideBar > #shadySidebar').detach();
+        //     } else {
+        //         filters = $('#mobiSidebar > #shadySidebar').detach();
+        //     }
+
+        //     if ($(window).width() < 768) {
+        //         $('#mobiSidebar').html(filters);
+        //     } else {
+        //         $('#mobiSidebar, #filterToggle').removeClass('open');
+        //         $('body').removeClass('no-overflow');
+
+        //         $('#sideBar').html(filters);
+        //     }
+        // });
+
+        // do the toggle magic
+        $('#sidebarFilterToggle').on('click', e => {
+            let $this = $(e.currentTarget),
+                target = $this.data('target');
+
+            if ($this.hasClass('open')) {
+                $this.removeClass('open');
+                $(target).removeClass('open');
+                $('body').removeClass('no-overflow');
+            } else {
+                $this.addClass('open');
+                $(target).addClass('open');
+                $('body').addClass('no-overflow');
+            }
+        });
+
+        $(document).on('wcapf_before_updating_products', e => {
+            $('#sidebarFilterToggle.open').trigger('click');
+            
         });
     }
 }
