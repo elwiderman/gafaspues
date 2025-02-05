@@ -17,7 +17,7 @@ export default class WooFormula {
     init() {
         console.log('WooFormula initialized');
         
-        if ($('.single-page.single-product')) {
+        if ($('.single-page.single-product').length) {
             this.selectFrameOption();
             this.initSelectDropdown();
             this.renderLensVariations();
@@ -62,7 +62,7 @@ export default class WooFormula {
 
     initSelectDropdown() {
         $('select.form-select').each((i, elem) => {
-            let dropdownParent = $(elem).closest('.form-select-wrap');
+            let dropdownParent = $(elem).closest('.form-select-wrap.to-dropdown');
 
             $(elem).select2({
                 width: '100%',

@@ -282,10 +282,23 @@
                                         opacity: 1;
                                     }
                                 }
+                                @include respond-to-mob('medium') {
+                                    padding: 0 8px;
+                                    &:first-child {
+                                        padding-left: 0;
+                                    }
+                                    & > a {
+                                        font-size: 15px;
+                                        letter-spacing: unset;
+                                    }
+                                }
                             }
                         }
                         .wc-tab {
                             padding: 0 15px;
+                            @include respond-to-mob('medium') {
+                                padding: 0;
+                            }
                             h2, h3, h4, h5, h6 {
                                 @extend .h6;
                                 @include font($secondary-font, $semi-bold);
@@ -333,9 +346,15 @@
 
                     .related {
                         margin-top: 60px;
-                        .products-title {
+                        & > h2 {
+                            @extend .h3, .styled;
                             line-height: 1;
                             margin-bottom: 20px;
+                        }
+                        .product-grid {
+                            @include respond-to-mob('medium') {
+                                gap: 20px 0;
+                            }
                         }
                     }
                 }

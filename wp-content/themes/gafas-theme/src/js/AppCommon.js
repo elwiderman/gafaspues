@@ -21,11 +21,14 @@ export default class AppCommon {
     init() {
         this.pageLoading();
         this.goTop();
-        this.selectDropdown();
         // this.shopSortingDropdown();
 
         if ($('#sidebarFilterToggle').length) {
             this.sidebarToggle();
+        }
+
+        if (!$('.single-page.single-product').length) {
+            this.selectDropdown();
         }
     }
 

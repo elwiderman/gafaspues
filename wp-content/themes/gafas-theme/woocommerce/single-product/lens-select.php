@@ -125,28 +125,28 @@ global $product;
                                                         <h6 class="formula-input__title"><?php _e('Ojo Izq.', 'gafas');?></h6>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="form-select-wrap">
+                                                        <div class="form-select-wrap to-dropdown">
                                                             <select name="left_esf" id="leftEsf" class="form-select">
                                                                 <?php echo generateSelectOptions(-8.00, 8.00, 0.25, 2);?>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="form-select-wrap">
+                                                        <div class="form-select-wrap to-dropdown">
                                                             <select name="left_cil" id="leftCil" class="form-select">
                                                                 <?php echo generateSelectOptions(-6.00, 0, 0.25, 2);?>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="form-select-wrap">
+                                                        <div class="form-select-wrap to-dropdown">
                                                             <select name="left_eje" id="leftEje" class="form-select">
                                                                 <?php echo generateSelectOptions(0, 180, 1, 0);?>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="form-select-wrap">
+                                                        <div class="form-select-wrap to-dropdown">
                                                             <select name="left_add" id="leftAdd" class="form-select">
                                                                 <option value="0.00">0.00</option>
                                                                 <?php echo generateSelectOptions(0.75, 3.50, 0.25, 2);?>
@@ -160,28 +160,28 @@ global $product;
                                                         <h6 class="formula-input__title"><?php _e('Ojo Der.', 'gafas');?></h6>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="form-select-wrap">
+                                                        <div class="form-select-wrap to-dropdown">
                                                             <select name="right_esf" id="rightEsf" class="form-select">
                                                                 <?php echo generateSelectOptions(-8.00, 8.00, 0.25, 2);?>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="form-select-wrap">
+                                                        <div class="form-select-wrap to-dropdown">
                                                             <select name="right_cil" id="rightCil" class="form-select">
                                                                 <?php echo generateSelectOptions(-6.00, 0, 0.25, 2);?>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="form-select-wrap">
+                                                        <div class="form-select-wrap to-dropdown">
                                                             <select name="right_eje" id="rightEje" class="form-select">
                                                                 <?php echo generateSelectOptions(0, 180, 1, 0);?>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="form-select-wrap">
+                                                        <div class="form-select-wrap to-dropdown">
                                                             <select name="right_add" id="rightAdd" class="form-select">
                                                                 <option value="0.00">0.00</option>
                                                                 <?php echo generateSelectOptions(0.75, 3.50, 0.25, 2);?>
