@@ -20,7 +20,8 @@
     "src/scss/single-product.scss",
     "src/scss/cart-checkout.scss",
     "src/scss/woo-account.scss",
-    "src/scss/shop.scss"
+    "src/scss/shop.scss",
+    "src/scss/helpers.scss"
   ],
   "keywords": [],
   "devDependencies": {

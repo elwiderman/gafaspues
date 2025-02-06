@@ -1,0 +1,41 @@
+.single-page {
+    &.single-helpers {
+        padding: 60px 0 80px;
+        @include respond-to('s-desk') {
+            padding: 80px 0;
+        }
+        .section-block {
+            &.section-content {
+                position: relative;
+                z-index: 0;
+                .page-title {
+                    @extend h2;
+                }
+                .content-wrap {
+                    .wp-block-image {
+                        img {
+                            max-width: 100%;
+                            height: auto;
+                        }
+                    }
+                    ul {
+                        list-style: circle;
+                        padding-left: 20px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+                        margin-bottom: calc(16px * 1.4);
+                        @include respond-to-mob('s-desk') {
+                            font-size: 14px;
+                            margin-bottom: calc(14px * 1.4);
+                        }
+                        li {
+                            @extend p;
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
