@@ -75,13 +75,12 @@ h6, .h6 {
 }
 p {
     @include font($secondary-font, $regular);
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.4;
-    margin-bottom: calc(15px * 1.4);
+    margin-bottom: calc(16px * 1.4);
     @include respond-to-mob('s-desk') {
         font-size: 14px;
-        line-height: 1.43;
-        margin-bottom: calc(14px * 1.43);
+        margin-bottom: calc(14px * 1.4);
     }
 }
 .alt-p {
