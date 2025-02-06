@@ -5,6 +5,9 @@ $icomoon-font-path: '../../assets/fonts' !default;
 
 @use "sass:string";
 
+$icon-chat: unquote('"\\e92c"');
+$icon-refund: unquote('"\\e92d"');
+$icon-shield: unquote('"\\e92e"');
 $icon-info: unquote('"\\e92b"');
 $icon-discout: unquote('"\\e929"');
 $icon-price: unquote('"\\e929"');

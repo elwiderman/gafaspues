@@ -11,6 +11,34 @@ $bg         = get_field('footer_background_img', 'option');
     endif;
     ?>
 
+    <div class="footer-bar">
+        <div class="container">
+            <?php
+            if (have_rows('footer_icon_blocks_repeater', 'option')) :
+                echo "<div class='row footer-bar__row'>";
+                while (have_rows('footer_icon_blocks_repeater', 'option')) : the_row();
+                    $icon   = get_sub_field('icon_select');
+                    $title  = get_sub_field('titulo_text');
+                    $desc   = get_sub_field('desc_text');
+
+                    echo "
+                    <div class='col-12 col-md-4'>
+                        <div class='info'>
+                            <i class='{$icon}'></i>
+                            <div class='info__meta'>
+                                <h6 class='info__meta--title'>{$title}</h6>
+                                <p class='info__meta--desc mb-0'>{$desc}</p>
+                            </div>
+                        </div>
+                    </div>
+                    ";
+                endwhile;
+                echo "</div>";
+            endif;
+            ?>
+        </div>
+    </div>
+
     <footer class="footer" style="background-image: url(<?php echo $bg['url']; ?>);">
         <?php get_template_part('parts/footer/footer', 'framework'); ?>
     </footer>
