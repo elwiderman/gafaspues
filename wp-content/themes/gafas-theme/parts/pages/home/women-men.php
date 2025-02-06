@@ -11,7 +11,7 @@ if (get_field('show_men_women_bool')) :
     <section class="section-block section-women-men">
         <div class="container">
             <div class="row no-gutters">
-                <div class="col">
+                <div class="col-12 col-md">
                     <div class="women-men">
                         <a href="<?php echo $women_link['url'];?>" class="women-men__perma" target="<?php echo $women_link['target'];?>">
                             <figure class="women-men__perma--img mb-0">
@@ -21,7 +21,7 @@ if (get_field('show_men_women_bool')) :
                         </a>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-12 col-md">
                     <div class="offers text-center">
                         <h3 class="offers__text"><?php echo $title;?></h3>
                         <div class="offers__cta">
@@ -31,7 +31,7 @@ if (get_field('show_men_women_bool')) :
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-12 col-md">
                     <div class="women-men">
                         <a href="<?php echo $men_link['url'];?>" class="women-men__perma" target="<?php echo $men_link['target'];?>">
                             <figure class="women-men__perma--img mb-0">

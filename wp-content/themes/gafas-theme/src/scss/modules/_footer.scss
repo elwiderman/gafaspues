@@ -100,3 +100,37 @@
         }
     }
 }
+
+#sidebarFilterToggle {
+    display: none;
+    @include respond-to-mob('medium') {
+        display: block;
+        position: fixed;
+        top: 75px;
+        right: 12px;
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+        color: $primary-bg;
+        background: $primary-color;
+        border: none;
+        border-radius: 4px;
+        z-index: 3;
+        &.open {
+            i {
+                &:before {
+                    content: $icon-x;
+                }
+            }
+        }
+    }
+}
+
+.wcapf-loader {
+    .wcapf-loader-image {
+        @include spinner(60px, $primary-color, $primary-font-color);
+        svg {
+            display: none !important;
+        }
+    }
+}

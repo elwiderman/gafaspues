@@ -84,8 +84,8 @@ ul {
 }
 
 .container {
-    max-width: calc(310px + 30px);
-    padding: 0 15px; // Adjusting gutter to match 30px spacing between columns
+    // max-width: calc(310px + 30px);
+    // padding: 0 15px; // Adjusting gutter to match 30px spacing between columns
     margin: 0 auto;
     @include respond-to('medium') {
         max-width: calc(700px + 30px);
@@ -97,7 +97,7 @@ ul {
         max-width: calc(1440px + 30px);
     }
     & > .row {
-        margin: 0 -15px; // Adjusting negative margin for gutter
+        // margin: 0 -15px; // Adjusting negative margin for gutter
         &.no-gutters {
             margin: 0;
             & > [class^="col-"], & > .col {
@@ -105,7 +105,7 @@ ul {
             }
         }
         & > [class^="col-"], & > .col {
-            padding: 0 15px; // Adjusting padding for gutter
+            // padding: 0 15px; // Adjusting padding for gutter
         }
     }
 }
@@ -114,7 +114,7 @@ ul {
     padding-top: 80px;
     overflow-x: hidden;
     @include respond-to-mob('medium') {
-        padding-top: 80px;
+        padding-top: 70px;
     }
 }
 

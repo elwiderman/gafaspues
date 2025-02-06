@@ -18,10 +18,10 @@ if (have_rows('hero_slider_repeater')) : ?>
                 <div class='slide__left' style='{$left}'></div>
                 <div class='slide__right' style='{$right}'></div>
                 <figure class='slide__logo mb-0'>
-                    <img src='{$logo['url']}' alt='{$logo['alt']}'>
+                    <img src='{$logo['url']}' alt='{$logo['alt']}' class='img-fluid'>
                 </figure>
                 <figure class='slide__main mb-0'>
-                    <img src='{$main['url']}' alt='{$main['alt']}'>
+                    <img src='{$main['url']}' alt='{$main['alt']}' class='img-fluid'>
                 </figure>
                 <div class='slide__content'>
                     <p class='slide__content--text to-stagger'>{$text}</p>
