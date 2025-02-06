@@ -12,6 +12,11 @@
                     @extend h2;
                 }
                 .content-wrap {
+                    h2, h3, h4, h5, h6 {
+                        @extend h6;
+                        @include font($secondary-font, $semi-bold);
+                        margin-bottom: 15px;
+                    }
                     .wp-block-image {
                         img {
                             max-width: 100%;
