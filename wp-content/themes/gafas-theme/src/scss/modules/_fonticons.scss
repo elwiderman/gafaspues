@@ -28,6 +28,24 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-chat {
+    &:before {
+        content: $icon-chat;
+    }
+}
+
+.icon-refund {
+    &:before {
+        content: $icon-refund;
+    }
+}
+
+.icon-shield {
+    &:before {
+        content: $icon-shield;
+    }
+}
+
 .icon-info {
     &:before {
         content: $icon-info;
@@ -289,14 +307,12 @@
 .icon-facebook {
     &:before {
         content: $icon-facebook;
-        color: #1877f2;
     }
 }
 
 .icon-instagram {
     &:before {
         content: $icon-instagram;
-        color: #e4405f;
     }
 }
 
@@ -315,7 +331,6 @@
 .icon-whatsapp {
     &:before {
         content: $icon-whatsapp;
-        color: #25d366;
     }
 }
 

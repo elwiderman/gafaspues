@@ -260,7 +260,7 @@
                         "facebook": "Facebook",
                         "instagram": "Instagram",
                         "linkedin": "Linkedin",
-                        "x": "Twitter",
+                        "twitter": "Twitter",
                         "tiktok": "Tiktok"
                     },
                     "default_value": false,
@@ -399,6 +399,121 @@
                     ]
                 }
             ]
+        },
+        {
+            "key": "field_67a51e4b26b55",
+            "label": "Footer Bar",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_67a51e5726b56",
+            "label": "Footer Icon Blocks",
+            "name": "footer_icon_blocks_repeater",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 3,
+            "max": 3,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_67a51e6d26b57",
+                    "label": "Icon",
+                    "name": "icon_select",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "icon-refund": "Devolucion",
+                        "icon-shield": "Garantia",
+                        "icon-chat": "Chat"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 1,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_67a51e5726b56"
+                },
+                {
+                    "key": "field_67a51e7e26b58",
+                    "label": "Titulo",
+                    "name": "titulo_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_67a51e5726b56"
+                },
+                {
+                    "key": "field_67a51e8a26b59",
+                    "label": "Descripcion",
+                    "name": "desc_text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_67a51e5726b56"
+                }
+            ]
         }
     ],
     "location": [
@@ -419,5 +534,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1735665813
+    "modified": 1738876770
 }

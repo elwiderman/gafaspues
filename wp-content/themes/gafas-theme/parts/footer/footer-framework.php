@@ -14,7 +14,7 @@ $copy_text  = get_field('copyright_text', 'option');
                     $title  = get_sub_field('title_text');
                     
                     if (have_rows('links_repeater', 'option')) :
-                        echo "<div class='col-12 col-md-4 col-xl-2'>
+                        echo "<div class='col col-md-4 col-xl-2'>
                                 <h4 class='footer__title'>{$title}</h4>
                                 <ul class='footer__link'>";
                         while (have_rows('links_repeater', 'option')) : the_row();
@@ -29,9 +29,12 @@ $copy_text  = get_field('copyright_text', 'option');
                 endwhile;
             endif;
 
+            echo "<div class='col-12 col-md-4 col-xl-2'>";
+            get_template_part('parts/footer/socials');
+            echo "</div>";
+
             if (get_field('footer_newsletter_group', 'option')['show_newsletter_bool']) :
-                echo "<div class='col'></div>";
-                echo "<div class='col-12 col-md-4 float-end'>";
+                echo "<div class='col-12 col-md-4 col-xl-3 float-end'>";
                 get_template_part('parts/footer/newsletters');
                 echo "</div>";
             endif;
@@ -66,7 +69,7 @@ $copy_text  = get_field('copyright_text', 'option');
                 echo "
                 <div class='col-12 col-md-auto'>
                     <figure class='footer__bottom--pg-icons mb-0'>
-                        <img src='{$pg_icons['url']}' alt='{$pg_icons['alt']}'>
+                        <img src='{$pg_icons['url']}' alt='{$pg_icons['alt']}' class='img-fluid'>
                     </figure>
                 </div>";
             endif;
