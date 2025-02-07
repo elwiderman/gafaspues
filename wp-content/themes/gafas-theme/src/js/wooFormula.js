@@ -61,13 +61,21 @@ export default class WooFormula {
     }
 
     initSelectDropdown() {
+        // add the zindex 
+        let total = $('.form-select-wrap.to-dropdown').length + 10;
+        $('.form-select-wrap.to-dropdown').each((i, elem) => {
+            $(elem).css({
+                'z-index': total
+            });
+            total--;
+        });
         $('select.form-select').each((i, elem) => {
             let dropdownParent = $(elem).closest('.form-select-wrap.to-dropdown');
 
             $(elem).select2({
                 width: '100%',
                 dropdownParent: dropdownParent,
-                minimumResultsForSearch: 1
+                minimumResultsForSearch: -1
             });
         });
     }
@@ -113,7 +121,7 @@ export default class WooFormula {
                 url: WPURLS.ajaxurl,
                 beforeSend: xhr => {
                     console.log('loading lens ...');
-                    form.find('.available-lens').html('Recogiendo las lentes....');
+                    form.find('.available-lens').html('<div class="loading"><span>Recogiendo las lentes....</span><span class="spinner"></span></div>');
                     console.log(data);
                     form.find('input[name="lens_type"], input[name="lens_tint"]').siblings('.form-check-label').addClass('no-click');
                 },
@@ -132,8 +140,13 @@ export default class WooFormula {
                                     data-variation_id='${elem.variation}'
                                     data-lens_name='${elem.lens_name}'
                                     data-lens_price='${elem.price_html}'>
-                                    <h4 class='lens__select--title'>${elem.lens_name}</h4>
-                                    <div class='lens__select--price' data-price='${elem.price}'>${elem.price_html}</div>
+                                    <div class='lens__select--top'>
+                                        <h4 class='lens__select--title'>${elem.lens_name}</h4>
+                                        <div class='lens__select--price' data-price='${elem.price}'>${elem.price_html}</div>
+                                    </div>
+                                    <div class='lens__select--bottom'>
+                                        <div class='lens__select--desc'>${elem.lens_desc}</div>
+                                    </div>
                                 </div>
                             </div>
                             `;
