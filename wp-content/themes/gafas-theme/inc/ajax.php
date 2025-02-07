@@ -79,6 +79,7 @@ function gafas_render_lens_variations() {
         foreach ($active_products as $prod) {
             $product        = wc_get_product($prod);
             $prod_title     = $product->get_name();
+            $prod_desc      = $product->get_description();
 
             $variation_id   = $product->get_matching_variation($attributes);
             $var_prod       = wc_get_product($variation_id);
@@ -88,6 +89,7 @@ function gafas_render_lens_variations() {
             array_push($variations, [
                 'lens_id'       => $prod,
                 'lens_name'     => $prod_title,
+                'lens_desc'     => $prod_desc,
                 'lens_children' => $product->get_available_variations(),
                 'variation'     => $variation_id,
                 'price'         => $price,
