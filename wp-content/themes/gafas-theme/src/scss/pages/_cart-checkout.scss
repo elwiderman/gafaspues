@@ -9,6 +9,7 @@
         
         &.checkout {
             margin-bottom: 80px;
+            padding-top: 20px;
             .wc-block-components-title {
                 @extend h6, .styled;
             }
@@ -18,9 +19,16 @@
                     .wc-block-components-radio-control {
                         .wc-block-components-radio-control-accordion-option {
                             label[for="radio-control-wc-payment-method-options-wompi"] {
-                                .wc-block-components-radio-control {
-                                    &__option-layout {
-
+                                padding: 0;
+                            }
+                            #radio-control-wc-payment-method-options-wompi__content {
+                                .wc-block-payment-method {
+                                    &__content {
+                                        align-items: center;
+                                        gap: 10px;
+                                    }
+                                    &__description {
+                                        margin-bottom: 0;
                                     }
                                 }
                             }
@@ -161,6 +169,18 @@
                     }
                 }
             }
+
+            .wc-block-components-order-summary-item {
+                &__description {
+                    .wc-block-components-product-metadata {
+                        .wc-block-components-product-details {
+                            &:not(:first-child) {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         &.cart {
@@ -179,6 +199,18 @@
                     @extend .btn-outline-dark;
                     height: 50px;
                     padding: 0 15px;
+                }
+            }
+
+            .wc-block-cart-items {
+                &__row {
+                    .wc-block-components-product-metadata {
+                        .wc-block-components-product-details {
+                            &:not(:first-child) {
+                                display: none;
+                            }
+                        }
+                    }
                 }
             }
         }

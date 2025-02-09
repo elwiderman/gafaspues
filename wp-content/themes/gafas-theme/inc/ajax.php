@@ -189,55 +189,55 @@ function custom_display_cart_item_data($item_data, $cart_item) {
         }
     }
 
-    if (isset($cart_item['left_esf'])) {
-        $item_data[] = [
-            'name'  => __('Ojo Izq. ESF.', 'gafas'),
-            'value' => wc_clean($cart_item['left_esf']),
-        ];
-    }
     if (isset($cart_item['right_esf'])) {
         $item_data[] = [
             'name'  => __('Ojo Der. ESF.', 'gafas'),
             'value' => wc_clean($cart_item['right_esf']),
         ];
     }
-
-    if (isset($cart_item['left_cil'])) {
+    if (isset($cart_item['left_esf'])) {
         $item_data[] = [
-            'name'  => __('Ojo Izq. CILL.', 'gafas'),
-            'value' => wc_clean($cart_item['left_cil']),
+            'name'  => __('Ojo Izq. ESF.', 'gafas'),
+            'value' => wc_clean($cart_item['left_esf']),
         ];
     }
+
     if (isset($cart_item['right_cil'])) {
         $item_data[] = [
             'name'  => __('Ojo Der. CIL.', 'gafas'),
             'value' => wc_clean($cart_item['right_cil']),
         ];
     }
-
-    if (isset($cart_item['left_eje'])) {
+    if (isset($cart_item['left_cil'])) {
         $item_data[] = [
-            'name'  => __('Ojo Izq. EJE.', 'gafas'),
-            'value' => wc_clean($cart_item['left_eje']),
+            'name'  => __('Ojo Izq. CILL.', 'gafas'),
+            'value' => wc_clean($cart_item['left_cil']),
         ];
     }
+
     if (isset($cart_item['right_eje'])) {
         $item_data[] = [
             'name'  => __('Ojo Der. EJE.', 'gafas'),
             'value' => wc_clean($cart_item['right_eje']),
         ];
     }
-
-    if (isset($cart_item['left_add'])) {
+    if (isset($cart_item['left_eje'])) {
         $item_data[] = [
-            'name'  => __('Ojo Izq. ADD.', 'gafas'),
-            'value' => wc_clean($cart_item['left_add']),
+            'name'  => __('Ojo Izq. EJE.', 'gafas'),
+            'value' => wc_clean($cart_item['left_eje']),
         ];
     }
+
     if (isset($cart_item['right_add'])) {
         $item_data[] = [
             'name'  => __('Ojo Der. ADD.', 'gafas'),
             'value' => wc_clean($cart_item['right_add']),
+        ];
+    }
+    if (isset($cart_item['left_add'])) {
+        $item_data[] = [
+            'name'  => __('Ojo Izq. ADD.', 'gafas'),
+            'value' => wc_clean($cart_item['left_add']),
         ];
     }
 

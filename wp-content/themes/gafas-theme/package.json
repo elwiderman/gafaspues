@@ -21,7 +21,8 @@
     "src/scss/cart-checkout.scss",
     "src/scss/woo-account.scss",
     "src/scss/shop.scss",
-    "src/scss/helpers.scss"
+    "src/scss/helpers.scss",
+    "src/scss/vendor.scss"
   ],
   "keywords": [],
   "devDependencies": {

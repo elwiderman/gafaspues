@@ -27,7 +27,7 @@ function gafas_framework_scripts() {
         wp_enqueue_style('cart-checkout-css', $path . gafas_get_hashed_assets('scss/cart-checkout.scss'), array(), '', 'all');
     }
 
-    if (is_shop() || is_tax(['product_cat', 'product_brand'])) {
+    if (is_shop() || is_tax(['product_cat', 'product_brand', 'yith_shop_vendor'])) {
         wp_enqueue_style('shop-css', $path . gafas_get_hashed_assets('scss/shop.scss'), array(), '', 'all');
     }
 
@@ -37,6 +37,10 @@ function gafas_framework_scripts() {
 
     if (is_page_template('templates/page-helpers.php')) {
         wp_enqueue_style('helpers-css', $path . gafas_get_hashed_assets('scss/helpers.scss'), array(), '', 'all');
+    }
+
+    if (is_page_template('templates/page-become-vendor.php')) {
+        wp_enqueue_style('vendor-css', $path . gafas_get_hashed_assets('scss/vendor.scss'), array(), '', 'all');
     }
 
 

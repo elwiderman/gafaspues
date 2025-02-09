@@ -20,9 +20,8 @@ function gafas_close_wrapper_before_shop_loop() {
 
 
 // move the breadcrumb in the shop header section before title
-add_action('wp', 'custom_move_breadcrumb_in_shop_header');
-
-function custom_move_breadcrumb_in_shop_header() {
+add_action('wp', 'gafas_move_breadcrumb_in_shop_header');
+function gafas_move_breadcrumb_in_shop_header() {
     if (is_shop() || is_product_category() || is_product_tag()) {
         // Remove the default breadcrumb
         remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
