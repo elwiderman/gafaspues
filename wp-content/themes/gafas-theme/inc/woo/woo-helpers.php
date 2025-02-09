@@ -108,118 +108,123 @@ function gafas_remove_all_quantity_fields($return, $product) {
 
 
 
-
-// creating custom product type
-// #1 Add New Product Type to Select Dropdown
-add_filter( 'product_type_selector', 'bbloomer_add_custom_product_type' );
-function bbloomer_add_custom_product_type( $types ){
-    $types['montura'] = 'Montura';
-    return $types;
+// hide virtual and downloadable products 
+add_filter('product_type_options', 'gafas_hide_virtual_downloadable_checkboxes');
+function gafas_hide_virtual_downloadable_checkboxes($options) {
+    // remove "Virtual" checkbox
+    if( isset( $options[ 'virtual' ] ) ) {
+        unset( $options[ 'virtual' ] );
+    }
+    // remove "Downloadable" checkbox
+    if( isset( $options[ 'downloadable' ] ) ) {
+        unset( $options[ 'downloadable' ] );
+    }
+    return $options;
 }
 
-// #2 Add New Product Type Class
-add_action( 'init', 'bbloomer_create_custom_product_type' );
-function bbloomer_create_custom_product_type(){
-    class WC_Product_Montura extends WC_Product {
-        public function get_type() {
-            return 'montura';
+
+// customize woocommerce form fields for the vendor regn page
+add_filter('woocommerce_form_field', 'gafas_custom_woocommerce_form_field', 10, 4);
+function gafas_custom_woocommerce_form_field($field, $key, $args, $value) {
+    // segregating the classes needed for the display of the form
+    $form_group_class   = [];
+    $form_control_class = [];
+    foreach ($args['class'] as $cls) {
+        switch ($cls) {
+            case 'form-row-wide':
+                array_push($form_group_class, 'col-12');
+                break;
+
+            case 'form-row-first':
+                array_push($form_group_class, 'col-12 col-md-6');
+                break;
+
+            case 'form-row-last':
+                array_push($form_group_class, 'col-12 col-md-6');
+                break;
+
+            case 'validate-required':
+                array_push($form_control_class, 'validate-required');
+                break;
         }
     }
-}
 
-// #3 Load New Product Type Class
-add_filter( 'woocommerce_product_class', 'bbloomer_woocommerce_product_class', 10, 2 );
-function bbloomer_woocommerce_product_class( $classname, $product_type ) {
-    if ( $product_type == 'montura' ) {
-        $classname = 'WC_Product_Montura';
+    $required = ($args['required']) ? '<span class="required">*</span>' : '';
+
+    // Start custom field wrapper
+    $custom_field = '<div class="form-group ' . implode(' ', $form_group_class) . ' ' . esc_attr($args['type']) . ' ' . esc_attr($key) . '">';
+
+    // Add custom label
+    if (!empty($args['label'])) {
+        $custom_field .= '<label class="form-label" for="' . esc_attr($key) . '">' . esc_html($args['label']) . $required . '</label>';
     }
-    return $classname;
-}
 
-// #4 Show Product Data General Tab Prices
-// Hide Other Product Data Tabs and add the custom connected lens tab
-add_filter( 'woocommerce_product_data_tabs', 'gafas_modify_custom_admin_product_tabs', 9999 );
-function gafas_modify_custom_admin_product_tabs($tabs) {
+    // Add input field
+    switch ($args['type']) {
+        case 'text':
+        case 'email':
+        case 'password':
+        case 'tel':
+        case 'number':
+            $custom_field .= '<input type="' . esc_attr($args['type']) . '" 
+                name="' . esc_attr($key) . '" 
+                id="' . esc_attr($key) . '" 
+                class="form-control ' . implode(' ', $form_control_class) . '" 
+                placeholder="' . esc_attr($args['placeholder']) . '" 
+                value="' . esc_attr($value) . '" />';
+            break;
 
-    $tabs['inventory']['class'][] = 'show_if_montura';
-    // $tabs['attribute']['class'][] = 'show_if_montura';
+        case 'textarea':
+            $custom_field .= '<textarea name="' . esc_attr($key) . '" 
+                id="' . esc_attr($key) . '" 
+                class="form-control ' . implode(' ', $form_control_class) . '" 
+                placeholder="' . esc_attr($args['placeholder']) . '">' . esc_textarea($value) . '</textarea>';
+            break;
 
-    // custom tab
-    $tabs['connected-lens'] = array(
-        'label'     => __('Monturas Info', 'gafas'),
-        'target'    => 'lens_product_data',
-        'class'     => ['show_if_montura', 'hide_if_variable', 'hide_if_grouped'],
-        'priority'  => 21
-    );
-
-    return $tabs;
-}
-
-add_action( 'woocommerce_product_data_panels', 'bbloomer_custom_product_type_show_price' );
-function bbloomer_custom_product_type_show_price() {
-    wc_enqueue_js("
-        $(document.body).on('woocommerce-product-type-change', function(event,type) {
-            if (type=='montura') {
-                console.log('montura selected');
-                $('.general_tab').show().trigger('click');
-                $('.pricing').show();
-                $('#inventory_product_data ._manage_stock_field').addClass('show_if_montura').show();
-                $('#inventory_product_data .inventory_sold_individually').addClass('show_if_montura').show().find('._sold_individually_field').addClass('show_if_montura').show();
+        case 'select':
+            $custom_field .= '<select name="' . esc_attr($key) . '" id="' . esc_attr($key) . '" class="form-select ' . implode(' ', $form_control_class) . '">';
+            foreach ($args['options'] as $option_key => $option_value) {
+                $selected = ($value == $option_key) ? 'selected="selected"' : '';
+                $custom_field .= '<option value="' . esc_attr($option_key) . '" ' . $selected . '>' . esc_html($option_value) . '</option>';
             }
-        });
-    ");
-    global $product_object;
-    if ($product_object && 'montura' === $product_object->get_type()) {
-        wc_enqueue_js("
-            console.log('montura');
-            $('.general_tab').show().trigger('click');
-            $('.pricing').show();
-            $('#inventory_product_data ._manage_stock_field').addClass('show_if_montura').show();
-            $('#inventory_product_data .inventory_sold_individually').addClass('show_if_montura').show().find('._sold_individually_field').addClass('show_if_montura').show();
-        ");
+            $custom_field .= '</select>';
+            break;
 
+        case 'checkbox':
+            $checked = checked($value, 1, false);
+            $custom_field .= '
+            <div class="form-check">
+                <input type="checkbox" name="'.esc_attr($key).'" id="'.esc_attr($key).'" class="form-check-input" value="1" ' . $checked . ' />
+                <label class="form-check-label" for="'.esc_attr($key).'">'.$args['label'].'</label>
+            </div>';
+            break;
 
-        
-
+        case 'radio':
+            if (!empty($args['options'])) {
+                $i = 0;
+                foreach ($args['options'] as $option_key => $option_value) {
+                    $custom_field .= "<div class='form-check form-check-inline'>";
+                    $i++;
+                    $id            = $args['name'] . "-{$i}";
+                    $checked       = checked($value, $option_key, false);
+                    $custom_field .= 
+                    '
+                    <input class="form-check-input" type="radio" name="' . esc_attr($key) . '" id="'.$id.'" value="'.esc_attr($option_key).'" '.$checked.'>
+                    <label class="form-check-label" for="'.$id.'">'.esc_html($option_value).'</label>';
+                    $custom_field .= "</div>";
+                }
+            }
+            break;
     }
-    // add the custom html for the montura product type
-    echo '<div id="lens_product_data" class="panel woocommerce_options_panel">
-    <div class="options_group lens-content show_if_montura"></div></div>
-    <style>
-        #lens_product_data label {
-            float: unset;
-            width: unset;
-        }
-        #woocommerce-product-data ul.wc-tabs li.connected-lens_options a::before {
-            content: "\f177";
-        } 
-    </style>
-    ';
+
+    // Add description (if any)
+    if (!empty($args['description'])) {
+        $custom_field .= '<p class="custom-description">' . $args['description'] . '</p>';
+    }
+
+    // End custom field wrapper
+    $custom_field .= '</div>';
+
+    return $custom_field;
 }
 
-add_action('admin_footer', 'custom_admin_product_tab_content_js');
-function custom_admin_product_tab_content_js() {
-    global $typenow, $pagenow;
-
-    if( in_array($pagenow, ['post.php', 'post-new.php']) && 'product' === $typenow ) : 
-    
-    $field_group_key = 'group_677b2ffae2d5b'; // <== HERE define the ACF field group key
-    ?>
-    <script>
-    jQuery(function($){
-        const fieldGroup = '<?php echo $field_group_key; ?>', 
-              fieldGroupID = '#acf-'+fieldGroup,
-              fieldGroupHtml = $(fieldGroupID+' .acf-fields').html();
-        $(fieldGroupID).remove();
-
-        $('#lens_product_data > .lens-content').css('padding', '0 20px').html(fieldGroupHtml);
-    });
-    </script>
-    <?php endif;
-}
-
-
-// #5 Show Add to Cart Button 
-add_action('woocommerce_montura_add_to_cart' , function() {
-    do_action('woocommerce_simple_add_to_cart');
-});

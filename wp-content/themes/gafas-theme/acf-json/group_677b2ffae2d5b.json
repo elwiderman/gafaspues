@@ -113,6 +113,7 @@
             ],
             "post_status": "",
             "taxonomy": [
+                "product_type:variable",
                 "product_cat:lentes"
             ],
             "filters": [
@@ -136,6 +137,11 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "product"
+            },
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "product_type:simple"
             }
         ]
     ],
@@ -148,5 +154,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 1,
-    "modified": 1736994280
+    "modified": 1739062203
 }

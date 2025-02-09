@@ -1,0 +1,90 @@
+.single-page {
+    &.single-vendor-regn {
+        padding: 40px 0 80px;
+        @include respond-to-mob('medium') {
+            padding: 30px 0 60px;
+        }
+        .section-block {
+            &.section-regn {
+                .page-title {
+                    @extend h2;
+                    margin-bottom: 20px;
+                }
+                .content-wrap {
+                    .form-wrap {
+                        &.form-vendor-regn {
+                            .form-group {
+                                margin-bottom: 16px;
+                                .form-label {
+                                    margin-bottom: 5px;
+                                }
+                                .form-control {
+                                    height: 50px;
+                                    border-color: $form-border;
+                                    border-radius: 0;
+                                    box-shadow: unset !important;
+                                    outline: 0 !important;
+                                    &:focus {
+                                        border-color: $primary-font-color;
+                                    }
+                                }
+                                .form-check {
+                                    &.form-check-inline {
+
+                                    }
+                                    .form-check-label {
+                                        position: relative;
+                                        z-index: 0;
+                                        cursor: pointer;
+                                        &:before, &:after {
+                                            position: absolute;
+                                            top: 50%;
+                                            left: -24px;
+                                            transform: translateY(-50%);
+                                            font-family: $icomoon-font-family;
+                                            font-size: 18px;
+                                            font-weight: $regular;
+                                            line-height: 1;
+                                            opacity: 0;
+                                            @include transition(0.2s);
+                                        }
+                                        &:before {
+                                            content: $icon-check-square;
+                                        }
+                                        &:after {
+                                            content: $icon-square;
+                                            opacity: 1;
+                                        }
+                                    }
+                                    .form-check-input {
+                                        opacity: 0;
+                                        visibility: hidden;
+                                        &:checked + .form-check-label {
+                                            &:before {
+                                                opacity: 1;
+                                            }
+                                            &:after {
+                                                opacity: 0;
+                                            }
+                                        }
+                                    }
+                                }
+                                &.plan-type {
+                                    .form-label {
+                                        display: block;
+                                        margin-bottom: 18px;
+                                    }
+                                }
+                                &.vendor-terms, &.vendor-privacy {
+                                    .form-label {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
