@@ -11,6 +11,62 @@
                     margin-bottom: 20px;
                 }
                 .content-wrap {
+                    h2, h3, h4, h5, h6 {
+                        @extend h5;
+                        @include font($secondary-font, $semi-bold);
+                        margin-bottom: 10px;
+                    }
+                    ul, ol {
+                        @include flex-display(column, flex-start, flex-start);
+                        gap: 8px;
+                        padding-left: 24px;
+                        margin-bottom: calc(16px * 1.4);
+                        @include respond-to-mob('s-desk') {
+                            margin-bottom: calc(14px * 1.4);
+                        }
+                        & > ul, ol {
+                            margin-bottom: 0;
+                        }
+                    }
+                    ul {
+                        list-style: circle;
+                    }
+                    .plan-title {
+                        @extend h3;
+                    }
+                    .plan-wrap {
+                        margin-bottom: 20px !important;
+                    }
+                    .top-highlight {
+                        padding: 25px;
+                        .wp-block-heading {
+                            @include font($primary-font, $semi-bold);
+                            font-size: 140%;
+                            position: relative;
+                            margin-bottom: 20px;
+                            z-index: 0;
+                            &:before {
+                                content: '';
+                                position: absolute;
+                                top: 100%;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                width: 40%;
+                                height: 1px;
+                                background: $primary-font-color;
+                                z-index: 0;
+                            }
+                        }
+                        p {
+                            font-size: 120%;
+                            margin-bottom: 0;
+                        }
+                    }
+                    .bottom-highlight {
+                        font-size: 200%;
+                        padding: 20px;
+                        margin-bottom: 0;
+                    }
                     .form-wrap {
                         &.form-vendor-regn {
                             .form-group {

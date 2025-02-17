@@ -23,22 +23,32 @@
                             height: auto;
                         }
                     }
-                    ul {
-                        list-style: circle;
-                        padding-left: 20px;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 5px;
+                    .wp-block-table {
+                        margin-bottom: 24px;
+                        table {
+                            tr {
+                                td {
+                                    vertical-align: top;
+                                }
+                            }
+                        }
+                    }
+                    ul, ol {
+                        @include flex-display(column, flex-start, flex-start);
+                        gap: 8px;
+                        padding-left: 24px;
                         margin-bottom: calc(16px * 1.4);
                         @include respond-to-mob('s-desk') {
-                            font-size: 14px;
                             margin-bottom: calc(14px * 1.4);
                         }
-                        li {
-                            @extend p;
+                        & > ul, ol {
                             margin-bottom: 0;
                         }
                     }
+                    ul {
+                        list-style: circle;
+                    }
+
                     .wp-block-button {
                         &__link {
                             @extend .btn-outline-dark;
