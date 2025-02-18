@@ -8,6 +8,7 @@ import select2 from 'select2';
 //Hook up select2 to jQuery
 select2($);
 import 'select2/dist/js/i18n/es.js';
+import SimpleBar from 'simplebar';
 
 export default class WooFormula {
     constructor() {
@@ -153,6 +154,10 @@ export default class WooFormula {
                         });
 
                         form.find('.available-lens').html(html);
+
+                        new SimpleBar($('#availableLens')[0], {
+                            autoHide: false
+                        });
                     }
                     // add the formula to add to cart form
                     if (response.formula) {
@@ -171,6 +176,7 @@ export default class WooFormula {
                 error: err => {
                     console.log(err);
                     form.find('input[name="lens_type"], input[name="lens_tint"]').siblings('.form-check-label').removeClass('no-click');
+                    form.find('.available-lens').html('<div class="text-center d-block"><p>No se encontró ninguna lente que coincida con tu consulta</p></div>');
                 }
             });
         });

@@ -1,6 +1,8 @@
 <?php
 // partial to render the content of the modal in the lens selection for single product page
 global $product;
+$lens_parent    = get_field('lens_parent_tax', 'option');
+$filters_parent = get_field('filters_parent_tax', 'option');
 ?>
 
 <div class="modal fade" id="lensSelectionModal" tabindex="-1" aria-labelledby="lensSelectionModal" aria-hidden="true">
@@ -21,19 +23,19 @@ global $product;
                                     <?php
                                     $all_lens = get_terms([
                                         'taxonomy'      => 'product_cat',
-                                        'exclude'       => 55,
-                                        'parent'        => 46,
+                                        'exclude'       => $filters_parent,
+                                        'parent'        => $lens_parent,
                                         'hide_empty'    => false,
                                     ]);
                                     $all_lens_tint = get_terms([
                                         'taxonomy'      => 'product_cat',
-                                        'parent'        => 55,
+                                        'parent'        => $filters_parent,
                                         'hide_empty'    => false,
                                     ]);
                                     ?>
                                     <div class="row">
                                         <div class="col-12">
-                                            <h5 class="form-title styled">1. <?php _e('Tipo de visión', 'gafas');?></h5>
+                                            <h5 class="form-title">1. <?php _e('Tipo de visión', 'gafas');?></h5>
                                             <div class="lens-type-wrap type">
                                                 <?php
                                                 foreach ($all_lens as $lens) :
@@ -72,7 +74,7 @@ global $product;
                                         </div>
 
                                         <div class="col-12">
-                                            <h5 class="form-title styled">2. <?php _e('Los deseas de sol con aumento?', 'gafas');?></h5>
+                                            <h5 class="form-title">2. <?php _e('Los deseas con filtros con aumento?', 'gafas');?></h5>
                                             <div class="lens-type-wrap tint">
                                                 <?php
                                                 foreach ($all_lens_tint as $lens) :
@@ -102,7 +104,7 @@ global $product;
 
                                     <div class="row">
                                         <div class="col-12 col-md-6 formula-wrap mb-3 mb-md-0">
-                                            <h5 class="form-title styled">3. <?php _e('Formula', 'gafas');?></h5>
+                                            <h5 class="form-title">3. <?php _e('Formula', 'gafas');?></h5>
                                             <div id="formFormula" class="formula-input">
                                                 <div class="row mb-0">
                                                     <div class="col"></div>
@@ -201,7 +203,7 @@ global $product;
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
-                                            <h5 class="form-title styled">4. <?php _e('Escoge tu lente', 'gafas');?></h5>
+                                            <h5 class="form-title">4. <?php _e('Escoge tu lente', 'gafas');?></h5>
                                             <div class="available-lens" id="availableLens"></div>
                                         </div>
                                     </div>
