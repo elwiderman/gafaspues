@@ -4,13 +4,18 @@ Contributors: YITH
 Tags: product vendors, vendors, vendor, multi store, multi vendor, multi seller, woocommerce product vendors, woocommerce multi vendor, commission rate, seller, shops, vendor shop, vendor system, woo vendors, wc vendors, e-commerce, yit, yith, yithemes
 Requires at least: 6.5
 Tested up to: 6.7
-Stable tag: 5.1.0
+Stable tag: 5.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Multi vendor e-commerce is a new idea of e-commerce platform that is becoming more and more popular in the web.
 
 == Changelog ==
+
+= 5.2.1 - Released on 18 February 2025 =
+
+* Fix: prevent error "implode(): Argument #2 ($array) must be of type ?array, string given"
+* Fix: fixed variation visibility in the integration with YITH Frontend Manager
 
 = 5.2.0 - Released on 5 February 2025 =
 

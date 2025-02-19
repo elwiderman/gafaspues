@@ -334,8 +334,9 @@ if ( ! function_exists( 'yith_wcmv_print_vendor_admin_fields' ) ) {
 
 		$field['custom_attributes'] = implode( ' ', $custom_attributes );
 		// Stringify field classes.
-		$field['class'] = implode( ' ', $field['class'] );
-
+		if( is_array( $field['class'] ) ){
+			$field['class'] = implode( ' ', $field['class'] );
+		}
 		switch ( $field['type'] ) {
 			// Title.
 			case 'title':

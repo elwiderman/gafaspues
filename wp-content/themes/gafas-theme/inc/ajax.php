@@ -5,16 +5,40 @@ add_action('wp_ajax_nopriv_gafas_render_lens_variations', 'gafas_render_lens_var
 
 function gafas_render_lens_variations() {
     // wp_send_json_success($_POST);
-    $frame_id   = $_POST['frame_id'];
-    $lens_type  = $_POST['lens_type'];
-    $lens_tint  = $_POST['lens_tint'];
-    $category_args = [];
+    $frame_id       = $_POST['frame_id'];
+
+    $lens_type      = $_POST['lens_type'];
+    $lens_tint      = $_POST['lens_tint'];
+    $category_args  = ['relation' => 'AND'];
+
+    // get the vendor tax from the product id to fetch the proper lens configs
+    $vendor         = get_the_terms($frame_id, 'yith_shop_vendor')[0];
+    if ($vendor) :
+        array_push($category_args, [
+            'taxonomy'      => 'yith_shop_vendor',
+            'field'         => 'slug',
+            'terms'         => [$vendor->slug],
+            'operator'      => 'IN'
+        ]);
+    endif;
 
     if ($lens_type) {
-        array_push($category_args, $lens_type);
+        array_push($category_args, [
+            'taxonomy'      => 'lente',
+            'field'         => 'slug',
+            'terms'         => $lens_type,
+            'include_children'  => false,
+            'operator'      => 'IN'
+        ]);
     }
     if ($lens_tint) {
-        array_push($category_args, $lens_tint);
+        array_push($category_args, [
+            'taxonomy'      => 'filtro',
+            'field'         => 'slug',
+            'terms'         => $lens_tint,
+            'include_children'  => false,
+            'operator'      => 'IN'
+        ]);
     }
 
     // get the lens connected 
@@ -24,7 +48,7 @@ function gafas_render_lens_variations() {
     $all_lenses_with_cats = new WC_Product_Query([
         'limit'     => -1,
         'return'    => 'ids',
-        'category'  => $category_args
+        'tax_query' => $category_args
     ]);
 
     // the common between the connected lens and all lenses within the current cats will be visible

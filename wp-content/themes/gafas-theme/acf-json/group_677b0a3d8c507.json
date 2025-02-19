@@ -27,7 +27,7 @@
             "max_size": "",
             "mime_types": "",
             "allow_in_bindings": 0,
-            "preview_size": "medium"
+            "preview_size": "thumbnail"
         }
     ],
     "location": [
@@ -35,14 +35,14 @@
             {
                 "param": "taxonomy",
                 "operator": "==",
-                "value": "tipo-de-vision"
+                "value": "filtro"
             }
         ],
         [
             {
                 "param": "taxonomy",
                 "operator": "==",
-                "value": "lente-de-sol"
+                "value": "lente"
             }
         ]
     ],
@@ -55,5 +55,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1736120809
+    "modified": 1740006410
 }
