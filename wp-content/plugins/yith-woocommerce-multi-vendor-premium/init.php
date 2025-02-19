@@ -5,7 +5,7 @@
  * Description: <code><strong>YITH WooCommerce Multi Vendor</strong></code> turns your website into a real marketplace, where it's your partners who will add new products independently while you earn a percentage commission on every sale. Take advantage of this great opportunity to steadily increase your earnings in a simple way. <a href="https://yithemes.com/" target="_blank">Get more plugins for your e-commerce shop on <strong>YITH</strong></a>.
  * Author: YITH
  * Text Domain: yith-woocommerce-product-vendors
- * Version: 5.2.0
+ * Version: 5.2.1
  * Author URI: https://yithemes.com/
  * WC requires at least: 9.5
  * WC tested up to: 9.7
@@ -48,7 +48,7 @@ if ( defined( 'YITH_WPV_VERSION' ) ) {
 	return;
 }
 
-! defined( 'YITH_WPV_VERSION' ) && define( 'YITH_WPV_VERSION', '5.2.0' );
+! defined( 'YITH_WPV_VERSION' ) && define( 'YITH_WPV_VERSION', '5.2.1' );
 ! defined( 'YITH_WPV_DB_VERSION' ) && define( 'YITH_WPV_DB_VERSION', '1.1.14' );
 ! defined( 'YITH_WPV_SLUG' ) && define( 'YITH_WPV_SLUG', 'yith-woocommerce-product-vendors' );
 ! defined( 'YITH_WPV_SECRET_KEY' ) && define( 'YITH_WPV_SECRET_KEY', '6NBH2Snt7DFU4J02vtgl' );

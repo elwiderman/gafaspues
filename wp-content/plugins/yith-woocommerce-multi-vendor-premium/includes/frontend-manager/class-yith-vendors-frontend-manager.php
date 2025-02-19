@@ -262,10 +262,10 @@ if ( ! class_exists( 'YITH_Vendors_Frontend_Manager' ) ) {
 				add_filter( 'yith_wcsc_account_page_script_data', array( $this, 'stripe_connect_account_template_args' ) );
 				// Panel policy revision message.
 				add_action( 'yith_wcmf_before_print_section', array( $this, 'print_check_revision_message' ), 5 );
-				/* === Vendor Panel: Search Customer ===  */
+				// Vendor Panel: Search Customer.
 				add_action( 'wc_ajax_json_search_customers', 'YITH_Vendors_Admin::json_search_admins', 5 );
 
-				// Report Stock
+				// Report Stock.
 				add_filter( 'woocommerce_report_low_in_stock_query_from', array( $this, 'filter_report_stock_query_from' ) );
 				add_filter( 'woocommerce_report_out_of_stock_query_from', array( $this, 'filter_report_stock_query_from' ) );
 				add_filter( 'woocommerce_report_most_stocked_query_from', array( $this, 'filter_report_stock_query_from' ) );
@@ -693,7 +693,14 @@ if ( ! class_exists( 'YITH_Vendors_Frontend_Manager' ) ) {
 		 */
 		public function get_product_query_by_vendor( $query, $query_args ) {
 
-			if ( $this->current_user_is_vendor ) {
+			if ( ! $this->current_user_is_vendor ) {
+				return $query;
+			}
+
+			if ( in_array( 'product_variation', (array) ( $query['post_type'] ?? array( 'product' ) ), true ) ) {
+				$query['post_parent__in'] = $this->vendor->get_products();
+			}
+			else {
 				$query['tax_query'][] = array(
 					'taxonomy' => YITH_Vendors_Taxonomy::TAXONOMY_NAME,
 					'field'    => 'term_id',

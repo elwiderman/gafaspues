@@ -62,6 +62,10 @@ if ( ! class_exists( 'YITH_Vendors_Orders_Sync' ) ) {
 				if ( defined( 'YITH_YWSBS_PREMIUM' ) ) {
 					add_action( 'yith_suborder_renew_created', array( $this, 'suborder_status_synchronization' ) );
 				}
+
+				if( defined('BH_SUBSCRIPTIONS_INIT' ) ) {
+					add_action( 'bluehost/subscriptions/suborder_renew_created',  array( $this, 'suborder_status_synchronization' ) );
+				}
 			}
 
 			// Suborder - parent order status synchronization.
