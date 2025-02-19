@@ -128,11 +128,11 @@ export default class WooFormula {
                 },
                 success: response => {
                     // console.log(response);
-                    if (response.results) {
+                    if (response.results.length > 0) {
                         let html = '';
 
                         response.results.forEach((elem, i) => {
-                            console.log(elem);
+                            // console.log(elem);
 
                             html += `
                             <div class='lens'>
@@ -158,6 +158,8 @@ export default class WooFormula {
                         new SimpleBar($('#availableLens')[0], {
                             autoHide: false
                         });
+                    } else {
+                        form.find('.available-lens').html('<div class="text-center d-block"><p>No se encontró ninguna lente que coincida con tu consulta</p></div>');
                     }
                     // add the formula to add to cart form
                     if (response.formula) {
@@ -233,7 +235,7 @@ export default class WooFormula {
                 },
                 success: response => {
                     console.log(response);
-                    btn.removeClass('loading');
+                    // btn.removeClass('loading');
                     if (response.cart) {
                         window.location.replace(response.cart);
                     }

@@ -29,6 +29,20 @@
                                 }
                             }
                         }
+                        .onsale {
+                            top: -5px;
+                            left: -10px;
+                            width: initial;
+                            height: 40px;
+                            min-height: unset;
+                            font-size: 20px;
+                            font-weight: $semi-bold;
+                            color: $primary-bg;
+                            line-height: 40px;
+                            background-color: $primary-color;
+                            border-radius: 0;
+                            padding: 0 30px;
+                        }
                     }
 
                     .entry-summary {

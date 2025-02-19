@@ -193,14 +193,17 @@
                                 background: rgba($primary-color, 0.1);
                             }
                             &--title {
+                                flex: none;
+                                width: 65%;
                                 @include font($secondary-font, $semi-bold);
                                 font-size: 20px;
                             }
                             &--price {
+                                flex: 1 0;
                                 @include font($secondary-font, $medium);
                                 font-size: 17px;
                                 color: $primary-font-color;
-                                @include flex-display(row, flex-start, flex-end);
+                                @include flex-display(column, flex-end, flex-end);
                                 @include respond-to-mob('medium') {
                                     font-size: 15px;
                                 }
@@ -256,15 +259,12 @@
                                 flex: none;
                                 width: 100%;
                                 @include flex-display(row, space-between, flex-start);
+                                gap: 5px;
                                 margin-bottom: 8px;
                             }
                             &--bottom {
                                 flex: none;
                                 width: 100%;
-                            }
-                            &--title {
-                                flex: none;
-                                width: 65%;
                             }
                             &--desc {
                                 ul {

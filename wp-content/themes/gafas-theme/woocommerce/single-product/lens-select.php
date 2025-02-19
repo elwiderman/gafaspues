@@ -1,8 +1,6 @@
 <?php
 // partial to render the content of the modal in the lens selection for single product page
 global $product;
-$lens_parent    = get_field('lens_parent_tax', 'option');
-$filters_parent = get_field('filters_parent_tax', 'option');
 ?>
 
 <div class="modal fade" id="lensSelectionModal" tabindex="-1" aria-labelledby="lensSelectionModal" aria-hidden="true">
@@ -22,14 +20,11 @@ $filters_parent = get_field('filters_parent_tax', 'option');
                                     <input type="hidden" name="action" value="gafas_render_lens_variations">
                                     <?php
                                     $all_lens = get_terms([
-                                        'taxonomy'      => 'product_cat',
-                                        'exclude'       => $filters_parent,
-                                        'parent'        => $lens_parent,
+                                        'taxonomy'      => 'lente',
                                         'hide_empty'    => false,
                                     ]);
                                     $all_lens_tint = get_terms([
-                                        'taxonomy'      => 'product_cat',
-                                        'parent'        => $filters_parent,
+                                        'taxonomy'      => 'filtro',
                                         'hide_empty'    => false,
                                     ]);
                                     ?>
@@ -42,7 +37,7 @@ $filters_parent = get_field('filters_parent_tax', 'option');
                                                     $lens_name      = $lens->name;
                                                     $lens_slug      = $lens->slug;
                                                     $lens_id        = $lens->term_id;
-                                                    $thumb_id       = get_term_meta($lens_id, 'thumbnail_id', true);
+                                                    $thumb_id       = get_term_meta($lens_id, 'icon_img', true);
                                                     $lens_thumb     = wp_get_attachment_image_url($thumb_id, 'full');
                                                     $lens_desc      = $lens->description;
                                                     $tooltip        = '';
@@ -81,7 +76,7 @@ $filters_parent = get_field('filters_parent_tax', 'option');
                                                     $lens_name      = $lens->name;
                                                     $lens_slug      = $lens->slug;
                                                     $lens_id        = $lens->term_id;
-                                                    $thumb_id       = get_term_meta($lens_id, 'thumbnail_id', true);
+                                                    $thumb_id       = get_term_meta($lens_id, 'icon_img', true);
                                                     $lens_thumb     = wp_get_attachment_image_url($thumb_id, 'full');
                 
                                                     echo "
