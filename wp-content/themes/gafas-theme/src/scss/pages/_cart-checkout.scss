@@ -184,6 +184,7 @@
         }
 
         &.cart {
+            padding-bottom: 50px;
             .wp-block-heading {
                 @extend .h3, .styled;
                 margin-top: 30px;
@@ -208,6 +209,236 @@
                         .wc-block-components-product-details {
                             &:not(:first-child) {
                                 display: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .woocommerce {
+                .woocommerce-cart-form {
+                    &__contents {
+                        border: none;
+                        border-radius: 0;
+                        th {
+                            font-size: 0.75em;
+                            line-height: 1.2;
+                            text-transform: uppercase;
+                            padding: 8px 12px;
+                            &:first-child {
+                                padding-left: 0;
+                            }
+                            &:last-child {
+                                padding-right: 0;
+                            }
+                        }
+                        tr {
+                            td.actions {
+                                padding: 15px 12px;
+                                .coupon {
+                                    .input-text {
+                                        font-size: 14px;
+                                        min-width: 137px;
+                                        height: 38px;
+                                        border-color: $form-border;
+                                        &:focus {
+                                            border-color: $primary-font-color;
+                                        }
+                                    }
+                                    .btn-outline-dark {
+                                        height: 38px;
+                                        border-radius: 0;
+                                        padding: 0 10px;
+                                    }
+                                }
+
+                                button[name='update_cart'] {
+                                    height: 38px;
+                                    border-radius: 0;
+                                    padding: 0 15px;
+                                    &:disabled {
+                                        opacity: 0.4;
+                                        pointer-events: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &__cart-item {
+                        td {
+                            vertical-align: top;
+                            padding: 24px 0 24px 16px;
+                        }
+                        .product-thumbnail {
+                            a {
+                                display: block;
+                                img {
+                                    width: 84px;
+                                    max-width: 100%;
+                                    height: auto;
+                                }
+                            }
+                        }
+                        .product-detail {
+                            &__wrap {
+                                margin-bottom: 12px;
+                                a {
+                                    display: inline-flex;
+                                }
+                            }
+
+                            &__price {
+                                margin-bottom: 12px;
+                                &--wrap {
+                                    font-size: 15px;
+                                    ins {
+                                        text-decoration: unset;
+                                        margin-left: 5px;
+                                    }
+                                }
+                            }
+
+                            &__meta {
+                                margin-bottom: 12px;
+                                &--variation {
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 5px;
+                                    margin-bottom: 12px;
+                                    li {
+                                        @include flex-display();
+                                        gap: 5px;
+                                        span {
+                                            font-size: 11px;
+                                            line-height: 1.2;
+                                            &:first-child {
+                                                font-weight: $bold;
+                                            }
+                                        }
+                                        p {
+                                            font-size: 11px;
+                                            line-height: 1.2;
+                                            margin-bottom: 0;
+                                        }
+                                    }
+                                }
+                                &--est-delivery {
+                                    font-size: 12px;
+                                    font-weight: $semi-bold;
+                                }
+                            }
+
+                            &__remove {
+                                .remove {
+                                    display: inline-flex;
+                                    font-size: 12px;
+                                    font-weight: $semi-bold;
+                                    color: $primary-font-color !important;
+                                    line-height: 1.2;
+                                    text-decoration: underline;
+                                    height: auto;
+                                    width: initial;
+                                    &:hover {
+                                        background: transparent !important;
+                                        opacity: 0.5;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .cart-collaterals {
+                    .cart_totals {
+                        float: unset;
+                        width: 100%;
+                        @include respond-to('medium') {
+                            padding-left: 20px;
+                        }
+                        @include respond-to('s-desk') {
+                            padding-left: 65px;
+                        }
+                        &--title {
+                            @include font($secondary-font, $bold);
+                            font-size: 0.75em;
+                            line-height: 1.2;
+                            text-transform: uppercase;
+                            padding: 8px 12px;
+                        }
+
+                        .shop_table {
+                            border: none;
+                            border-radius: 0;
+                            .cart-subtotal {
+                                th {
+                                    font-weight: $regular;
+                                    font-size: 15px;
+                                }
+                                td {
+                                    font-size: 16px;
+                                    text-align: right;
+                                }
+                            }
+                            .shipping {
+                                th {
+                                    font-weight: $regular;
+                                    font-size: 15px;
+                                }
+                                td {
+                                    ul#shipping_method {
+                                        li {
+                                            text-align: right;
+                                            label {
+                                                display: flex;
+                                                flex-direction: row;
+                                                justify-content: flex-end;
+                                                font-size: 13px;
+                                                gap: 7px;
+                                                .amount {
+                                                   font-size: 16px;
+                                                   font-weight: $regular; 
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .woocommerce-shipping-destination {
+                                        font-size: 15px;
+                                        strong {
+                                            font-size: 14px;
+                                        }
+                                    }
+                                    .woocommerce-shipping-calculator {
+                                        .shipping-calculator-button {
+                                            font-weight: $regular;
+                                            text-decoration: underline;
+                                        }
+                                    }
+                                }
+                            }
+                            .order-total {
+                                th {
+                                    font-weight: $semi-bold;
+                                    font-size: 20px;
+                                    padding: 15px 12px;
+                                }
+                                td {
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: flex-end;
+                                    padding: 15px 12px;
+                                    strong {
+                                        font-size: 22px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .wc-proceed-to-checkout {
+                            .checkout-button {
+                                @extend .btn-dark, .btn-xl;
+                                width: 100%;
+                                min-height: 60px;
+                                border-radius: 0;
                             }
                         }
                     }

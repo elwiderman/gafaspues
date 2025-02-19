@@ -228,3 +228,23 @@ function gafas_custom_woocommerce_form_field($field, $key, $args, $value) {
     return $custom_field;
 }
 
+
+
+// hide specific items from the product meta 
+add_filter('woocommerce_get_item_data', 'gafas_hide_specific_cart_meta', 10, 2);
+function gafas_hide_specific_cart_meta($item_data, $cart_item) {
+    $meta_keys_to_hide = ['Esferico', 'Cilindro', 'Adicional']; // Add meta keys to hide
+
+    foreach ($item_data as $key => $meta) {
+        if (in_array($meta['key'], $meta_keys_to_hide)) {
+            unset($item_data[$key]);
+        }
+    }
+
+    // take out wpced_date from the $item_data and append it to the end
+    $wpced_date = $item_data['wpced_date'];
+    unset($item_data['wpced_date']);
+    $item_data['wpced_date'] = $wpced_date;
+
+    return $item_data;
+}
