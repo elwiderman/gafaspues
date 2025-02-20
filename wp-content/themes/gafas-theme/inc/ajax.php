@@ -36,7 +36,6 @@ function gafas_render_lens_variations() {
             'taxonomy'      => 'lente',
             'field'         => 'slug',
             'terms'         => $lens_type,
-            'include_children'  => false,
             'operator'      => 'IN'
         ]);
     }
@@ -45,13 +44,12 @@ function gafas_render_lens_variations() {
             'taxonomy'      => 'filtro',
             'field'         => 'slug',
             'terms'         => $lens_tint,
-            'include_children'  => false,
             'operator'      => 'IN'
         ]);
     }
 
     // get the lens connected 
-    $connected_lens = get_field('prod_lens_relation', $frame_id);
+    // $connected_lens = get_field('prod_lens_relation', $frame_id);
     
     // get all the lens with the selected lens type and tint
     $all_lenses_with_cats = new WC_Product_Query([
@@ -61,7 +59,7 @@ function gafas_render_lens_variations() {
     ]);
 
     // the common between the connected lens and all lenses within the current cats will be visible
-    $active_products = array_intersect($connected_lens, $all_lenses_with_cats->get_products());
+    // $active_products = array_intersect($connected_lens, $all_lenses_with_cats->get_products());
 
     // get the values and just return the type of power added to determine the prices of the lens to create the variations
     // for esf
@@ -102,20 +100,21 @@ function gafas_render_lens_variations() {
     ];
 
     // if lens_type is senllio or solo-para-descanso remove attribute for adicion
-    if (in_array($lens_type, ['sensillo', 'solo-para-descanso'])) {
+    if (in_array($lens_type, ['monofocal', 'solo-para-descanso'])) {
         unset($attributes['attribute_pa_adicion']);
     }
 
     $variations = [];
 
-    if ($active_products) {
-        foreach ($active_products as $prod) {
+    if ($all_lenses_with_cats->get_products()) {
+        foreach ($all_lenses_with_cats->get_products() as $prod) {
             $product        = wc_get_product($prod);
             $prod_title     = $product->get_name();
             $prod_desc      = $product->get_description();
 
             $variation_id   = $product->get_matching_variation($attributes);
             $var_prod       = wc_get_product($variation_id);
+
             $price          = $var_prod->get_price();
             $price_html     = $var_prod->get_price_html();
 
