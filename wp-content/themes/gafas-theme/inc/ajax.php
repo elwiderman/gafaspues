@@ -9,7 +9,16 @@ function gafas_render_lens_variations() {
 
     $lens_type      = $_POST['lens_type'];
     $lens_tint      = $_POST['lens_tint'];
-    $category_args  = ['relation' => 'AND'];
+    $category_args  = [
+        'relation' => 'AND',
+        [
+            'taxonomy'      => 'product_cat',
+            'field'         => 'slug',
+            'terms'         => 'lentes',
+            'include_children'  => false,
+            'operator'      => 'IN'
+        ]
+    ];
 
     // get the vendor tax from the product id to fetch the proper lens configs
     $vendor         = get_the_terms($frame_id, 'yith_shop_vendor')[0];
