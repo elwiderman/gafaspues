@@ -318,6 +318,16 @@
                                 @include font($secondary-font, $semi-bold);
                                 margin-bottom: 10px;
                             }
+                            ul, ol {
+                                @extend p;
+                                padding-left: 20px;
+                            }
+                            ul {
+                                list-style: circle;
+                            }
+                            ol {
+                                list-style: decimal;
+                            }
                             .woocommerce-Reviews {
                                 #comments {
                                     .commentlist {
