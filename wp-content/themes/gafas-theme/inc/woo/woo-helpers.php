@@ -248,3 +248,16 @@ function gafas_hide_specific_cart_meta($item_data, $cart_item) {
 
     return $item_data;
 }
+
+
+add_filter('woocommerce_order_item_get_formatted_meta_data', function($formatted_meta, $item) {
+    $hidden_meta_keys = ['Esferico', 'Cilindro', 'Adicional']; // Add meta keys to hide
+
+    foreach ($formatted_meta as $key => $meta) {
+        if (in_array($meta->key, $hidden_meta_keys)) {
+            unset($formatted_meta[$key]); // Remove the unwanted meta
+        }
+    }
+
+    return $formatted_meta;
+}, 10, 2);
