@@ -236,7 +236,7 @@ function gafas_custom_woocommerce_form_field($field, $key, $args, $value) {
 // hide specific items from the product meta 
 add_filter('woocommerce_get_item_data', 'gafas_hide_specific_cart_meta', 10, 2);
 function gafas_hide_specific_cart_meta($item_data, $cart_item) {
-    $meta_keys_to_hide = ['Esferico', 'Cilindro', 'Adicional']; // Add meta keys to hide
+    $meta_keys_to_hide = ['Esferico', 'Cilindro', 'Adicional', 'Lentes - Esferico', 'Lentes - Cilindro', 'Lentes - Adicion']; // Add meta keys to hide
 
     foreach ($item_data as $key => $meta) {
         if (in_array($meta['key'], $meta_keys_to_hide)) {
@@ -252,9 +252,10 @@ function gafas_hide_specific_cart_meta($item_data, $cart_item) {
     return $item_data;
 }
 
-
-add_filter('woocommerce_order_item_get_formatted_meta_data', function($formatted_meta, $item) {
-    $hidden_meta_keys = ['Esferico', 'Cilindro', 'Adicional']; // Add meta keys to hide
+// hide specific items from the product meta in emails
+add_filter('woocommerce_order_item_get_formatted_meta_data', 'gafas_hide_specific_prod_meta_emails', 10, 2);
+function gafas_hide_specific_prod_meta_emails($formatted_meta, $item) {
+    $hidden_meta_keys = ['Esferico', 'Cilindro', 'Adicional', 'Lentes - Esferico', 'Lentes - Cilindro', 'Lentes - Adicion']; // Add meta keys to hide
 
     foreach ($formatted_meta as $key => $meta) {
         if (in_array($meta->key, $hidden_meta_keys)) {
@@ -263,4 +264,4 @@ add_filter('woocommerce_order_item_get_formatted_meta_data', function($formatted
     }
 
     return $formatted_meta;
-}, 10, 2);
+}

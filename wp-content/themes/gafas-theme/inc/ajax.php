@@ -170,14 +170,14 @@ function gafas_add_lens_config_to_cart() {
             $_POST['variation_id'],
             null,
             [
-                'left_esf'  => $_POST['left_esf'],
                 'right_esf' => $_POST['right_esf'],
-                'left_cil'  => $_POST['left_cil'],
+                'left_esf'  => $_POST['left_esf'],
                 'right_cil' => $_POST['right_cil'],
-                'left_eje'  => $_POST['left_eje'],
+                'left_cil'  => $_POST['left_cil'],
                 'right_eje' => $_POST['right_eje'],
-                'left_add'  => $_POST['left_add'],
+                'left_eje'  => $_POST['left_eje'],
                 'right_add' => $_POST['right_add'],
+                'left_add'  => $_POST['left_add'],
                 'dp'        => $_POST['dp'],
             ]
         );
@@ -296,32 +296,32 @@ function hide_variable_attributes_for_cart_block($response, $cart_item) {
 
 add_action('woocommerce_checkout_create_order_line_item', 'custom_save_cart_meta_to_order', 10, 4);
 function custom_save_cart_meta_to_order($item, $cart_item_key, $values, $order) {    
-    if (isset($values['left_esf'])) {
-        $item->add_meta_data(__('Oje Izq. ESF.', 'gafas'), $values['left_esf']);
-    }
     if (isset($values['right_esf'])) {
         $item->add_meta_data(__('Oje Der. ESF.', 'gafas'), $values['right_esf']);
     }
-    
-    if (isset($values['left_cil'])) {
-        $item->add_meta_data(__('Oje Izq. CIL.', 'gafas'), $values['left_cil']);
+    if (isset($values['left_esf'])) {
+        $item->add_meta_data(__('Oje Izq. ESF.', 'gafas'), $values['left_esf']);
     }
+    
     if (isset($values['right_cil'])) {
         $item->add_meta_data(__('Oje Der. CIL.', 'gafas'), $values['right_cil']);
     }
-
-    if (isset($values['left_eje'])) {
-        $item->add_meta_data(__('Oje Izq. EJE.', 'gafas'), $values['left_eje']);
+    if (isset($values['left_cil'])) {
+        $item->add_meta_data(__('Oje Izq. CIL.', 'gafas'), $values['left_cil']);
     }
+
     if (isset($values['right_eje'])) {
         $item->add_meta_data(__('Oje Der. EJE.', 'gafas'), $values['right_eje']);
     }
-    
-    if (isset($values['left_add'])) {
-        $item->add_meta_data(__('Oje Izq. ADD.', 'gafas'), $values['left_add']);
+    if (isset($values['left_eje'])) {
+        $item->add_meta_data(__('Oje Izq. EJE.', 'gafas'), $values['left_eje']);
     }
+    
     if (isset($values['right_add'])) {
         $item->add_meta_data(__('Oje Der. ADD.', 'gafas'), $values['right_add']);
+    }
+    if (isset($values['left_add'])) {
+        $item->add_meta_data(__('Oje Izq. ADD.', 'gafas'), $values['left_add']);
     }
 
     if (isset($values['dp'])) {
