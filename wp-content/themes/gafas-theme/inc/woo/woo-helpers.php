@@ -71,7 +71,10 @@ function gafas_unset_shipping_when_free_is_available_all_zones( $rates, $package
 add_action('pre_get_posts', 'gafashide_category_products_from_shop');
 function gafashide_category_products_from_shop($query) {
     // Check if it's the main query on the shop page
-    if (!is_admin() && $query->is_main_query() && is_shop()) {
+    if (!is_admin() && 
+        (
+            ($query->is_main_query() && is_shop()) || is_tax()
+        )) :
         // Categories to exclude
         $excluded_categories = ['lentes']; // Replace with your category slugs
 
@@ -96,7 +99,7 @@ function gafashide_category_products_from_shop($query) {
             'operator' => 'NOT IN',
         ];
         $query->set('tax_query', $tax_query);
-    }
+    endif;
 }
 
 

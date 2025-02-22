@@ -73,7 +73,7 @@ function gafas_woo_loop_thumb_modifier() {
             if (has_post_thumbnail($product->get_id())) :
                 echo $product->get_image($img_size, $attr);
             else :
-                $src = product_placeholder($img_size);
+                $src = gafas_placeholder_src($img_size);
 
                 echo "<img src='{$src['url']}' class='img-fluid'>";
             endif;
