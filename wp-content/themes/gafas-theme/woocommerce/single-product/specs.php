@@ -3,11 +3,11 @@
 global $product;
 $pid    = $product->get_id();
 
-$seller_id      = $product->get_post_data()->post_author;
+// $seller_id      = $product->get_post_data()->post_author;
 // $seller         = dokan()->vendor->get($seller_id);
 // $seller_name    = $seller->get_shop_name();
 // create the seller url from the shop url
-$store_url      = get_permalink(wc_get_page_id('shop'));
+// $store_url      = get_permalink(wc_get_page_id('shop'));
 // $seller_url     = add_query_arg(['marca' => $seller_id], $store_url);
 // $string         = __('Marca:', 'gafas');
 ?>
