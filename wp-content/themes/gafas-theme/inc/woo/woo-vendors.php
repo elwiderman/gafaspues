@@ -14,36 +14,41 @@ function gafas_vendor_can_add_prods($user_id) {
     ];
 
     if (in_array('yith_vendor', $user_data->roles)) :
-        $vendor			= yith_wcmv_get_vendor($user_meta['yith_product_vendor'][0]);
+        $vendor_id      = $user_meta['yith_product_vendor'][0];
         
-        $plan           = get_term_meta( $vendor->term_id, 'cm_plan_type', true);
-        
-        // to count the number of products by the vendor
-        $query			= new WP_Query([
-            'post_type'		=> 'product',
-            'posts_per_page'=> -1,
-            'post_status'	=> 'any',
-            'tax_query'		=> [
-                [
-                    'taxonomy'      => 'yith_shop_vendor',
-                    'field'         => 'slug',
-                    'terms'         => [$vendor->slug],
-                    'operator'      => 'IN'
+        if ($vendor_id) :
+            $vendor     = get_term_by('id', $vendor_id, 'yith_shop_vendor');
+            $plan       = get_term_meta($vendor_id, 'cm_plan_type', true);
+
+            // to count the number of products by the vendor
+            $query      = new WP_Query([
+                'post_type'		=> 'product',
+                'posts_per_page'=> -1,
+                'post_status'	=> 'any',
+                'tax_query'		=> [
+                    [
+                        'taxonomy'      => 'yith_shop_vendor',
+                        'field'         => 'slug',
+                        'terms'         => [$vendor->slug],
+                        'operator'      => 'IN'
+                    ]
                 ]
-            ]
-        ]);
+            ]);
 
-        $found_posts    = $query->found_posts;
-        $result['plan'] = $plan;
+            $found_posts    = $query->found_posts;
+            $result['plan'] = $plan;
 
-        if ($plan === 'premium') :
-            $result['flag']     = true;
-        else :
-            $limit              = $plan === 'basic' ? $limit_group['basic_num'] : $limit_group['adv_num'];
-            $result['limit']    = $limit;
-            $result['flag']     = $found_posts >= $limit ? false : true;
-            return $result;
+            if ($plan === 'premium') :
+                $result['flag']     = true;
+            else :
+                $limit              = $plan === 'basic' ? $limit_group['basic_num'] : $limit_group['adv_num'];
+                $result['limit']    = $limit;
+                $result['flag']     = $found_posts >= $limit ? false : true;
+                return $result;
+            endif;
         endif;
+
+        return $result;
     else :
         return $result;
     endif;
@@ -55,7 +60,9 @@ add_action('admin_notices', 'gafas_show_admin_notice_to_vendors');
 function gafas_show_admin_notice_to_vendors() {
     $check_can_add = gafas_vendor_can_add_prods(get_current_user_id());
 
-
+    // echo '<pre>';
+    // var_dump($check_can_add);
+    // echo '</pre>';
 
     if ($check_can_add['flag'] == false) :
         $limit  = $check_can_add['limit'];
