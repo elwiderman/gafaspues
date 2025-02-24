@@ -43,6 +43,10 @@ function gafas_framework_scripts() {
         wp_enqueue_style('vendor-css', $path . gafas_get_hashed_assets('scss/vendor.scss'), array(), '', 'all');
     }
 
+    if (is_page_template('templates/page-contact.php')) {
+        wp_enqueue_style('contact-css', $path . gafas_get_hashed_assets('scss/contact.scss'), array(), '', 'all');
+    }
+
 
     // the stylesheets
     global $wp_styles; // Call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way

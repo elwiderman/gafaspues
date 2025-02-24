@@ -22,7 +22,8 @@
     "src/scss/woo-account.scss",
     "src/scss/shop.scss",
     "src/scss/helpers.scss",
-    "src/scss/vendor.scss"
+    "src/scss/vendor.scss",
+    "src/scss/contact.scss"
   ],
   "keywords": [],
   "devDependencies": {

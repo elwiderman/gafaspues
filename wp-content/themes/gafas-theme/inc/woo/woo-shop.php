@@ -29,4 +29,8 @@ function gafas_move_breadcrumb_in_shop_header() {
         // Add breadcrumb before the title
         add_action('woocommerce_archive_description', 'woocommerce_breadcrumb', 5);
     }
+    if (is_tax('yith_shop_vendor')) {
+        // Remove the default breadcrumb
+        remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
+    }
 }
