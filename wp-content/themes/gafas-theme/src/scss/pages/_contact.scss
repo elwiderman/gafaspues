@@ -1,0 +1,101 @@
+.single-page {
+    &.single-contact {
+        .section-block {
+            &.section-hero {
+                position: relative;
+                height: 300px;
+                margin-bottom: 25px;
+                z-index: 0;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 8px;
+                    background: $primary-color;
+                    background-color: #4158D0;
+                    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+                    z-index: 1;
+                }
+                .banner {
+                    @include full-absolute(-1);
+                    background-position: bottom left;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                }
+            }
+            &.section-main {
+                padding-bottom: 60px;
+                .page-title {
+                    margin-bottom: 20px;
+                }
+                .address-label {
+                    font-weight: $bold;
+                    margin-bottom: 0;
+                }
+                .email, .phone {
+                    @include flex-display;
+                    gap: 10px;
+                    margin-bottom: 1rem;
+                    a {
+                        font-weight: $semi-bold;
+                    }
+                }
+                .form-contact {
+                    .form-title {
+                        margin-bottom: 20px;
+                    }
+                    .wpcf7-form {
+                        .form-group {
+                            margin-bottom: 12px;
+                            .form-control {
+                                height: 50px;
+                                @include add-border(1px, $primary-font-color, 'all');
+                                border-radius: 4px;
+                                &.wpcf7-not-valid {
+                                    border-color: $red;
+                                    & ~ .wpcf7-not-valid-tip {
+                                        display: none !important;
+                                    }
+                                }
+                            }
+                            textarea.form-control {
+                                height: 100px;
+                                resize: none;
+                            }
+                        }
+                        .form-submit {
+                            .wpcf7-submit {
+                                @extend .btn-xl;
+                                position: relative;
+                                z-index: 0;
+                                .loading {
+                                    position: absolute;
+                                    top: calc(50% - 15px);
+                                    left: calc(50% - 15px);
+                                    @include spinner(30px, $primary-color, $primary-font-color);
+                                    opacity: 0;
+                                    z-index: 0;
+                                }
+                            }
+                        }
+                        &.submitting {
+                            .form-submit {
+                                .wpcf7-submit {
+                                    pointer-events: none;
+                                    .loading {
+                                        opacity: 1;
+                                    }
+                                    .label {
+                                        opacity: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
