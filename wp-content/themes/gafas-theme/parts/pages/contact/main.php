@@ -35,6 +35,9 @@
                             <a href='tel:57{$phone}' target='_blank'>{$phone}</a>
                         </div>";
                     endif;
+
+                    echo "<p class='redes'>Nuestros Redes</p>";
+                    get_template_part('parts/pages/contact/socials');
                     ?>
                 </div>
             </div>

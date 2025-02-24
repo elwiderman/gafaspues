@@ -42,6 +42,23 @@
                         font-weight: $semi-bold;
                     }
                 }
+                .redes {
+                    font-weight: $bold;
+                    margin-bottom: 8px;
+                    margin-top: 30px;
+                }
+                .socials {
+                    @include flex-display;
+                    gap: 20px;
+                    margin-bottom: 40px;
+                    li {
+                        a {
+                            i {
+                                font-size: 30px;
+                            }
+                        }
+                    }
+                }
                 .form-contact {
                     .form-title {
                         margin-bottom: 20px;
