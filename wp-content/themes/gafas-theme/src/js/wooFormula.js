@@ -34,6 +34,8 @@ export default class WooFormula {
         addCartBtn.hide();
         quantity.hide();
 
+        let modal = new bootstrap.Modal($('#lensSelectionModal')[0]);
+
         cartForm.on('change', '.frame-option', e => {
             let value = $(e.currentTarget).val();
             
@@ -44,9 +46,13 @@ export default class WooFormula {
                 addCartBtn.hide();
                 quantity.hide();
 
-                let modal = new bootstrap.Modal($('#lensSelectionModal')[0]);
                 modal.show();
             }
+        });
+
+        // show the modal also when the item is checked 
+        $('#frame_option_powered').siblings('label').on('click', e => {
+            modal.show();
         });
 
         // select the first options for lens type and lens tint
@@ -90,9 +96,9 @@ export default class WooFormula {
 
             let value = $(e.currentTarget).val();
             if (value === 'solo-para-descanso') {
-                formulaWrap.fadeOut();
+                formulaWrap.addClass('no-click');
             } else {
-                formulaWrap.fadeIn();
+                formulaWrap.removeClass('no-click');
             }
         });
 
@@ -123,8 +129,9 @@ export default class WooFormula {
                 beforeSend: xhr => {
                     console.log('loading lens ...');
                     form.find('.available-lens').html('<div class="loading"><span>Recogiendo las lentes....</span><span class="spinner"></span></div>');
-                    console.log(data);
+                    // console.log(data);
                     form.find('input[name="lens_type"], input[name="lens_tint"]').siblings('.form-check-label').addClass('no-click');
+                    $('#formFormula').addClass('no-click');
                 },
                 success: response => {
                     // console.log(response);
@@ -142,6 +149,7 @@ export default class WooFormula {
                                     data-lens_name='${elem.lens_name}'
                                     data-lens_price='${elem.price_html}'>
                                     <div class='lens__select--top'>
+                                        <span class='lens__select--icon'><i class='icon-square'></i></span>
                                         <h4 class='lens__select--title'>${elem.lens_name}</h4>
                                         <div class='lens__select--price' data-price='${elem.price}'>${elem.price_html}</div>
                                     </div>
@@ -171,13 +179,21 @@ export default class WooFormula {
                         });
                     }
 
+                    // allow clicking again
                     form.find('input[name="lens_type"], input[name="lens_tint"]').siblings('.form-check-label').removeClass('no-click');
+                    $('#formFormula').removeClass('no-click');
+
+                    // if the selection is for descanso - dont remove no-click for formula
+                    if (data.lens_type === 'solo-para-descanso') {
+                        $('#formFormula').addClass('no-click');
+                    }
 
                     this.handleFinalLensSelect();
                 },
                 error: err => {
                     console.log(err);
                     form.find('input[name="lens_type"], input[name="lens_tint"]').siblings('.form-check-label').removeClass('no-click');
+                    $('#formFormula').removeClass('no-click');
                     form.find('.available-lens').html('<div class="text-center d-block"><p>No se encontró ninguna lente que coincida con tu consulta</p></div>');
                 }
             });
@@ -198,6 +214,10 @@ export default class WooFormula {
                 lens_price = lens.data('lens_price'),
                 lens_price_raw = lens.find('.lens__select--price').data('price'),
                 frame_price = addToCartForm.find('.selected-wrap__row.frame .selected-wrap__price').data('prod_price');
+
+            // toggle class for styling - remove selected from others and select the current
+            lensWrap.find('.lens__select').removeClass('selected');
+            lens.addClass('selected');
             
             addToCartForm.find('input[name="lens_id"]').val(lens_id);
             addToCartForm.find('input[name="variation_id"]').val(lens_varation);

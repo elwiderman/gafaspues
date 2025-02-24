@@ -29,7 +29,7 @@ global $product;
                                     ]);
                                     ?>
                                     <div class="row">
-                                        <div class="col-12">
+                                        <div class="col-12 col-md-6">
                                             <h5 class="form-title">1. <?php _e('Tipo de visión', 'gafas');?></h5>
                                             <div class="lens-type-wrap type">
                                                 <?php
@@ -68,7 +68,7 @@ global $product;
                                             <hr>
                                         </div>
 
-                                        <div class="col-12">
+                                        <div class="col-12 col-md-6">
                                             <h5 class="form-title">2. <?php _e('Los deseas con filtros con aumento?', 'gafas');?></h5>
                                             <div class="lens-type-wrap tint">
                                                 <?php
