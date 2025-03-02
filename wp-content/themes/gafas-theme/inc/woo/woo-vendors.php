@@ -1,4 +1,6 @@
 <?php
+// all hooks and helpers for the vendors
+
 
 function gafas_vendor_can_add_prods($user_id) {
     $user_meta			= get_user_meta($user_id);
@@ -101,4 +103,60 @@ function gafas_hide_add_prod_btn_css() {
             .page-title-action { display: none !important; }
         </style>';
     endif;
+}
+
+
+// add custom menu page for vendors only
+add_action('admin_menu', 'gafas_add_menu_to_admin_panel', 999);
+function gafas_add_menu_to_admin_panel() {
+    add_menu_page( 
+        __('Pedidos', 'gafas'),
+        __('Pedidos', 'gafas'),
+        'view_custom_gafas_wc_orders', // this is the custom capability for the yith_vendor user role
+        'gafas-pedidos', 
+        'gafas_vendor_admin_orders_list',
+        'dashicons-cart',
+        56
+    );
+
+    add_submenu_page( 
+        '',
+        __('Pedido', 'gafas'),
+        '',
+        'view_custom_gafas_wc_orders', // this is the custom capability for the yith_vendor user role
+        'gafas-pedido', 
+        'gafas_vendor_admin_order_view'
+    );
+
+    if (current_user_can('view_custom_gafas_wc_orders')) {
+        remove_menu_page('edit.php?post_type=shop_order');
+    }
+
+    return false;
+}
+
+function gafas_vendor_admin_orders_list() {
+    get_template_part('parts/admin/vendor-orders');
+}
+
+function gafas_vendor_admin_order_view() {
+    get_template_part('parts/admin/vendor-order-single');
+}
+
+// this invokes the custom admin menu for the yith vendors
+if (!function_exists('yith_wcmv_allow_custom_admin_menu')) {
+	add_filter('yith_wcmv_admin_vendor_menu_items', 'yith_wcmv_allow_custom_admin_menu', 99);
+	function yith_wcmv_allow_custom_admin_menu($items) {
+        
+        $items[] = 'gafas-pedidos';
+
+        foreach ($items as $key => $value) {
+            // remove the original wc-orders page
+            if ($value == 'edit.php?post_type=shop_order') {
+                // unset($items[$key]);
+            }
+        }
+
+		return $items;
+	}
 }
