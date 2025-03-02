@@ -8,6 +8,9 @@ require_once(get_template_directory().'/inc/enqueue-scripts.php');
 // All Ajax
 require_once(get_template_directory().'/inc/ajax.php');
 
+// All Admin Ajax
+require_once(get_template_directory().'/inc/admin-ajax.php');
+
 // Custom theme functions
 require_once(get_template_directory().'/inc/theme-functions.php');
 

@@ -1,0 +1,117 @@
+{
+    "key": "group_67c44dcfce11c",
+    "title": "Información de envío - Pedidos",
+    "fields": [
+        {
+            "key": "field_67c44dfb4092b",
+            "label": "Empresa de mensajería",
+            "name": "shipping_partner_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_67c44e924092c",
+            "label": "Número de carta de porte",
+            "name": "awb_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_67c44ebb4092d",
+            "label": "Enlace de envío",
+            "name": "shipping_link_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Agregue el enlace de la empresa de mensajería para que el cliente haga clic y lo abra directamente desde el correo.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "75",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "shop_order"
+            },
+            {
+                "param": "post_status",
+                "operator": "==",
+                "value": "wc-processing"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "shop_order"
+            },
+            {
+                "param": "post_status",
+                "operator": "==",
+                "value": "wc-readyforshipping"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "shop_order"
+            },
+            {
+                "param": "post_status",
+                "operator": "==",
+                "value": "wc-ordershipped"
+            }
+        ]
+    ],
+    "menu_order": 8,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 1,
+    "modified": 1740924387
+}

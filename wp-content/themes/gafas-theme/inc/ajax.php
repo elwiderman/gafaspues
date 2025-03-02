@@ -297,31 +297,31 @@ function hide_variable_attributes_for_cart_block($response, $cart_item) {
 add_action('woocommerce_checkout_create_order_line_item', 'custom_save_cart_meta_to_order', 10, 4);
 function custom_save_cart_meta_to_order($item, $cart_item_key, $values, $order) {    
     if (isset($values['right_esf'])) {
-        $item->add_meta_data(__('Oje Der. ESF.', 'gafas'), $values['right_esf']);
+        $item->add_meta_data(__('Ojo Der. ESF.', 'gafas'), $values['right_esf']);
     }
     if (isset($values['left_esf'])) {
-        $item->add_meta_data(__('Oje Izq. ESF.', 'gafas'), $values['left_esf']);
+        $item->add_meta_data(__('Ojo Izq. ESF.', 'gafas'), $values['left_esf']);
     }
     
     if (isset($values['right_cil'])) {
-        $item->add_meta_data(__('Oje Der. CIL.', 'gafas'), $values['right_cil']);
+        $item->add_meta_data(__('Ojo Der. CIL.', 'gafas'), $values['right_cil']);
     }
     if (isset($values['left_cil'])) {
-        $item->add_meta_data(__('Oje Izq. CIL.', 'gafas'), $values['left_cil']);
+        $item->add_meta_data(__('Ojo Izq. CIL.', 'gafas'), $values['left_cil']);
     }
 
     if (isset($values['right_eje'])) {
-        $item->add_meta_data(__('Oje Der. EJE.', 'gafas'), $values['right_eje']);
+        $item->add_meta_data(__('Ojo Der. EJE.', 'gafas'), $values['right_eje']);
     }
     if (isset($values['left_eje'])) {
-        $item->add_meta_data(__('Oje Izq. EJE.', 'gafas'), $values['left_eje']);
+        $item->add_meta_data(__('Ojo Izq. EJE.', 'gafas'), $values['left_eje']);
     }
     
     if (isset($values['right_add'])) {
-        $item->add_meta_data(__('Oje Der. ADD.', 'gafas'), $values['right_add']);
+        $item->add_meta_data(__('Ojo Der. ADD.', 'gafas'), $values['right_add']);
     }
     if (isset($values['left_add'])) {
-        $item->add_meta_data(__('Oje Izq. ADD.', 'gafas'), $values['left_add']);
+        $item->add_meta_data(__('Ojo Izq. ADD.', 'gafas'), $values['left_add']);
     }
 
     if (isset($values['dp'])) {

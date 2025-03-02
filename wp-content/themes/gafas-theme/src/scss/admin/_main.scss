@@ -1,0 +1,114 @@
+body {
+    background: #f0f0f1;
+}
+
+.container {
+    padding: 0 15px;
+}
+
+.gafas-admin {
+    padding-top: 30px;
+    .admin-wrap {
+        padding-right: 10px;
+        .content-block {
+            &.order-single {
+                .panel {
+                    background: #fff;
+                    border-radius: 5px;
+                    padding: 15px;
+                    margin-bottom: 30px;
+                    overflow: hidden;
+                }
+                .info-list {
+                    list-style: none;
+                    padding-left: 0;
+                    &__label {
+                        font-weight: bold;
+                    }
+                    &__value {
+                        font-size: 1.2em;
+                    }
+                }
+                .table {
+                    tr {
+                        td {
+                            &:first-child {
+                                width: 45%;
+                            }
+                        }
+                    }
+                    tbody {
+                        td {
+                            &.product {
+                                width: 100%;
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: flex-start;
+                                gap: 15px;
+                                .product__thumb {
+                                    width: 50px;
+                                }
+                                .product__info {
+                                    flex: 1 0;
+                                    &--title {
+                                        font-size: 1em;
+                                        font-weight: bold;
+                                    }
+                                    &--meta {
+                                        list-style: none;
+                                        padding-left: 0;
+                                        li {
+                                            font-size: 0.9em;
+                                            .value {
+                                                font-weight: bold;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .status-form {
+                    .order-status {
+                        margin-bottom: 20px;
+                    }
+                    #vendorUpdateOrderStatus {
+                        button {
+                            height: 45px;
+                            position: relative;
+                            z-index: 0;
+                            &.loading {
+                                pointer-events: none;
+                                &:before {
+                                    content: '';
+                                    @include full-absolute(1);
+                                    background: #0d6efd;
+                                }
+                                &:after {
+                                    content: '';
+                                    @include spinner(36px, #fff, #fff);
+                                    position: absolute;
+                                    top: calc(50% - 18px);
+                                    left: calc(50% - 18px);
+                                    cursor: not-allowed;
+                                    z-index: 2;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@keyframes loader {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+@-webkit-keyframes loader {
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+}
