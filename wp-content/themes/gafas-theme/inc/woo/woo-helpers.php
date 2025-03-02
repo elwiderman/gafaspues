@@ -265,3 +265,77 @@ function gafas_hide_specific_prod_meta_emails($formatted_meta, $item) {
 
     return $formatted_meta;
 }
+
+
+// adding custom order status for managing the doc uploads to the orders
+add_filter( 'woocommerce_register_shop_order_post_statuses', 'gafas_register_custom_order_status' );
+function gafas_register_custom_order_status( $order_statuses ) {
+    // Status must start with "wc-"!
+    $order_statuses['wc-readyforshipping'] = array(
+        'label'                     => __('Listo para el envío', 'gafas'),
+        'public'                    => false,
+        'exclude_from_search'       => false,
+        'show_in_admin_all_list'    => true,
+        'show_in_admin_status_list' => true,
+        'label_count'               => _n_noop('Listo para el envío <span class="count">(%s)</span>', 'Listo para el envío <span class="count">(%s)</span>', 'shady'),
+    );
+    $order_statuses['wc-ordershipped'] = array(
+        'label'                     => __('El pedido se envía', 'gafas'),
+        'public'                    => false,
+        'exclude_from_search'       => false,
+        'show_in_admin_all_list'    => true,
+        'show_in_admin_status_list' => true,
+        'label_count'               => _n_noop('El pedido se envía <span class="count">(%s)</span>', 'El pedido se envía <span class="count">(%s)</span>', 'shady'),
+    );
+   return $order_statuses;
+}
+// add the statuses to the dropdown
+add_filter( 'wc_order_statuses', 'gafas_show_custom_order_status_single_order_dropdown' );
+function gafas_show_custom_order_status_single_order_dropdown( $order_statuses ) {
+    $order_statuses['wc-readyforshipping']  = __('Listo para el envío', 'gafas');
+    $order_statuses['wc-ordershipped']      = __('El pedido se envía', 'gafas');
+    return $order_statuses;
+}
+// add color the custom statuses 
+add_action('admin_head', 'gafas_add_custom_wc_status_colors');
+function gafas_add_custom_wc_status_colors() {
+    echo '<style>
+        .status-readyforshipping { background: #d3b3d4 !important; color: #6c306e !important; }
+        .status-ordershipped { background: #1E90FF !important; color: #ffffff !important; }
+    </style>';
+}
+
+
+
+// add custom capability to the yith_vendor
+add_action('init', function() {
+    $role = get_role('yith_vendor');
+
+    if ($role && !$role->has_cap('view_custom_gafas_wc_orders')) {
+        $role->add_cap('view_custom_gafas_wc_orders');
+    }
+});
+
+
+
+/* 
+    custom email template for sending custom emails
+*/
+add_filter( 'woocommerce_email_classes', 'gafas_register_wc_custom_email_class' );
+function gafas_register_wc_custom_email_class( $email_classes ) {
+    // Include the email class file
+    include_once 'class-wc-readyforshipping-email.php';
+    include_once 'class-wc-ordershipped-email.php';
+
+    // Register the email class
+    $email_classes['WC_Order_Ready_To_Ship_Email'] = new WC_Order_Ready_To_Ship_Email();
+    $email_classes['WC_Order_Shipped_Email'] = new WC_Order_Shipped_Email();
+
+    return $email_classes;
+}
+// register this custom email so that WooCommerce recognizes it.
+add_filter( 'woocommerce_email_actions', 'gafas_add_wc_custom_email_action' );
+function gafas_add_wc_custom_email_action( $email_actions ) {
+    $email_actions[] = 'woocommerce_order_status_changed';
+    return $email_actions;
+}

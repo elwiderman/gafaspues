@@ -1,5 +1,9 @@
 <?php
-function gafas_framework_scripts() {
+// enqueue scripts
+
+
+add_action('wp_enqueue_scripts', 'gafas_theme_frontend_js_css', 1000);
+function gafas_theme_frontend_js_css() {
 
     $path = get_template_directory_uri();
 
@@ -56,10 +60,32 @@ function gafas_framework_scripts() {
     // wp_enqueue_style('site-css', $path . gafas_get_hashed_assets('scss/app.scss'), array(), '', 'all');
 }
 
-add_action('wp_enqueue_scripts', 'gafas_framework_scripts', 1000);
 
+add_action('admin_enqueue_scripts', 'gafas_admin_admin_js_css');
+function gafas_admin_admin_js_css($hook) {
+    $path = get_template_directory_uri();
+    // echo '<pre style="margin:100px 0 0 240px;">';
+    // var_dump($hook);
+    // echo '</pre>';
 
+    $hook_array = array(
+        'toplevel_page_gafas-pedidos',
+        'admin_page_gafas-pedido'
+    );
+    
+    $localized_scripts  = [
+        'ajaxurl'           => admin_url('admin-ajax.php')
+    ];
+    
+    if (in_array($hook, $hook_array)) {
+        $localized_scripts['vendor_orders'] = admin_url('admin-ajax.php?action=gafas_vendor_orders_dt');
 
+        wp_enqueue_script('admin-scripts', $path . gafas_get_hashed_assets('js/admin.js'), '', '', false);
+        wp_localize_script('admin-scripts', 'wpurls', $localized_scripts);
+        
+        wp_enqueue_style('admin-css', $path . gafas_get_hashed_assets('scss/admin.scss'), array(), '', 'all');
+    }
+}
 
 
 /**

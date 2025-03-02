@@ -13,6 +13,7 @@
   },
   "source": [
     "src/js/app.js",
+    "src/js/admin.js",
     "src/js/home.js",
     "src/js/wooFormula.js",
     "src/scss/common.scss",
@@ -23,7 +24,8 @@
     "src/scss/shop.scss",
     "src/scss/helpers.scss",
     "src/scss/vendor.scss",
-    "src/scss/contact.scss"
+    "src/scss/contact.scss",
+    "src/scss/admin.scss"
   ],
   "keywords": [],
   "devDependencies": {
@@ -57,6 +59,8 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
+    "datatables.net-dt": "^2.2.2",
+    "datatables.net-plugins": "^2.2.1",
     "domready": "^1.0.8",
     "gsap": "^3.12.5",
     "jquery": "^3.7.1",
