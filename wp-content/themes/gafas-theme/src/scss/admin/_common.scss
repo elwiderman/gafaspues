@@ -1,9 +1,10 @@
 
 @import 'npm:bootstrap/dist/css/bootstrap.min.css';
-// @import 'npm:bootstrap/dist/css/bootstrap-reboot.min.css';
-@import 'npm:datatables.net-dt/css/dataTables.dataTables.min.css';
+
+@import 'npm:datatables.net-bs5/css/dataTables.bootstrap5.min.css';
+@import 'npm:datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css';
+@import 'npm:datatables.net-scroller-bs5/css/scroller.bootstrap5.min.css';
 
 @import '../base/variables';
 @import '../base/mixins';
-// @import '../base/base';
 
