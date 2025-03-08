@@ -1,7 +1,8 @@
 
 import ready from 'domready';
 import $ from 'jquery';
-import DataTable from 'datatables.net-dt';
+import DataTable from 'datatables.net-bs5';
+import 'datatables.net-responsive-bs5';
 import language from 'datatables.net-plugins/i18n/es-ES.mjs';
 
 
@@ -18,51 +19,53 @@ export default class AdminPages {
     // list of orders for vendor
     vendorOrdersList() {        
         let table = new DataTable('#ordersDataTable', {
-            processing: true,
-            serverSide: true,
-            searching: false,
-            ajax: {
-                url: `${wpurls.vendor_orders}`,
-                type: 'POST'
-            },
-            columns: [
-                {
-                    title: '#',
-                    data: 'id'
+                processing: true,
+                serverSide: true,
+                searching: false,
+                responsive: true,
+                ajax: {
+                    url: `${wpurls.vendor_orders}`,
+                    type: 'POST',
+                },
+                columns: [
+                    {
+                        title: '#',
+                        data: 'id'
+                    }, {
+                        title: 'Cliente',
+                        data: 'name'
+                    }, {
+                        title: 'Superior',
+                        data: 'parent'
+                    }, {
+                        title: 'Total',
+                        data: 'total'
+                    }, {
+                        title: 'Comisión',
+                        data: 'commission'
+                    }, {
+                        title: 'Fecha',
+                        data: 'date'
+                    }, {
+                        title: 'Estado',
+                        data: 'status'
+                    }, {
+                        title: '',
+                        data: 'action'
+                    }
+                ],
+                order: [[0, 'desc']],
+                columnDefs: [{
+                    targets: [0, 3, 5, 6],
+                    orderable: true
                 }, {
-                    title: 'Cliente',
-                    data: 'name'
-                }, {
-                    title: 'Superior',
-                    data: 'parent'
-                }, {
-                    title: 'Total',
-                    data: 'total'
-                }, {
-                    title: 'Comisión',
-                    data: 'commission'
-                }, {
-                    title: 'Fecha',
-                    data: 'date'
-                }, {
-                    title: 'Estado',
-                    data: 'status'
-                }, {
-                    title: '',
-                    data: 'action'
-                }
-            ],
-            order: [[0, 'desc']],
-            columnDefs: [{
-                targets: [0, 3, 5, 6],
-                orderable: true
-            }, {
-                orderable: false,
-                targets: '_all'
-            }],
-            lengthMenu: [[25, 50, -1], [25, 50, 'Todo']],
-            language
-        });
+                    orderable: false,
+                    targets: '_all'
+                }],
+                lengthMenu: [[25, 50, -1], [25, 50, 'Todo']],
+                language
+            }
+        );
     }
 
     // let the vendor update the order status for their orders
