@@ -60,6 +60,9 @@ export default class WooFormula {
         $('#lensSelectionModal').on('shown.bs.modal', e => {
             form.find('.lens-type-wrap.type > .form-check:first-child input[name="lens_type"]').prop('checked', true);
             form.find('.lens-type-wrap.tint > .form-check:first-child input[name="lens_tint"]').prop('checked', true).trigger('change');
+
+            $('#rightAdd').prop('disabled', true);
+            $('#leftAdd').prop('disabled', true);
             
             $('#lensSelectionModal').find('[data-bs-toggle="tooltip"]').tooltip({
                 'container': '#lensSelectionModal'
@@ -99,6 +102,15 @@ export default class WooFormula {
                 formulaWrap.addClass('no-click');
             } else {
                 formulaWrap.removeClass('no-click');
+            }
+
+            // dont let add ADD for lens_types other than progressive
+            if (value !== 'progresivo') {
+                $('#rightAdd').prop('disabled', true);
+                $('#leftAdd').prop('disabled', true);
+            } else {
+                $('#rightAdd').prop('disabled', false);
+                $('#leftAdd').prop('disabled', false);
             }
         });
 
