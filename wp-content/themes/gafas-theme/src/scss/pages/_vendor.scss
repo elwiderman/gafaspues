@@ -75,9 +75,8 @@
                                     margin-bottom: 5px;
                                 }
                                 .form-control {
-                                    height: 50px;
+                                    // height: 50px;
                                     border-color: $form-border;
-                                    border-radius: 0;
                                     box-shadow: unset !important;
                                     outline: 0 !important;
                                     &:focus {
@@ -134,6 +133,17 @@
                                 &.vendor-terms, &.vendor-privacy {
                                     .form-label {
                                         display: none;
+                                    }
+                                }
+
+                                .form-floating {
+                                    display: block;
+                                    .form-control, .form-select {
+                                        border-color: rgba($primary-font-color, 0.3);
+                                        box-shadow: none !important;
+                                        &:focus {
+                                            border-color: $primary-font-color;
+                                        }
                                     }
                                 }
                             }

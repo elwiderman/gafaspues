@@ -9,7 +9,7 @@
         
         &.checkout {
             margin-bottom: 80px;
-            padding-top: 20px;
+            padding-top: 50px;
             .wc-block-components-title {
                 @extend h6, .styled;
             }
@@ -181,6 +181,89 @@
                     }
                 }
             }
+
+            /*
+            .gafas-checkout {
+                .customer-details {
+                    @include respond-to('s-desk') {
+                        padding-right: 50px;
+                    }
+                    .woocommerce-billing-fields {
+                        &__field-wrapper {
+                            .woocommerce-form-login-toggle {
+                                .woocommerce-info {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 7px;
+                                    font-size: 17px;
+                                    padding: 15px;
+                                    margin-bottom: 16px;
+                                    border-color: $primary-color;
+                                    &:before {
+                                        content: $icon-info;
+                                        font-family: $icomoon-font-family;
+                                        position: static;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &__billing {
+                        @include add-border(1px, rgba($primary-font-color, 0.4), 'bottom');
+                        padding-bottom: 40px;
+                    }
+                    &__shipping {
+                        margin-top: 40px;
+                        .woocommerce-shipping-fields {
+                            @include add-border(1px, rgba($primary-font-color, 0.4), 'bottom');
+                            padding-bottom: 40px;
+                            margin-bottom: 40px;
+                        }
+                    }
+                    .woocommerce-form {
+                        &__label-for-checkbox {
+                            position: relative;
+                            z-index: 0;
+                            cursor: pointer;
+                            input[type="checkbox"] {
+                                visibility: hidden;
+                                opacity: 0;
+                                & ~ span {
+                                    padding-left: 15px;
+                                    &:before, &:after {
+                                        content: $icon-check-square;
+                                        font-family: $icomoon-font-family;
+                                        font-size: 20px;
+                                        position: absolute;
+                                        left: 0;
+                                        top: 50%;
+                                        transform: translateY(-50%);
+                                        @include transition(0.3s);
+                                    }
+                                    &:after {
+                                        content: $icon-square;
+                                    }
+                                    &:before {
+                                        opacity: 0;
+                                    }
+                                }
+                                &:checked {
+                                    & ~ span {
+                                        &:before {
+                                            color: $primary-color;
+                                            opacity: 1;
+                                        }
+                                        &:after {
+                                            opacity: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            */
         }
 
         &.cart {
