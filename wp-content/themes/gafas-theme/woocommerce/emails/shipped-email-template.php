@@ -5,13 +5,15 @@ $order_id       = $order->get_id();
 $shipper        = get_field('shipping_partner_text', $order_id);
 $awb            = get_field('awb_text', $order_id);
 $link           = get_field('shipping_link_text', $order_id);
+
+$order_perma    = $order->get_view_order_url();
 ?>
 
 <?php do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
 <p>Hola <?php echo $order->get_billing_first_name(); ?>,</p>
 
-<p>Queríamos informarle que su pedido #<?php echo $order->get_order_number(); ?> ha sido ENVIADO a través de <?php echo $shipper;?>.</p>
+<p>Queríamos informarle que su pedido <a href="<?php echo $order_perma;?>" target="_blank">#<?php echo $order->get_order_number(); ?></a> ha sido ENVIADO a través de <?php echo $shipper;?>.</p>
 
 <?php
 if ($link) {
