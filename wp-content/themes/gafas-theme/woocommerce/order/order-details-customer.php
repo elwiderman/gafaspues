@@ -45,6 +45,43 @@ $show_shipping = ! wc_ship_to_billing_address_only() && $order->needs_shipping_a
 					<?php endif; ?>
 
 					<?php
+					// print the custom fields here
+					if ($order->get_meta('_meta_tipo_de_documento')) :
+						$value = '';
+						switch ($order->get_meta('_meta_tipo_de_documento')) :
+							case 'cedula':
+								$value = 'Cedula';
+								break;
+							
+							case 'cedula_de_extranjeria':
+								$value = 'Cedula de extranjería';
+								break;
+							
+							case 'tarjeta_de_identidad':
+								$value = 'Tarjeta de Identidad';
+								break;
+							
+							case 'pasaporte':
+								$value = 'Pasaporte';
+								break;
+							
+							default:
+								$value = 'Otro';
+								break;
+						endswitch;
+
+						echo '<strong>'.__('Tipo de Documento').':</strong> ' . $value;
+					endif;
+
+					if ($order->get_meta('_meta_numero_de_documento')) :
+						echo '<br><strong>'.__('Numero de Documento').':</strong> ' . $order->get_meta('_meta_numero_de_documento');
+					endif;
+					if ($order->get_meta('_meta_quiero_factura_electronica') !== '') :
+						echo '<br><strong>'.__('Quiero factura electronica').':</strong> Si';
+					endif;
+					?>
+
+					<?php
 						/**
 						 * Action hook fired after an address in the order customer details.
 						 *

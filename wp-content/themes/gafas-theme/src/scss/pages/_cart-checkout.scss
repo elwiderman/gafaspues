@@ -9,9 +9,9 @@
         
         &.checkout {
             margin-bottom: 80px;
-            padding-top: 50px;
             .wc-block-components-title {
-                @extend h6, .styled;
+                @extend h6;
+                @include font($secondary-font, $semi-bold);
             }
 
             .wc-block-components-checkout-step {

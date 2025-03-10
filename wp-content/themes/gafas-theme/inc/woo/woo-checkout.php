@@ -43,25 +43,96 @@ function gafas_save_custom_checkout_field($order_id) {
 
 
 // show the custom field in the admin for orders
-// add_action('woocommerce_admin_order_data_after_billing_address', 'gafas_display_custom_field_in_admin', 10, 1);
+add_action('woocommerce_admin_order_data_after_billing_address', 'gafas_display_custom_field_in_admin', 10, 1);
 function gafas_display_custom_field_in_admin($order) {
-    $custom_field = get_post_meta($order->get_id(), '_billing_document_number', true);
-    if ($custom_field) {
-        echo '<p><strong>' . __('Cédula', 'woocommerce') . ':</strong> ' . esc_html($custom_field) . '</p>';
-    }
+    // echo '<pre>';
+    // var_dump($order->get_meta('_meta_numero_de_documento'));
+    // echo '</pre>';
+
+    if ($order->get_meta('_meta_tipo_de_documento')) :
+        $value = '';
+        switch ($order->get_meta('_meta_tipo_de_documento')) :
+            case 'cedula':
+                $value = 'Cedula';
+                break;
+            
+            case 'cedula_de_extranjeria':
+                $value = 'Cedula de extranjería';
+                break;
+            
+            case 'tarjeta_de_identidad':
+                $value = 'Tarjeta de Identidad';
+                break;
+            
+            case 'pasaporte':
+                $value = 'Pasaporte';
+                break;
+            
+            default:
+                $value = 'Otro';
+                break;
+        endswitch;
+
+        echo '<p><strong>'.__('Tipo de Documento', 'gafas').':</strong> ' . $value . '</p>';
+    endif;
+
+    if ($order->get_meta('_meta_numero_de_documento')) :
+        echo '<p><strong>'.__('Numero de Documento', 'gafas').':</strong> '.$order->get_meta('_meta_numero_de_documento').'</p>';
+    endif;
+
+    if ($order->get_meta('_meta_quiero_factura_electronica') !== '') :
+        echo '<p><strong>'.__('El cliente quiere factura electronica').':</strong> Si</p>';
+    endif;
 }
 
 
 // show the custom field in emails
-// add_filter('woocommerce_email_order_meta_fields', 'gafas_add_custom_field_to_emails', 10, 3);
+add_filter('woocommerce_email_order_meta_fields', 'gafas_add_custom_field_to_emails', 10, 3);
 function gafas_add_custom_field_to_emails($fields, $sent_to_admin, $order) {
-    $custom_field = get_post_meta($order->get_id(), '_billing_document_number', true);
-    if ($custom_field) {
-        $fields['billing_document_number'] = array(
-            'label' => __('Cédula', 'woocommerce'),
-            'value' => $custom_field,
-        );
-    }
+    if ($sent_to_admin) :
+        if ($order->get_meta('_meta_tipo_de_documento')) :
+            $value = '';
+            switch ($order->get_meta('_meta_tipo_de_documento')) :
+                case 'cedula':
+                    $value = 'Cedula';
+                    break;
+                
+                case 'cedula_de_extranjeria':
+                    $value = 'Cedula de extranjería';
+                    break;
+                
+                case 'tarjeta_de_identidad':
+                    $value = 'Tarjeta de Identidad';
+                    break;
+                
+                case 'pasaporte':
+                    $value = 'Pasaporte';
+                    break;
+                
+                default:
+                    $value = 'Otro';
+                    break;
+            endswitch;
+
+            $fields['tipo_de_documento'] = array(
+                'label' => __('Tipo de documento', 'woocommerce'),
+                'value' => $value,
+            );
+        endif;
+        if ($order->get_meta('_meta_numero_de_documento')) :
+            $fields['numero_de_documento'] = array(
+                'label' => __('Numero de documento', 'woocommerce'),
+                'value' => $order->get_meta('_meta_numero_de_documento'),
+            );
+        endif;
+        if ($order->get_meta('_meta_quiero_factura_electronica') !== '') :
+            $fields['quiero_factura_electronica'] = array(
+                'label' => __('Quiere factura electronica', 'woocommerce'),
+                'value' => 'Si',
+            );
+        endif;
+    endif;
+
     return $fields;
 }
 
