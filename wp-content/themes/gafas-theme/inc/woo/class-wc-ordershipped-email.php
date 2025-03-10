@@ -7,7 +7,7 @@ class WC_Order_Shipped_Email extends WC_Email {
      * Constructor.
      */
     public function __construct() {
-        $this->id           = 'wc_shipped_email'; // Unique ID for the email
+        $this->id           = 'wc_order_shipped_email'; // Unique ID for the email
         $this->customer_email = true;
         $this->title        = 'Shipped Order';
         $this->description  = 'Este es un correo electrónico personalizado de WooCommerce que se envía cuando se envía un pedido..';
@@ -35,21 +35,25 @@ class WC_Order_Shipped_Email extends WC_Email {
     public function trigger( $order_id, $old_status, $new_status, $order ) {
         if ( ! $order_id ) return;
 
-        $this->object = wc_get_order( $order_id );
-
-        $this->placeholders = array(
-            '{order_date}'   => date_i18n( wc_date_format(), strtotime( $this->object->get_date_created() ) ),
-            '{order_number}' => $this->object->get_order_number(),
-        );
-
-        $this->recipient = $this->object->get_billing_email(); // Set recipient to the customer
-
-        // Send email only for specific statuses (optional)
-        if ( $new_status === 'shipped' ) {
-            if ( $this->is_enabled() && $this->get_recipient() ) {
-                $this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
+        
+        // send the email only for the parent order and not for the sub orders
+        if ($order->get_parent_id() === 0) :
+            $this->object = wc_get_order( $order_id );
+    
+            $this->placeholders = array(
+                '{order_date}'   => date_i18n( wc_date_format(), strtotime( $this->object->get_date_created() ) ),
+                '{order_number}' => $this->object->get_order_number(),
+            );
+    
+            $this->recipient = $this->object->get_billing_email(); // Set recipient to the customer
+    
+            // Send email only for specific statuses (optional)
+            if ( $new_status === 'ordershipped' ) {
+                if ( $this->is_enabled() && $this->get_recipient() ) {
+                    $this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
+                }
             }
-        }
+        endif;
     }
 
     /**

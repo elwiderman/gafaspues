@@ -145,6 +145,7 @@
                                 @include add-border(1px, $form-border, 'all');
                                 &__rendered {
                                     line-height: 35px;
+                                    padding: 0 20px 0 8px;
                                 }
                                 &__arrow {
                                     height: 33px;
@@ -159,6 +160,15 @@
                                 &__option {
                                     &--highlighted {
                                         background: $primary-color;
+                                    }
+                                }
+                            }
+                        }
+                        select {
+                            &:disabled {
+                                & ~ .select2-container {
+                                    .select2-selection {
+                                        cursor: not-allowed;
                                     }
                                 }
                             }

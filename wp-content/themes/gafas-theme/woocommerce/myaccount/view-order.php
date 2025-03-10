@@ -21,7 +21,7 @@ defined( 'ABSPATH' ) || exit;
 
 $notes = $order->get_customer_order_notes();
 ?>
-<p class="lead pre-title">
+<p class="lead pre-title order-gist">
 <?php
 printf(
 	/* translators: 1: order number 2: order date 3: order status */

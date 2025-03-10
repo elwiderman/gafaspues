@@ -126,113 +126,6 @@ function gafas_hide_virtual_downloadable_checkboxes($options) {
 }
 
 
-// customize woocommerce form fields for the vendor regn page
-add_filter('woocommerce_form_field', 'gafas_custom_woocommerce_form_field', 10, 4);
-function gafas_custom_woocommerce_form_field($field, $key, $args, $value) {
-    // segregating the classes needed for the display of the form
-    $form_group_class   = [];
-    $form_control_class = [];
-    foreach ($args['class'] as $cls) {
-        switch ($cls) {
-            case 'form-row-wide':
-                array_push($form_group_class, 'col-12');
-                break;
-
-            case 'form-row-first':
-                array_push($form_group_class, 'col-12 col-md-6');
-                break;
-
-            case 'form-row-last':
-                array_push($form_group_class, 'col-12 col-md-6');
-                break;
-
-            case 'validate-required':
-                array_push($form_control_class, 'validate-required');
-                break;
-        }
-    }
-
-    $required = ($args['required']) ? '<span class="required">*</span>' : '';
-
-    // Start custom field wrapper
-    $custom_field = '<div class="form-group ' . implode(' ', $form_group_class) . ' ' . esc_attr($args['type']) . ' ' . esc_attr($key) . '">';
-
-    // Add custom label
-    if (!empty($args['label'])) {
-        $custom_field .= '<label class="form-label" for="' . esc_attr($key) . '">' . esc_html($args['label']) . $required . '</label>';
-    }
-
-    // Add input field
-    switch ($args['type']) {
-        case 'text':
-        case 'email':
-        case 'password':
-        case 'tel':
-        case 'number':
-            $custom_field .= '<input type="' . esc_attr($args['type']) . '" 
-                name="' . esc_attr($key) . '" 
-                id="' . esc_attr($key) . '" 
-                class="form-control ' . implode(' ', $form_control_class) . '" 
-                placeholder="' . esc_attr($args['placeholder']) . '" 
-                value="' . esc_attr($value) . '" />';
-            break;
-
-        case 'textarea':
-            $custom_field .= '<textarea name="' . esc_attr($key) . '" 
-                id="' . esc_attr($key) . '" 
-                class="form-control ' . implode(' ', $form_control_class) . '" 
-                placeholder="' . esc_attr($args['placeholder']) . '">' . esc_textarea($value) . '</textarea>';
-            break;
-
-        case 'select':
-            $custom_field .= '<select name="' . esc_attr($key) . '" id="' . esc_attr($key) . '" class="form-select ' . implode(' ', $form_control_class) . '">';
-            foreach ($args['options'] as $option_key => $option_value) {
-                $selected = ($value == $option_key) ? 'selected="selected"' : '';
-                $custom_field .= '<option value="' . esc_attr($option_key) . '" ' . $selected . '>' . esc_html($option_value) . '</option>';
-            }
-            $custom_field .= '</select>';
-            break;
-
-        case 'checkbox':
-            $checked = checked($value, 1, false);
-            $custom_field .= '
-            <div class="form-check">
-                <input type="checkbox" name="'.esc_attr($key).'" id="'.esc_attr($key).'" class="form-check-input" value="1" ' . $checked . ' />
-                <label class="form-check-label" for="'.esc_attr($key).'">'.$args['label'].'</label>
-            </div>';
-            break;
-
-        case 'radio':
-            if (!empty($args['options'])) {
-                $i = 0;
-                foreach ($args['options'] as $option_key => $option_value) {
-                    $custom_field .= "<div class='form-check form-check-inline'>";
-                    $i++;
-                    $id            = $args['name'] . "-{$i}";
-                    $checked       = checked($value, $option_key, false);
-                    $custom_field .= 
-                    '
-                    <input class="form-check-input" type="radio" name="' . esc_attr($key) . '" id="'.$id.'" value="'.esc_attr($option_key).'" '.$checked.'>
-                    <label class="form-check-label" for="'.$id.'">'.esc_html($option_value).'</label>';
-                    $custom_field .= "</div>";
-                }
-            }
-            break;
-    }
-
-    // Add description (if any)
-    if (!empty($args['description'])) {
-        $custom_field .= '<p class="custom-description">' . $args['description'] . '</p>';
-    }
-
-    // End custom field wrapper
-    $custom_field .= '</div>';
-
-    return $custom_field;
-}
-
-
-
 // hide specific items from the product meta 
 add_filter('woocommerce_get_item_data', 'gafas_hide_specific_cart_meta', 10, 2);
 function gafas_hide_specific_cart_meta($item_data, $cart_item) {
@@ -338,4 +231,25 @@ add_filter( 'woocommerce_email_actions', 'gafas_add_wc_custom_email_action' );
 function gafas_add_wc_custom_email_action( $email_actions ) {
     $email_actions[] = 'woocommerce_order_status_changed';
     return $email_actions;
+}
+
+// add custom css to wp-admin to render the status icons on the sidebar of orders for vendors
+add_action('admin_head', 'gafas_custom_css_for_orders_vendors');
+function gafas_custom_css_for_orders_vendors() {
+    if (current_user_can('manage_options') && is_admin()) : ?>
+    <style>
+        body.post-type-shop_order .wp-list-table .column-suborder mark.readyforshipping:after, 
+        body.post-type-shop_order .suborders-list .suborder-info mark.readyforshipping:after {
+            /* content: '\e016'; */
+            content: '\e000';
+            color: #6c306e;
+        }
+        body.post-type-shop_order .wp-list-table .column-suborder mark.ordershipped:after, 
+        body.post-type-shop_order .suborders-list .suborder-info mark.ordershipped:after {
+            content: '\e019';
+            color: #1E90FF;
+        }
+    </style>
+
+    <?php endif;
 }
