@@ -124,9 +124,10 @@
                             }
                             .pre-title {
                                 font-size: 20px;
+                                line-height: 1.3;
                                 margin-bottom: 40px;
                                 mark {
-                                    background: $secondary-color;
+                                    background: $primary-color;
                                     color: $primary-bg;
                                     padding: 0 0.2em;
                                     &.order-status {
@@ -158,6 +159,21 @@
                                                 line-height: 1.4;
                                             }
                                         }
+                                    }
+                                    tfoot {
+                                        td {
+                                            @include flex-display;
+                                            gap: 10px;
+                                        }
+                                        .order-actions-button {
+                                            @extend .btn-outline-dark;
+                                            height: 37px;
+                                            padding: 0 10px;
+                                            margin: 0;
+                                        }
+                                    }
+                                    & ~ .wt_pklist_invoice_print, & ~ .wt_pklist_invoice_download, & ~ br {
+                                        display: none;
                                     }
                                 }
                             }

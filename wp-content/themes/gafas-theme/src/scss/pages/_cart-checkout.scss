@@ -123,6 +123,23 @@
                             &__product-total {
                                 font-size: 20px;
                             }
+
+                            tfoot {
+                                td {
+                                    @include flex-display;
+                                    gap: 10px;
+                                }
+                                .order-actions-button {
+                                    @extend .btn-outline-dark;
+                                    height: 37px;
+                                    padding: 0 10px;
+                                    margin: 0;
+                                }
+                            }
+
+                            & ~ .wt_pklist_invoice_print, & ~ .wt_pklist_invoice_download, & ~ br {
+                                display: none;
+                            }
                         }
                     }
                     .woocommerce-order-overview {

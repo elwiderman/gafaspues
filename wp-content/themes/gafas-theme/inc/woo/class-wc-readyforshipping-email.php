@@ -8,7 +8,7 @@ class WC_Order_Ready_To_Ship_Email extends WC_Email {
      */
     public function __construct() {
         $this->id           = 'wc_readytoship_email'; // Unique ID for the email
-        $this->customer_email = true;
+        $this->customer_email = false;
         $this->title        = 'El Pediido está Listo';
         $this->description  = 'This is a custom WooCommerce email sent when an order is ready to be shipped by the optica.';
         

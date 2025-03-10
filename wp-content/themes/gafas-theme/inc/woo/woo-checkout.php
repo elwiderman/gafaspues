@@ -45,9 +45,9 @@ function gafas_save_custom_checkout_field($order_id) {
 // show the custom field in the admin for orders
 add_action('woocommerce_admin_order_data_after_billing_address', 'gafas_display_custom_field_in_admin', 10, 1);
 function gafas_display_custom_field_in_admin($order) {
-    // echo '<pre>';
-    // var_dump($order->get_meta('_meta_numero_de_documento'));
-    // echo '</pre>';
+    echo '<pre>';
+    var_dump($order->get_parent_id());
+    echo '</pre>';
 
     if ($order->get_meta('_meta_tipo_de_documento')) :
         $value = '';
