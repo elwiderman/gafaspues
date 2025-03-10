@@ -232,3 +232,24 @@ function gafas_add_wc_custom_email_action( $email_actions ) {
     $email_actions[] = 'woocommerce_order_status_changed';
     return $email_actions;
 }
+
+// add custom css to wp-admin to render the status icons on the sidebar of orders for vendors
+add_action('admin_head', 'gafas_custom_css_for_orders_vendors');
+function gafas_custom_css_for_orders_vendors() {
+    if (current_user_can('manage_options') && is_admin()) : ?>
+    <style>
+        body.post-type-shop_order .wp-list-table .column-suborder mark.readyforshipping:after, 
+        body.post-type-shop_order .suborders-list .suborder-info mark.readyforshipping:after {
+            /* content: '\e016'; */
+            content: '\e000';
+            color: #6c306e;
+        }
+        body.post-type-shop_order .wp-list-table .column-suborder mark.ordershipped:after, 
+        body.post-type-shop_order .suborders-list .suborder-info mark.ordershipped:after {
+            content: '\e019';
+            color: #1E90FF;
+        }
+    </style>
+
+    <?php endif;
+}
