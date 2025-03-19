@@ -345,17 +345,18 @@ if ( ! class_exists( 'YITH_Vendors_Registration_Fee' ) ) {
 				'yith_wcmv_get_registration_fee_product_data',
 				array(
 					// translators: %s is the singular vendor tax label.
-					'name'              => get_option( 'yith_wcmv_registration_fee_product_title', sprintf( _x( '%s registration fee', '[Admin]Option default. %s is the singular vendor tax label', 'yith-woocommerce-product-vendors' ), YITH_Vendors_Taxonomy::get_singular_label( 'ucfirst' ) ) ),
+					'name'               => get_option( 'yith_wcmv_registration_fee_product_title', sprintf( _x( '%s registration fee', '[Admin]Option default. %s is the singular vendor tax label', 'yith-woocommerce-product-vendors' ), YITH_Vendors_Taxonomy::get_singular_label( 'ucfirst' ) ) ),
 					// Set price.
-					'price'             => $this->get_fee_product_price(),
-					'regular_price'     => $this->get_fee_product_price(),
+					'price'              => $this->get_fee_product_price(),
+					'regular_price'      => $this->get_fee_product_price(),
 					// Set tax options.
-					'tax_status'        => $this->get_fee_product_tax_status(),
-					'tax_class'         => $this->get_fee_product_tax_class(),
+					'tax_status'         => $this->get_fee_product_tax_status(),
+					'tax_class'          => $this->get_fee_product_tax_class(),
 					// Set additional metas.
-					'status'            => 'private',
-					'virtual'           => true,
-					'sold_individually' => true,
+					'status'             => 'publish',
+					'catalog_visibility' => 'hidden',
+					'virtual'            => true,
+					'sold_individually'  => true,
 				)
 			);
 

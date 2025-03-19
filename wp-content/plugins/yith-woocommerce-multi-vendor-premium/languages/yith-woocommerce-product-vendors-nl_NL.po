@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: YITH WooCommerce Multi Vendor\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/yith-woocommerce-"
 "multi-vendor.premium\n"
-"POT-Creation-Date: 2025-02-18T16:07:50+00:00\n"
+"POT-Creation-Date: 2025-03-17T14:02:34+00:00\n"
 "PO-Revision-Date: 2021-10-06 07:27:20+0000\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -1237,7 +1237,6 @@ msgctxt "[Admin] %s stand for the vendor taxonomy singular label"
 msgid "%s info"
 msgstr ""
 
-#. translators: %s stand for the vendor taxonomy singular label.
 #: includes/admin/list-tables/class-yith-vendors-commissions-list-table.php:65
 #: templates/emails/commission-detail-table.php:29
 #: templates/emails/plain/commission-detail-table.php:22
@@ -1428,7 +1427,6 @@ msgstr ""
 msgid "Are you sure you want to remove \"%s\" from staff?"
 msgstr ""
 
-#. translators: %s is a placeholder for user full name.
 #: includes/admin/list-tables/class-yith-vendors-staff-list-table.php:258
 msgid "No"
 msgstr ""
@@ -1529,7 +1527,6 @@ msgctxt "[Admin]Vendor delete modal message. %s placeholder for vendor name"
 msgid "Are you sure you want to delete vendor %s?"
 msgstr ""
 
-#. translators: %s is the vendor name.
 #: includes/admin/list-tables/class-yith-vendors-vendors-list-table.php:478
 msgctxt "[Admin]Vendor delete modal button label"
 msgid "Delete"
@@ -2021,7 +2018,6 @@ msgstr ""
 msgid "Welcome, sellers of %s!"
 msgstr ""
 
-#. translators: %s is the site name.
 #: includes/class-yith-vendors-account-endpoints.php:311
 msgid ""
 "You can manage products, orders, and your store through the Vendor dashboard:"
@@ -2236,7 +2232,6 @@ msgctxt "[Admin] Vendor option label"
 msgid "Use the default commission base (%s)"
 msgstr ""
 
-#. translators: %s is the default commission rate.
 #: includes/class-yith-vendors-factory.php:661
 msgctxt "[Admin] Vendor option label"
 msgid "Set a different commission percentage for this vendor"
@@ -4560,7 +4555,6 @@ msgstr "Commissie bedrag"
 msgid "%s commissions amount"
 msgstr ""
 
-#. translators: %s stand for the commissions amount.
 #: includes/reports/class.yith-report-sale-commissions.php:103
 msgid "This is the sum of the commissions total."
 msgstr ""
@@ -4570,7 +4564,6 @@ msgstr ""
 msgid "%s paid commissions"
 msgstr "%s betaalde commissies"
 
-#. translators: %s stand for the paid commissions amount.
 #: includes/reports/class.yith-report-sale-commissions.php:111
 msgid "This is the sum of the paid commissions total."
 msgstr ""
@@ -4580,7 +4573,6 @@ msgstr ""
 msgid "%s unpaid commissions"
 msgstr "%s onbetaalde commissies"
 
-#. translators: %s stand for the unpaid commissions amount.
 #: includes/reports/class.yith-report-sale-commissions.php:119
 msgid "This is the sum of the unpaid commissions total."
 msgstr ""
@@ -4590,7 +4582,6 @@ msgstr ""
 msgid "%s processing commissions"
 msgstr "%s commissies in verwerking"
 
-#. translators: %s stand for the processing commissions amount.
 #: includes/reports/class.yith-report-sale-commissions.php:127
 msgid "This is the sum of the processing commissions total."
 msgstr ""
@@ -4600,7 +4591,6 @@ msgstr ""
 msgid "%s pending commissions"
 msgstr "%s commissies in behandeling"
 
-#. translators: %s stand for the pending commissions amount.
 #: includes/reports/class.yith-report-sale-commissions.php:135
 msgid "This is the sum of the pending commissions total."
 msgstr ""
@@ -4610,7 +4600,6 @@ msgstr ""
 msgid "%s commissions"
 msgstr "%s commissies"
 
-#. translators: %s stand for the commissions number.
 #: includes/reports/class.yith-report-sale-commissions.php:143
 msgid "This is the sum of the commissions in this period."
 msgstr "Optelling van alle commissies in deze periode."
@@ -4620,7 +4609,6 @@ msgstr "Optelling van alle commissies in deze periode."
 msgid "%s refunded commissions"
 msgstr "%s gerestitueerde commissies"
 
-#. translators: %s stand for the refunded commissions amount.
 #: includes/reports/class.yith-report-sale-commissions.php:151
 msgid "This is the sum of the refunded commissions total."
 msgstr ""
@@ -4630,7 +4618,6 @@ msgstr ""
 msgid "%s canceled commissions"
 msgstr ""
 
-#. translators: %s stand for the cancelled commissions amount.
 #: includes/reports/class.yith-report-sale-commissions.php:159
 msgid "This is the sum of the canceled commissions total."
 msgstr ""
@@ -4668,7 +4655,6 @@ msgstr ""
 msgid "%s net commissions in this period"
 msgstr "%s netto commissies in deze periode"
 
-#. translators: %s stand for the commissions net amount in period.
 #: includes/reports/class.yith-report-sales-by-date.php:170
 msgid ""
 "This is the sum of the orders total after any refunds and excluding shipping "
@@ -5404,266 +5390,266 @@ msgstr ""
 "werken."
 
 #: languages/yith-woocommerce-product-vendors.php:6
-#: assets/js/admin/dashboard.js:6691
+#: assets/js/admin/dashboard.js:6688
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:14
-#: assets/js/admin/dashboard.js:6188
+#: assets/js/admin/dashboard.js:6185
 msgctxt "[DASHBOARD] Chart name"
 msgid "Total net earnings from vendors"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:9
-#: assets/js/admin/dashboard.js:6695
+#: assets/js/admin/dashboard.js:6692
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:23
-#: assets/js/admin/dashboard.js:6197
+#: assets/js/admin/dashboard.js:6194
 msgctxt "[DASHBOARD] Chart name"
 msgid "Total earnings from vendors"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:12
-#: assets/js/admin/dashboard.js:6699
+#: assets/js/admin/dashboard.js:6696
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:32
-#: assets/js/admin/dashboard.js:6206
+#: assets/js/admin/dashboard.js:6203
 msgctxt "[DASHBOARD] Chart name"
 msgid "Orders"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:15
-#: assets/js/admin/dashboard.js:6753
+#: assets/js/admin/dashboard.js:6750
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:139
-#: assets/js/admin/dashboard.js:6313
+#: assets/js/admin/dashboard.js:6310
 msgctxt "[DASHBOARD] Chart name"
 msgid "Commissions"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:18
-#: assets/js/admin/dashboard.js:6757
+#: assets/js/admin/dashboard.js:6754
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:148
-#: assets/js/admin/dashboard.js:6322
+#: assets/js/admin/dashboard.js:6319
 msgctxt "[DASHBOARD] Chart name"
 msgid "Total commissions"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:21
-#: assets/js/admin/dashboard.js:6761
+#: assets/js/admin/dashboard.js:6758
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:157
-#: assets/js/admin/dashboard.js:6331
+#: assets/js/admin/dashboard.js:6328
 msgctxt "[DASHBOARD] Chart name"
 msgid "Pending commissions"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:24
-#: assets/js/admin/dashboard.js:6765
+#: assets/js/admin/dashboard.js:6762
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:166
-#: assets/js/admin/dashboard.js:6340
+#: assets/js/admin/dashboard.js:6337
 msgctxt "[DASHBOARD] Chart name"
 msgid "Paid commissions"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:27
-#: assets/js/admin/dashboard.js:6769
+#: assets/js/admin/dashboard.js:6766
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:175
-#: assets/js/admin/dashboard.js:6349
+#: assets/js/admin/dashboard.js:6346
 msgctxt "[DASHBOARD] Chart name"
 msgid "Refunded commissions"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:30
-#: assets/js/admin/dashboard.js:6704
+#: assets/js/admin/dashboard.js:6701
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:44
-#: assets/js/admin/dashboard.js:6218
+#: assets/js/admin/dashboard.js:6215
 msgctxt "[DASHBOARD] Filters"
 msgid "Show"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:33
-#: assets/js/admin/dashboard.js:6711
+#: assets/js/admin/dashboard.js:6708
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:54
-#: assets/js/admin/dashboard.js:6228
+#: assets/js/admin/dashboard.js:6225
 msgctxt "[DASHBOARD] Filters"
 msgid "All vendors"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:36
-#: assets/js/admin/dashboard.js:6714 assets/js/admin/dashboard.js:6729
+#: assets/js/admin/dashboard.js:6711 assets/js/admin/dashboard.js:6726
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:62
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:86
-#: assets/js/admin/dashboard.js:6236 assets/js/admin/dashboard.js:6260
+#: assets/js/admin/dashboard.js:6233 assets/js/admin/dashboard.js:6257
 msgctxt "[DASHBOARD] Filters"
 msgid "Single vendor"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:39
-#: assets/js/admin/dashboard.js:6728
+#: assets/js/admin/dashboard.js:6725
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:81
-#: assets/js/admin/dashboard.js:6255
+#: assets/js/admin/dashboard.js:6252
 msgctxt "[DASHBOARD] Filters"
 msgid "Search for a vendor"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:42
-#: assets/js/admin/dashboard.js:6734
+#: assets/js/admin/dashboard.js:6731
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:97
-#: assets/js/admin/dashboard.js:6271
+#: assets/js/admin/dashboard.js:6268
 msgctxt "[DASHBOARD] Filters"
 msgid "Comparison"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:45
-#: assets/js/admin/dashboard.js:6743
+#: assets/js/admin/dashboard.js:6740
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:110
-#: assets/js/admin/dashboard.js:6284
+#: assets/js/admin/dashboard.js:6281
 msgctxt "[DASHBOARD] Filters"
 msgid "Select at least two vendors to compare"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:48
-#: assets/js/admin/dashboard.js:6744
+#: assets/js/admin/dashboard.js:6741
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:115
-#: assets/js/admin/dashboard.js:6289
+#: assets/js/admin/dashboard.js:6286
 msgctxt "[DASHBOARD] Filters"
 msgid "Search for vendors to compare"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:51
-#: assets/js/admin/dashboard.js:6745
+#: assets/js/admin/dashboard.js:6742
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:120
-#: assets/js/admin/dashboard.js:6294
+#: assets/js/admin/dashboard.js:6291
 msgctxt "[DASHBOARD] Filters"
 msgid "Compare vendors"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:54
-#: assets/js/admin/dashboard.js:6746
+#: assets/js/admin/dashboard.js:6743
 #: assets/js/admin/src/dashboard/components/DashboardStats/config.js:125
-#: assets/js/admin/dashboard.js:6299
+#: assets/js/admin/dashboard.js:6296
 msgctxt "[DASHBOARD] Filters"
 msgid "Compare"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:57
-#: assets/js/admin/dashboard.js:6860
+#: assets/js/admin/dashboard.js:6857
 #: assets/js/admin/src/dashboard/lib/dates.js:31
-#: assets/js/admin/dashboard.js:6439
+#: assets/js/admin/dashboard.js:6436
 msgctxt "[DASHBOARD] Time diff"
 msgid "y"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:60
-#: assets/js/admin/dashboard.js:6863
+#: assets/js/admin/dashboard.js:6860
 #: assets/js/admin/src/dashboard/lib/dates.js:39
-#: assets/js/admin/dashboard.js:6447
+#: assets/js/admin/dashboard.js:6444
 msgctxt "[DASHBOARD] Time diff"
 msgid "mo"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:63
-#: assets/js/admin/dashboard.js:6866
+#: assets/js/admin/dashboard.js:6863
 #: assets/js/admin/src/dashboard/lib/dates.js:47
-#: assets/js/admin/dashboard.js:6455
+#: assets/js/admin/dashboard.js:6452
 msgctxt "[DASHBOARD] Time diff"
 msgid "w"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:66
-#: assets/js/admin/dashboard.js:6869
+#: assets/js/admin/dashboard.js:6866
 #: assets/js/admin/src/dashboard/lib/dates.js:55
-#: assets/js/admin/dashboard.js:6463
+#: assets/js/admin/dashboard.js:6460
 msgctxt "[DASHBOARD] Time diff"
 msgid "d"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:69
-#: assets/js/admin/dashboard.js:6872
+#: assets/js/admin/dashboard.js:6869
 #: assets/js/admin/src/dashboard/lib/dates.js:63
-#: assets/js/admin/dashboard.js:6471
+#: assets/js/admin/dashboard.js:6468
 msgctxt "[DASHBOARD] Time diff"
 msgid "h"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:72
-#: assets/js/admin/dashboard.js:6875
+#: assets/js/admin/dashboard.js:6872
 #: assets/js/admin/src/dashboard/lib/dates.js:71
-#: assets/js/admin/dashboard.js:6479
+#: assets/js/admin/dashboard.js:6476
 msgctxt "[DASHBOARD] Time diff"
 msgid "m"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:75
-#: assets/js/admin/dashboard.js:6878
+#: assets/js/admin/dashboard.js:6875
 #: assets/js/admin/src/dashboard/lib/dates.js:79
-#: assets/js/admin/dashboard.js:6487
+#: assets/js/admin/dashboard.js:6484
 msgctxt "[DASHBOARD] Time diff"
 msgid "s"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:78
-#: assets/js/admin/dashboard.js:7186
+#: assets/js/admin/dashboard.js:7183
 #: assets/js/admin/src/dashboard/components/DashboardChart.jsx:171
-#: assets/js/admin/dashboard.js:6778
+#: assets/js/admin/dashboard.js:6775
 msgctxt "[DASHBOARD] Empty chart message"
 msgid "No data available"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:81
-#: assets/js/admin/dashboard.js:7369
+#: assets/js/admin/dashboard.js:7366
 #: assets/js/admin/src/dashboard/components/DashboardLeaderboards/config.js:9
-#: assets/js/admin/dashboard.js:6941
+#: assets/js/admin/dashboard.js:6938
 msgctxt "[DASHBOARD] Products leaderboard"
 msgid "Top products"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:84
-#: assets/js/admin/dashboard.js:7371
+#: assets/js/admin/dashboard.js:7368
 #: assets/js/admin/src/dashboard/components/DashboardLeaderboards/config.js:16
-#: assets/js/admin/dashboard.js:6948
+#: assets/js/admin/dashboard.js:6945
 msgctxt "[DASHBOARD] Products leaderboard"
 msgid "Product"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:87
-#: assets/js/admin/dashboard.js:7375
+#: assets/js/admin/dashboard.js:7372
 #: assets/js/admin/src/dashboard/components/DashboardLeaderboards/config.js:25
-#: assets/js/admin/dashboard.js:6957
+#: assets/js/admin/dashboard.js:6954
 msgctxt "[DASHBOARD] Products leaderboard"
 msgid "Total commissions"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:90
-#: assets/js/admin/dashboard.js:7389
+#: assets/js/admin/dashboard.js:7386
 #: assets/js/admin/src/dashboard/components/DashboardLeaderboards/config.js:44
-#: assets/js/admin/dashboard.js:6976
+#: assets/js/admin/dashboard.js:6973
 msgctxt "[DASHBOARD] Products leaderboard"
 msgid "Earnings generated"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:93
-#: assets/js/admin/dashboard.js:7396
+#: assets/js/admin/dashboard.js:7393
 #: assets/js/admin/src/dashboard/components/DashboardLeaderboards/config.js:55
-#: assets/js/admin/dashboard.js:6987
+#: assets/js/admin/dashboard.js:6984
 msgctxt "[DASHBOARD] Vendors leaderboard"
 msgid "Top vendors"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:96
-#: assets/js/admin/dashboard.js:7398
+#: assets/js/admin/dashboard.js:7395
 #: assets/js/admin/src/dashboard/components/DashboardLeaderboards/config.js:62
-#: assets/js/admin/dashboard.js:6994
+#: assets/js/admin/dashboard.js:6991
 msgctxt "[DASHBOARD] Vendors leaderboard"
 msgid "Vendor"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:99
-#: assets/js/admin/dashboard.js:7402
+#: assets/js/admin/dashboard.js:7399
 #: assets/js/admin/src/dashboard/components/DashboardLeaderboards/config.js:71
-#: assets/js/admin/dashboard.js:7003
+#: assets/js/admin/dashboard.js:7000
 msgctxt "[DASHBOARD] Vendors leaderboard"
 msgid "Total commissions"
 msgstr ""
 
 #: languages/yith-woocommerce-product-vendors.php:102
-#: assets/js/admin/dashboard.js:7408
+#: assets/js/admin/dashboard.js:7405
 #: assets/js/admin/src/dashboard/components/DashboardLeaderboards/config.js:82
-#: assets/js/admin/dashboard.js:7014
+#: assets/js/admin/dashboard.js:7011
 msgctxt "[DASHBOARD] Vendors leaderboard"
 msgid "Earnings generated"
 msgstr ""
@@ -7473,7 +7459,6 @@ msgstr ""
 msgid "Commission number: %s"
 msgstr "Commissie nummer: %s"
 
-#. translators: %s is the commission number.
 #: templates/emails/plain/commissions-unpaid.php:27
 #: templates/emails/plain/vendor-commissions-paid.php:28
 msgid "jS F Y"
@@ -7562,7 +7547,6 @@ msgstr "Download"
 msgid "Total: %s"
 msgstr "Totaal: %s"
 
-#. translators: %s: Customer username.
 #: templates/emails/plain/vendor-new-account.php:25
 #: templates/emails/vendor-new-account.php:31
 msgid "Congratulations! You have been approved to join our marketplace!"
