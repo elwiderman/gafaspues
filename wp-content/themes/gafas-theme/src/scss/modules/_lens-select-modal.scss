@@ -120,7 +120,7 @@
                     }
                     .row {
                         margin: 0 -4px;
-                        & > .col, & > .col-auto {
+                        & > .col, & > [class*="col-"] {
                             padding: 0 4px;
                         }
                         &:nth-child(2) {
@@ -179,6 +179,11 @@
                         border-radius: 0;
                         @include add-border(1px, $form-border, 'all');
                         box-shadow: none !important;
+                    }
+                    #lensColor {
+                        @include add-border(1px, $form-border, 'top');
+                        padding-top: 20px;
+                        margin-top: 30px;
                     }
                 }
                 .available-lens {
@@ -499,5 +504,63 @@
         color: $primary-bg;
         text-align: left;
         opacity: 1;
+    }
+}
+
+
+#lensColorSelectionModal {
+    .modal-body {
+        .color-select {
+            .lens-color-checks {
+                @include flex-display;
+                gap: 15px;
+                padding-left: 0;
+                .form-check {
+                    min-width: 50px;
+                    padding-left: 0;
+                    margin-bottom: 0;
+                    input[type="radio"] {
+                        opacity: 0;
+                        visibility: hidden;
+                        & ~ .form-check-label {
+                            @include flex-display(column);
+                            text-align: center;
+                            gap: 8px;
+                            position: relative;
+                            z-index: 0;
+                            cursor: pointer;
+                            &:before {
+                                content: $icon-check;
+                                font-family: $icomoon-font-family;
+                                font-size: 24px;
+                                color: $primary-bg;
+                                line-height: 1;
+                                position: absolute;
+                                top: 3px;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                @include transition(0.3s);
+                                opacity: 0;
+                                z-index: 1;
+                            }
+                            .color {
+                                width: 30px;
+                                height: 30px;
+                                border-radius: 5px
+                            }
+                            .label {
+                                font-size: 15px;
+                                line-height: 1;
+                            }
+                        }
+                        &:checked ~ .form-check-label {
+                            &:before {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -53,6 +53,7 @@ function gafas_render_lens_variations() {
     
     // get all the lens with the selected lens type and tint
     $all_lenses_with_cats = new WC_Product_Query([
+        'type'      => 'variable',
         'limit'     => -1,
         'return'    => 'ids',
         'tax_query' => $category_args
@@ -86,7 +87,7 @@ function gafas_render_lens_variations() {
     $left_add = preg_replace('/[+-]/', '', $_POST['left_add']);
     $right_add = preg_replace('/[+-]/', '', $_POST['right_add']);
 
-    if ((float)$left_add > 0.75 || (float)$right_add > 0.75) {
+    if ((float)$left_add >= 0.75 || (float)$right_add >= 0.75) {
         $add    = 'greater-075';
     } else {
         $add    = 'standard';
@@ -104,29 +105,58 @@ function gafas_render_lens_variations() {
         unset($attributes['attribute_pa_adicion']);
     }
 
+    // add the lens color to the get matching variations
+    if ($lens_type !== 'claros') {
+        $attributes['attribute_pa_lens-color'] = $_POST['lens_color'];
+    }
+
     $variations = [];
+
+    $prods = [];
+
+    $lens_options = "";
 
     if ($all_lenses_with_cats->get_products()) {
         foreach ($all_lenses_with_cats->get_products() as $prod) {
             $product        = wc_get_product($prod);
             $prod_title     = $product->get_name();
             $prod_desc      = $product->get_description();
+            
+            $variation_id   = (new WC_Product_Data_Store_CPT())->find_matching_product_variation(new WC_Product($prod), $attributes);
+            
+            if ($variation_id) {
+                $var_prod   = wc_get_product($variation_id);
 
-            $variation_id   = $product->get_matching_variation($attributes);
-            $var_prod       = wc_get_product($variation_id);
+                $price      = $var_prod->get_price();
+                $price_html = $var_prod->get_price_html();
 
-            $price          = $var_prod->get_price();
-            $price_html     = $var_prod->get_price_html();
+                // get the colors added to the lens
+                $colors     = [];
+                $has_colors = false;
+                if (get_the_terms($prod, 'pa_lentes-color')) {
+                    $has_colors = true;
+                    foreach (get_the_terms($prod, 'pa_lentes-color') as $color) {
+                        array_push($colors, [
+                            'term_id'   => $color->term_id,
+                            'name'      => $color->name,
+                            'slug'      => $color->slug,
+                            'color'     => get_term_meta($color->term_id, 'lens_color', true)
+                        ]);
+                    }
+                }
+    
+                array_push($variations, [
+                    'lens_id'       => $prod,
+                    'lens_name'     => $prod_title,
+                    'lens_desc'     => $prod_desc,
+                    'lens_children' => $product->get_available_variations(),
+                    'variation'     => $variation_id,
+                    'price'         => $price,
+                    'price_html'    => $price_html,
+                    'colors'        => $colors
+                ]);
+            }
 
-            array_push($variations, [
-                'lens_id'       => $prod,
-                'lens_name'     => $prod_title,
-                'lens_desc'     => $prod_desc,
-                'lens_children' => $product->get_available_variations(),
-                'variation'     => $variation_id,
-                'price'         => $price,
-                'price_html'    => $price_html
-            ]);
         }
     }
 
@@ -139,13 +169,34 @@ function gafas_render_lens_variations() {
         'right_eje'     => $_POST['right_eje'],
         'left_add'      => $_POST['left_add'],
         'right_add'     => $_POST['right_add'],
-        'dp'            => $_POST['dp']
+        'dp'            => $_POST['dp'],
+        'lens_color'    => $_POST['lens_color']
     ];
 
     wp_send_json([
         'results'   => $variations,
         'formula'   => $formula
     ]);
+}
+
+add_action('wp_ajax_gafas_get_lens_colors', 'gafas_render_lens_colors');
+add_action('wp_ajax_nopriv_gafas_get_lens_colors', 'gafas_render_lens_colors');
+function gafas_render_lens_colors() {
+    $lens_id = $_POST['lens_id'];
+
+    $colors = [];
+    if (get_the_terms($lens_id, 'pa_lentes-color')) {
+        foreach (get_the_terms($lens_id, 'pa_lentes-color') as $color) {
+            array_push($colors, [
+                'name'      => $color->name,
+                'slug'      => $color->slug,
+                'color'     => get_term_meta($color->term_id, 'lens_color', true)
+            ]);
+        }
+        wp_send_json($colors);
+    } else {
+        wp_send_json(false);
+    }
 }
 
 
@@ -170,15 +221,16 @@ function gafas_add_lens_config_to_cart() {
             $_POST['variation_id'],
             null,
             [
-                'right_esf' => $_POST['right_esf'],
-                'left_esf'  => $_POST['left_esf'],
-                'right_cil' => $_POST['right_cil'],
-                'left_cil'  => $_POST['left_cil'],
-                'right_eje' => $_POST['right_eje'],
-                'left_eje'  => $_POST['left_eje'],
-                'right_add' => $_POST['right_add'],
-                'left_add'  => $_POST['left_add'],
-                'dp'        => $_POST['dp'],
+                'left_esf'      => $_POST['left_esf'],
+                'right_esf'     => $_POST['right_esf'],
+                'left_cil'      => $_POST['left_cil'],
+                'right_cil'     => $_POST['right_cil'],
+                'left_eje'      => $_POST['left_eje'],
+                'right_eje'     => $_POST['right_eje'],
+                'left_add'      => $_POST['left_add'],
+                'right_add'     => $_POST['right_add'],
+                'dp'            => $_POST['dp'],
+                'lens_color'    => $_POST['lens_color']
             ]
         );
     }
@@ -278,7 +330,14 @@ function custom_display_cart_item_data($item_data, $cart_item) {
             'name'  => __('Distancia Pupilar', 'gafas'),
             'value' => wc_clean($cart_item['dp']),
         ];
-    }    
+    }
+
+    if (isset($cart_item['lens_color'])) {
+        $item_data[] = [
+            'name'  => __('Color de Lente', 'gafas'),
+            'value' => wc_clean($cart_item['lens_color']),
+        ];
+    }
     return $item_data;
 }
 
@@ -326,5 +385,9 @@ function custom_save_cart_meta_to_order($item, $cart_item_key, $values, $order) 
 
     if (isset($values['dp'])) {
         $item->add_meta_data(__('Distancia Pupilar', 'gafas'), $values['dp']);
+    }
+
+    if (isset($values['lens_color'])) {
+        $item->add_meta_data(__('Color de Lente', 'gafas'), $values['lens_color']);
     }
 }
