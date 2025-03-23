@@ -147,11 +147,21 @@ export default class WooFormula {
                 },
                 success: response => {
                     // console.log(response);
+                    
                     if (response.results.length > 0) {
-                        let html = '';
+                        let html = '',
+                            colors = [];
 
                         response.results.forEach((elem, i) => {
                             // console.log(elem);
+                            let lens_color = elem.colors.length > 0 ? true : false;
+                            
+                            if (lens_color) {
+                                colors.push({
+                                    id: elem.lens_id,
+                                    colors : elem.colors
+                                });
+                            }
 
                             html += `
                             <div class='lens'>
@@ -159,7 +169,8 @@ export default class WooFormula {
                                     data-lens_id='${elem.lens_id}'
                                     data-variation_id='${elem.variation}'
                                     data-lens_name='${elem.lens_name}'
-                                    data-lens_price='${elem.price_html}'>
+                                    data-lens_price='${elem.price_html}'
+                                    data-lens_colors='${lens_color}'>
                                     <div class='lens__select--top'>
                                         <span class='lens__select--icon'><i class='icon-square'></i></span>
                                         <h4 class='lens__select--title'>${elem.lens_name}</h4>
@@ -174,6 +185,7 @@ export default class WooFormula {
                         });
 
                         form.find('.available-lens').html(html);
+                        this.handleFinalLensSelect(colors);
 
                         new SimpleBar($('#availableLens')[0], {
                             autoHide: false
@@ -199,8 +211,6 @@ export default class WooFormula {
                     if (data.lens_type === 'solo-para-descanso') {
                         $('#formFormula').addClass('no-click');
                     }
-
-                    this.handleFinalLensSelect();
                 },
                 error: err => {
                     console.log(err);
@@ -212,30 +222,77 @@ export default class WooFormula {
         });
     }
 
-    handleFinalLensSelect() {
+    handleFinalLensSelect(colors) {
         let lensWrap = $('#availableLens'),
-            addToCartForm = $('#lensAddToCart');
+            addToCartForm = $('#lensAddToCart'),
+            lensColorModal = $('#lensColorSelectionModal');
 
-        lensWrap.on('click', '.lens__select', e => {
+        lensWrap.off('click').on('click', '.lens__select', e=> {
             e.preventDefault();
+            e.stopPropagation();
 
             let lens = $(e.currentTarget),
                 lens_id = lens.data('lens_id'),
                 lens_varation = lens.data('variation_id'),
                 lens_name = lens.data('lens_name'),
                 lens_price = lens.data('lens_price'),
+                lens_color = lens.data('lens_colors'),
                 lens_price_raw = lens.find('.lens__select--price').data('price'),
                 frame_price = addToCartForm.find('.selected-wrap__row.frame .selected-wrap__price').data('prod_price');
 
             // toggle class for styling - remove selected from others and select the current
             lensWrap.find('.lens__select').removeClass('selected');
             lens.addClass('selected');
-            
+
             addToCartForm.find('input[name="lens_id"]').val(lens_id);
             addToCartForm.find('input[name="variation_id"]').val(lens_varation);
 
             addToCartForm.find('.selected-wrap__row.lens figcaption').html(lens_name);
             addToCartForm.find('.selected-wrap__row.lens .selected-wrap__price').html(lens_price);
+
+            if (lens_color) {
+                let colorHtml = '';
+                
+                colors.forEach((elem, i) => {
+                    console.log(elem);
+                    if (elem.id === lens_id) {
+                        elem.colors.forEach((color, j) => {
+                            colorHtml += `
+                            <div class='form-check'>
+                                <input class='form-check-input' type='radio' name='lens_color' value='${color.name}' id='lensColor-${color.term_id}' data-id='${color.term_id}'>
+                                <label class='form-check-label' for='lensColor-${color.term_id}'>
+                                    <span class='color' style='background-color:${color.color}'>&nbsp;</span>
+                                    <span class='label'>${color.name}</span>
+                                </label>
+                            </div>
+                            `;
+                        });
+                    }
+                });
+
+                lensColorModal.find('#lensColorSelectForm > .lens-color-checks').html(colorHtml);
+                let modal = new bootstrap.Modal($('#lensColorSelectionModal')[0]);
+                modal.show();
+
+
+                lensColorModal.on('shown.bs.modal', e => {
+                    $('#lensColorSelectForm').on('submit', e => {
+                        e.preventDefault();
+    
+                        let form = $(e.currentTarget);
+    
+                        let color = form.find('input[type="radio"]:checked').val();
+    
+                        addToCartForm.find('input[name="lens_color"]').val(color);
+    
+                        lens_name += `<br>Color de Lennte - ${color}`;
+
+                        addToCartForm.find('.selected-wrap__row.lens figcaption').html(lens_name);
+
+                        modal.hide();
+                    });
+                });
+            }
             
             let total = lens_price_raw + frame_price,
                 totalFormatted = total.toLocaleString('es-CO');

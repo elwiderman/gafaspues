@@ -3,7 +3,7 @@
 global $product;
 ?>
 
-<div class="modal fade" id="lensSelectionModal" tabindex="-1" aria-labelledby="lensSelectionModal" aria-hidden="true">
+<div class="modal fade" id="lensSelectionModal" tabindex="-1" aria-labelledby="lensSelectionModal" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
@@ -187,7 +187,7 @@ global $product;
                                                     </div>
                                                 </div>
 
-                                                <div class="row align-items-center">
+                                                <div class="row align-items-center mb-3">
                                                     <div class="col-auto">
                                                         <h6 class="formula-input__title"><?php _e('Distancia Pupilar', 'gafas');?></h6>
                                                     </div>
@@ -256,6 +256,7 @@ global $product;
                                     <input type="hidden" name="left_add" value="">
                                     <input type="hidden" name="right_add" value="">
                                     <input type="hidden" name="dp" value="">
+                                    <input type="hidden" name="lens_color" value="">
                                     <input type="hidden" name="action" value="gafas_add_lens_config_to_cart">
 
                                     <button class="btn-outline-dark" type="submit">
@@ -266,6 +267,29 @@ global $product;
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade bg-dark bg-opacity-50" id="lensColorSelectionModal" tabindex="-1" aria-labelledby="lensColorSelectionModal" aria-hidden="true"  data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title h6"><?php _e('Seleccione el color de lente que desee:', 'gafas');?></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="color-select" id="lensColorSelectForm">
+                    <div class="lens-color-checks"></div>
+                    <div class="lens-color-guide mt-3">
+                        <a href="#" target="_blank">Prueba como se ve los lentes tintados</a>
+                    </div>
+                    <div class="form-submit mt-3">
+                        <button type="submit" class="btn-outline-dark"><?php _e('Guarda tu selección', 'gafas');?></button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
