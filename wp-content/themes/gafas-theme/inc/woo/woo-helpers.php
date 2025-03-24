@@ -253,3 +253,19 @@ function gafas_custom_css_for_orders_vendors() {
 
     <?php endif;
 }
+
+// custom login redirect for vendors to the vendor dashboard
+add_filter('woocommerce_login_redirect', 'gafas_custom_login_redirect', 10, 2);
+function gafas_custom_login_redirect($redirect, $user) {
+    if (isset($user->roles) && is_array($user->roles) && in_array('yith_vendor', $user->roles)) {
+        $redirect = admin_url('admin.php?page=yith_wpv_panel');
+    }
+    return $redirect;
+}
+add_action('template_redirect', 'gafas_restrict_shop_editor_access');
+function gafas_restrict_shop_editor_access() {
+    if (is_account_page() && current_user_can('view_custom_gafas_wc_orders')) {
+        wp_redirect(admin_url('admin.php?page=yith_wpv_panel'));
+        exit;
+    }
+}
