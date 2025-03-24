@@ -25,6 +25,7 @@
     "src/scss/helpers.scss",
     "src/scss/vendor.scss",
     "src/scss/contact.scss",
+    "src/scss/sitemap.scss",
     "src/scss/admin.scss"
   ],
   "keywords": [],

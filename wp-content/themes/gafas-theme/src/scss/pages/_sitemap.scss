@@ -1,0 +1,20 @@
+.single-page {
+    &.single-sitemap {
+        padding: 30px 0 50px;
+        @include respond-to('s-desk') {
+            padding: 30px 0 80px;
+        }
+        .wsp-container {
+            h2 {
+                @extend h5;
+                @include font($secondary-font, $medium);
+                &:not(:first-child) {
+                    margin-top: 30px;
+                }
+            }
+            a {
+                font-weight: $regular;
+            }
+        }
+    }
+}
