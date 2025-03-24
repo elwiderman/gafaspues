@@ -101,7 +101,7 @@
             overflow: hidden;
             img {
                 width: 100%;
-                aspect-ratio: 1;
+                // aspect-ratio: 1;
                 object-fit: fill;
                 object-position: center;
                 @include transition(0.5s);
