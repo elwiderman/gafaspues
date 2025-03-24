@@ -51,6 +51,10 @@ function gafas_theme_frontend_js_css() {
         wp_enqueue_style('contact-css', $path . gafas_get_hashed_assets('scss/contact.scss'), array(), '', 'all');
     }
 
+    if (is_page_template('templates/page-sitemap.php')) {
+        wp_enqueue_style('sitemap-css', $path . gafas_get_hashed_assets('scss/sitemap.scss'), array(), '', 'all');
+    }
+
 
     // the stylesheets
     global $wp_styles; // Call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
