@@ -150,6 +150,30 @@
                         }
                     }
                 }
+
+                .woocommerce {
+                    .xoo-el-form-container {
+                        &.xoo-el-form-inline {
+                            max-width: 450px;
+                            margin: 50px 0;
+                            .xoo-el-action-btn {
+                                @extend .btn-dark;
+                            }
+                            .xoo-aff-text, .xoo-aff-password, .xoo-aff-email {
+                                border-color: $primary-font-color;
+                                border-radius: 4px;
+                            }
+                            .xoo-el-lostpw-tgr {
+                                font-size: 14px;
+                                font-weight: $regular;
+                                color: $primary-color;
+                                &:hover {
+                                    color: $primary-font-color;
+                                }
+                            }
+                        }
+                    }    
+                }
             }
         }
     }
