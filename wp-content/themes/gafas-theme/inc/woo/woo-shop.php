@@ -38,33 +38,6 @@ function gafas_move_breadcrumb_in_shop_header() {
 
 
 
-function gafas_xoo_el_nav_footer_links( $form, $args ){
-
-	?>
-
-	<?php if( $form === 'login' && in_array( 'register' , $args['tabs'] ) && isset( $args['navstyle'] ) && $args['navstyle'] === 'links' ): ?>
-		<span class="xoo-el-reg-tgr xoo-el-nav-ft"><?php _e( "Don't have an account? Signup now !!!!!", 'easy-login-woocommerce' ) ?></span>
-	<?php endif; ?>
-
-	<?php if( $form === 'register' && in_array( 'login' , $args['tabs'] ) && isset( $args['navstyle'] ) && $args['navstyle'] === 'links' ): ?>
-		<span class="xoo-el-login-tgr xoo-el-nav-ft"><?php _e( "Already a member? Login", 'easy-login-woocommerce' ) ?></span>
-	<?php endif; ?>
-
-
-	<?php if( $form === 'lostpw' && isset( $args['navstyle'] ) && $args['navstyle'] === 'links' ): ?>
-		<span class="xoo-el-login-tgr xoo-el-nav-ft"><i class="xoo-el-icon-arrow-left2"></i></span>
-	<?php endif; ?>
-
-	<?php
-
-}
-add_action( 'xoo_el_after_form', 'gafas_xoo_el_nav_footer_links',10, 2 );
-remove_action('xoo_el_after_form', 'xoo_el_nav_footer_links');
-
-
-
-
-
 // function move_order_review_section() {
     // Remove from the default position
     remove_action('woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment');

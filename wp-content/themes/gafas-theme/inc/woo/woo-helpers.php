@@ -269,3 +269,45 @@ function gafas_restrict_shop_editor_access() {
         exit;
     }
 }
+
+
+function custom_dashboard_widget_for_shop_editor() {
+    if (current_user_can('view_custom_gafas_wc_orders')) {
+        wp_add_dashboard_widget('custom_shop_editor_widget', 'Welcome, Shop Editor!', 'custom_dashboard_content');
+    }
+}
+
+function custom_dashboard_content() {
+    echo '<h2>Welcome to the Shop Management Panel</h2>';
+    echo '<p>Here you can manage products, view orders, and track sales.</p>';
+    echo '<ul>
+            <li><a href="' . admin_url('edit.php?post_type=product') . '">Manage Products</a></li>
+            <li><a href="' . admin_url('edit.php?post_type=shop_order') . '">View Orders</a></li>
+            <li><a href="' . home_url() . '" target="_blank">Visit the Shop</a></li>
+          </ul>';
+}
+
+add_action('wp_dashboard_setup', 'custom_dashboard_widget_for_shop_editor');
+
+
+
+// change the text labels for the login signup form
+add_action( 'xoo_el_after_form', 'gafas_xoo_el_nav_footer_links',10, 2 );
+remove_action('xoo_el_after_form', 'xoo_el_nav_footer_links');
+function gafas_xoo_el_nav_footer_links( $form, $args ) {
+	?>
+
+	<?php if( $form === 'login' && in_array( 'register' , $args['tabs'] ) && isset( $args['navstyle'] ) && $args['navstyle'] === 'links' ): ?>
+		<span class="xoo-el-reg-tgr xoo-el-nav-ft"><?php _e( '¿No tienes cuenta? Regístrate ahora!', 'gafas' ) ?></span>
+	<?php endif; ?>
+
+	<?php if( $form === 'register' && in_array( 'login' , $args['tabs'] ) && isset( $args['navstyle'] ) && $args['navstyle'] === 'links' ): ?>
+		<span class="xoo-el-login-tgr xoo-el-nav-ft"><?php _e( '¿Ya estás registrado? Iniciar sesión', 'gafas' ) ?></span>
+	<?php endif; ?>
+
+
+	<?php if( $form === 'lostpw' && isset( $args['navstyle'] ) && $args['navstyle'] === 'links' ): ?>
+		<span class="xoo-el-login-tgr xoo-el-nav-ft"><i class="xoo-el-icon-arrow-left2"></i></span>
+	<?php endif; ?>
+	<?php
+}
